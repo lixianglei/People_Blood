@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafadc">
+    <include
+        layout="@layout/mianfeitiwen_title"></include>
+    <TextView
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:textSize="25sp"
+        android:padding="30dp"
+        android:text="请简单描述您的病情并提交给我们的客服,客服人员会安排专业的健康顾问向您致电，为阁下进行专业的电话健康指导"/>
+<EditText
+    android:layout_width="500dp"
+    android:layout_height="500dp"
+    android:layout_gravity="center_horizontal"
+    android:hint="请尽量详细描述，描述字数不得少于10个字"
+
+    />
+</LinearLayout>
