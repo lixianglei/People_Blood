@@ -3,6 +3,7 @@ package com.example.admin.people_blood.modle.http;
 
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 
+import java.io.File;
 import java.util.Map;
 
 /**
@@ -19,6 +20,8 @@ public interface IHttp {
     void get(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack);
 
     void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack);
+
+    void updateImage(Class classBean, Map<String,String> map,String url, String key, File fileimage,HttpCallBack httpCallBack);
 
 
 }
