@@ -53,14 +53,13 @@ public class MainActivity extends BaseActivity {
         MainTablayout.setTabMode(TabLayout.MODE_FIXED);
        fragmentAdapter=new MyFragmentAdapter(getSupportFragmentManager(),fragments,strings);
         MainViewPager.setAdapter(fragmentAdapter);
-        MainTablayout.addTab(MainTablayout.newTab().setCustomView(tab_icon(strings.get(1),R.drawable.booldmanager)));
-        MainTablayout.addTab(MainTablayout.newTab().setCustomView(tab_icon(strings.get(2),R.drawable.personcenter)));
         //Tablayout自定义view绑定ViewPager
         MainViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(MainTablayout));
         MainTablayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(MainViewPager));
         MainTablayout.setupWithViewPager(MainViewPager);
         MainTablayout.getTabAt(0).setCustomView(tab_icon(strings.get(0),R.drawable.doctorline));
-
+        MainTablayout.getTabAt(1).setCustomView(tab_icon(strings.get(1),R.drawable.booldmanager));
+        MainTablayout.getTabAt(2).setCustomView(tab_icon(strings.get(2),R.drawable.personcenter));
 
     }
     private View tab_icon(String name, int iconID){
