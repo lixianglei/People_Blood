@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fdf9ea"
@@ -7,6 +7,10 @@
     <!--<include-->
     <!--layout="@layout/zaixaindoctor_title">-->
     <!--</include>-->
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -175,30 +179,67 @@
     </LinearLayout>
 
     <LinearLayout
-        android:background="@color/color_write"
+android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center_horizontal">
+        android:layout_marginTop="9dp"
+        android:background="@color/color_write"
+        android:divider="@drawable/line_e7e6"
+        android:gravity="center_horizontal"
+        android:showDividers="middle">
 
         <TextView
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
             android:drawableTop="@drawable/mianfie_zaixian"
+            android:gravity="center_horizontal"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
             android:text="免费问医生" />
+
         <TextView
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:drawableTop="@drawable/mianfie_zaixian"
-            android:text="免费问医生" />
+            android:layout_weight="1"
+            android:drawablePadding="5dp"
+            android:drawableTop="@drawable/doctor_guwen"
+            android:gravity="center_horizontal"
+            android:text="健康顾问" />
+
+    </LinearLayout>
+        <RelativeLayout
+            android:background="@color/color_write"
+            android:layout_marginTop="9dp"
+            android:layout_width="match_parent"
+            android:layout_height="100dp">
+            <TextView
+                android:padding="9dp"
+                android:textSize="16sp"
+                android:textColor="@color/color_black"
+                android:text="热门医生"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/doctor_huanyihuan"
+                android:padding="9dp"
+                android:textSize="16sp"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/color_6cca77"
+                android:text="换一换"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            <GridView
+                android:numColumns="4"
+                android:id="@+id/daoctor_gridviwe"
+                android:background="@color/color_black"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/doctor_huanyihuan"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"></GridView>
+        </RelativeLayout>
 
     </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>
