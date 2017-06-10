@@ -1,5 +1,6 @@
 package com.example.admin.people_blood.view.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
@@ -16,6 +17,7 @@ import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
+import com.example.admin.people_blood.view.ShouDongCeLiangActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -101,7 +103,8 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
 
     @Override
     public void shoudongshangchuan() {
-        Toast.makeText(App.baseActivity, "手动测量", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(App.baseActivity, ShouDongCeLiangActivity.class);
+        startActivity(intent);
     }
 
     @Override
