@@ -1,28 +1,28 @@
 package com.example.admin.people_blood;
 
 
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.people_blood.adapter.MyFragmentAdapter;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.base.BaseFragment;
+import com.example.admin.people_blood.modle.callback.HttpCallBack;
+import com.example.admin.people_blood.modle.http.RetrofitClient;
 import com.example.admin.people_blood.view.fragment.BloodManagerFragment;
 import com.example.admin.people_blood.view.fragment.DoctorLineFragment;
 import com.example.admin.people_blood.view.fragment.PersonCenterFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class MainActivity extends BaseActivity {
     @Bind(R.id.Title_Text)
@@ -77,7 +77,18 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void listener() {
-
+        TitleText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RetrofitClient.getInstance().get(Test1.class, "index.php?&tag=BloodAndroid&sign=2c19b2821ebc5306c3ac37bac5b4288b&act=zhuanjia&fun=DoctorRely&expertid=19069&pageNum=1&pageCount=20"
+                        , new HashMap<String, String>(), new HttpCallBack() {
+                            @Override
+                            public void onSuccess(Object object) {
+                                Toast.makeText(MainActivity.this, "哈哈哈", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
     }
 
 }

@@ -3,11 +3,12 @@ package com.example.admin.people_blood.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+
 import com.example.admin.people_blood.App;
+
 import butterknife.ButterKnife;
 
 /**
- *
  * 项目名称: 血压卫士
  * 类描述: Activity的基类
  * 创建人: 陈瑶瑶
@@ -18,22 +19,28 @@ import butterknife.ButterKnife;
  */
 
 public abstract class BaseActivity extends AppCompatActivity {
+    //用于重复执行onResume导致重复请求网络的问题
+    private boolean isFlush;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//dsa
+
         setContentView(layoutId());
         ButterKnife.bind(this);
-        App.activity=this;
-        initView();
-        loadData();
-        listener();
+        App.baseActivity = this;
+
     }
-    public void setData(){
+
+    public void setFlush(boolean flush) {
+        isFlush = flush;
+    }
+
+    public void setData() {
 
 
     }
+
     //指定布局
     protected abstract int layoutId();
 
@@ -50,7 +57,13 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        App.activity = this;
+        App.baseActivity = this;
+        if (!isFlush) {
+            initView();
+            loadData();
+            listener();
+            isFlush = true;
+        }
     }
 
     @Override

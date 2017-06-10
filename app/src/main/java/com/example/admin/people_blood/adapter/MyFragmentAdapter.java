@@ -2,7 +2,6 @@ package com.example.admin.people_blood.adapter;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.admin.people_blood.base.BaseFragment;
@@ -39,10 +38,7 @@ public class MyFragmentAdapter extends FragmentStatePagerAdapter {
         return fragments.size();
     }
 
-    @Override
-    public CharSequence getPageTitle(int position) {
 
-        return strings.get(position);
-    }
+
 
 }

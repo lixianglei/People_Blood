@@ -16,7 +16,7 @@ import com.example.admin.people_blood.base.BaseFragment;
 public class BloodManagerFragment extends BaseFragment {
     @Override
     protected int ViewID() {
-        return R.layout.fragment_item;
+        return R.layout.fragment_bloodmanager;
     }
 
     @Override
