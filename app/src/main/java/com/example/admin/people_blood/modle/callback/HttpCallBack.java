@@ -10,7 +10,12 @@ package com.example.admin.people_blood.modle.callback;
  * 修改时间:
  */
 
-public interface HttpCallBack {
-    void onSuccess(Object object);
-    void onFailure(String message);
+public abstract class HttpCallBack {
+    public abstract void onSuccess(Object object);
+
+    public  void onFailure(String message){};
+
+    public void upload(int pro) {
+
+    }
 }
