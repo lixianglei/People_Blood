@@ -45,7 +45,7 @@ public class NavView extends View{
     }
 
     private void initPaint() {
-        textPaint.setTextSize(20);
+        textPaint.setTextSize(30);
         textPaint.setAntiAlias(true);
         textPaint.setColor(getResources().getColor(R.color.colorZiMu));
     }

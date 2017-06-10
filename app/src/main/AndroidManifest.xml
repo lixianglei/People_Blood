@@ -12,11 +12,11 @@
         <activity android:name=".view.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".view.fragment.activity.GuanJianZiActivity"></activity>
+        <activity android:name=".view.fragment.activity.ShengFenActivity"/>
         <activity android:name=".MainActivity"/>
     </application>
 

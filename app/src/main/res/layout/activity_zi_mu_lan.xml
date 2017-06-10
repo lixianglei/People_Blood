@@ -4,7 +4,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-
+    <include
+        layout="@layout/back_titlebar"
+        android:layout_height="60dp"
+        android:layout_width="match_parent"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +30,7 @@
             android:textSize="18dp"
             android:visibility="gone" />
 <!--字母栏用的是自定义View-->
-        <com.example.admin.a2017zonghe.zimulan.NavView
+        <com.example.admin.people_blood.view.fragment.NavView
             android:id="@+id/nv"
             android:layout_width="20dp"
             android:layout_height="match_parent"

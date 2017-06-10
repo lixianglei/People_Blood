@@ -11,15 +11,18 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
+import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.bean.User;
 import com.example.admin.people_blood.view.fragment.NavView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ZiMuLanActivity extends Activity {
-    private TextView tv;
+/**
+ * 这是字母栏的activity
+ */
+public class ShengFenActivity extends BaseActivity{
+    private TextView tv,title;
     private ListView listview;
     private NavView nv;
 
@@ -32,20 +35,26 @@ public class ZiMuLanActivity extends Activity {
             "江苏省", "浙江省",
             "安徽省", "江西省"};
 
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_zi_mu_lan);
-
-        initView();
-        initData();
+    protected int layoutId() {
+        return R.layout.activity_zi_mu_lan;
     }
 
-    private void initView() {
+    public void initView() {
         tv = (TextView) findViewById(R.id.tv);
         listview = (ListView) findViewById(R.id.listview);
-//        nv = (NavView) findViewById(R.id.nv);
+        title= (TextView) findViewById(R.id.Center_Text);
+        title.setText("省份");
+         initData();
+    }
+
+    @Override
+    protected void loadData() {
+
+    }
+
+    @Override
+    protected void listener() {
 
     }
 
@@ -56,7 +65,7 @@ public class ZiMuLanActivity extends Activity {
 
           list.add(new User(name[i]));
       }
-        //将拼音排序
+        //将拼音排序，在这里用不到
 //        Collections.sort(list, new Comparator<User>() {
 //            @Override
 //            public int compare(User lhs, User rhs) {
@@ -66,6 +75,7 @@ public class ZiMuLanActivity extends Activity {
         //填充ListView
         adapter = new UserAdapter(this, list);
         listview.setAdapter(adapter);
+
     }
 
 
