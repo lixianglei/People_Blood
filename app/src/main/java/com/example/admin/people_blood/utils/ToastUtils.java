@@ -17,7 +17,7 @@ import com.example.admin.people_blood.App;
 public class ToastUtils {
 
     private static Toast mToast;
-    private static Context context = App.activity;
+    private static Context context = App.baseActivity;
     public static void showShortToast(String text) {
         getSingleToast(text, Toast.LENGTH_SHORT).show();
     }

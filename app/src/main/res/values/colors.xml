@@ -8,4 +8,11 @@
     <color name="colorZiMu">#AFAFAF</color>
     <color name="color_tab">#FBF8F4</color>
     <color name="color_write">#ffffff</color>
+    <color name="color_boold_green">#4CBF5C</color>
+    <color name="color_black">#000000</color>
+    <color name="sd_666">#666666</color>
+    <color name="sd_333">#333333</color>
+    <color name="sd_ccc">#cccccc</color>
+
+
 </resources>
