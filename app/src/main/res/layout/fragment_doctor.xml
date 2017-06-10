@@ -8,236 +8,252 @@
     <!--layout="@layout/zaixaindoctor_title">-->
     <!--</include>-->
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/color_f9f9"
-        android:gravity="center_horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="全国有70064位血压专家为您在线治疗"
-            android:textColor="@color/color_b4b4"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="13sp"
-            android:layout_weight="0.88"
-            android:text="省份"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ccoo_icon_back_777" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="0.06"
-            android:src="@drawable/zaixian" />
-    </LinearLayout>
-
-    <include
-        layout="@layout/line_ececec"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="13sp"
-            android:layout_weight="0.98"
-            android:text="医生职称"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ccoo_icon_back_777" />
-    </LinearLayout>
-
-    <include
-        layout="@layout/line_ececec"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="13sp"
-            android:layout_weight="0.98"
-            android:text="医院等级"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ccoo_icon_back_777" />
-    </LinearLayout>
-
-    <include
-        layout="@layout/line_ececec"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="13sp"
-            android:layout_weight="0.98"
-            android:hint="关键字/专家姓名/医院名称/疾病"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:layout_width="47dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/ccoo_icon_back_777" />
-    </LinearLayout>
-
-    <include
-        layout="@layout/line_ececec"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp" />
-
-    <LinearLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#fff"
-        android:weightSum="1">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:layout_weight="0.31"
-            android:src="@drawable/checkbox_normal" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:layout_weight="0.44"
-            android:text="免费加号"
-            android:textSize="20sp" />
-
-        <Button
-            android:layout_width="188dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="15px"
-            android:background="#05a823"
-            android:text="查询专家"
-            android:textSize="20sp" />
-    </LinearLayout>
-
-    <LinearLayout
-android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="9dp"
-        android:background="@color/color_write"
-        android:divider="@drawable/line_e7e6"
-        android:gravity="center_horizontal"
-        android:showDividers="middle">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/mianfie_zaixian"
-            android:gravity="center_horizontal"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:text="免费问医生" />
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:drawablePadding="5dp"
-            android:drawableTop="@drawable/doctor_guwen"
-            android:gravity="center_horizontal"
-            android:text="健康顾问" />
-
-    </LinearLayout>
-        <RelativeLayout
-            android:background="@color/color_write"
-            android:layout_marginTop="9dp"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp">
+            android:layout_height="40dp"
+            android:background="@color/color_f9f9"
+            android:gravity="center_horizontal">
+
             <TextView
-                android:padding="9dp"
-                android:textSize="16sp"
-                android:textColor="@color/color_black"
-                android:text="热门医生"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="全国有70064位血压专家为您在线治疗"
+                android:textColor="@color/color_b4b4"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13sp"
+                android:layout_weight="0.88"
+                android:text="省份"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/item_arrow_right" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.06"
+                android:src="@drawable/zaixian" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/line_ececec"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13sp"
+                android:layout_weight="0.98"
+                android:text="医生职称"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/line_ececec"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13sp"
+                android:layout_weight="0.98"
+                android:text="医院等级"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/line_ececec"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="13sp"
+                android:layout_weight="0.98"
+                android:hint="关键字/专家姓名/医院名称/疾病"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/item_arrow_right" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/line_ececec"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp" />
+
+        <RelativeLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="#fff"
+            android:weightSum="1">
+
+            <ImageView
+                android:id="@+id/doct_image"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15px"
+                android:src="@drawable/checkbox_normal" />
+
+            <TextView
+                android:id="@+id/doct_jiahao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="15px"
+                android:layout_toRightOf="@id/doct_image"
+                android:text="免费加号"
+                android:textSize="16sp" />
+
+            <Button
+
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="16sp"
+                android:layout_marginRight="10dp"
+                android:layout_toRightOf="@id/doct_jiahao"
+                android:background="@drawable/doctor_button"
+                android:text="查询专家"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="9dp"
+            android:background="@color/color_write"
+            android:divider="@drawable/line_e7e6"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:showDividers="middle">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/mianfie_zaixian"
+                android:gravity="center_horizontal"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
+                android:text="免费问医生" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:drawablePadding="5dp"
+                android:drawableTop="@drawable/doctor_guwen"
+                android:gravity="center_horizontal"
+                android:text="健康顾问" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="9dp"
+            android:background="@color/color_write">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="9dp"
+                android:text="热门医生"
+                android:textColor="@color/color_black"
+                android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/doctor_huanyihuan"
-                android:padding="9dp"
-                android:textSize="16sp"
-                android:layout_alignParentRight="true"
-                android:textColor="@color/color_6cca77"
-                android:text="换一换"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="9dp"
+                android:text="换一换"
+                android:textColor="@color/color_6cca77"
+                android:textSize="16sp" />
+
             <GridView
-                android:numColumns="4"
                 android:id="@+id/daoctor_gridviwe"
-                android:background="@color/color_black"
-                android:layout_marginTop="20dp"
-                android:layout_below="@id/doctor_huanyihuan"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></GridView>
+                android:layout_height="match_parent"
+                android:layout_below="@id/doctor_huanyihuan"
+                android:layout_marginTop="20dp"
+                android:background="@color/color_black"
+                android:numColumns="4"></GridView>
         </RelativeLayout>
 
     </LinearLayout>
