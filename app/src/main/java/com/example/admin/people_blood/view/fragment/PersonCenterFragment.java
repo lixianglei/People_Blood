@@ -33,7 +33,6 @@ import butterknife.OnClick;
 
 public class PersonCenterFragment extends BaseFragment {
 
-
     @Bind(R.id.Login_Image)
     TextView LoginImage;
     @Bind(R.id.imageView)

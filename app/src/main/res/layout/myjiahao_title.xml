@@ -14,9 +14,9 @@
 
         <ImageView
             android:id="@+id/left_image"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/btn_back_press"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/jiantou"
             android:layout_centerInParent="true"
             android:scaleType="centerInside"
             android:layout_marginLeft="10dp"/>
@@ -29,5 +29,6 @@
         android:layout_centerInParent="true"
         android:textColor="#ffffff"
         android:text="我的加号"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
+
 </RelativeLayout>

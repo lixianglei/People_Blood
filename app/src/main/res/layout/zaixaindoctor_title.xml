@@ -4,7 +4,7 @@
     android:layout_height="50dp"
     android:background="#07ba5a"
     android:gravity="center_vertical"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
     <RelativeLayout
         android:id="@+id/left_layout"
         android:layout_width="40dp"
@@ -12,14 +12,6 @@
         android:background="#07ba5a"
         android:clickable="true" >
 
-        <ImageView
-            android:id="@+id/left_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/jiantou"
-            android:layout_centerInParent="true"
-            android:scaleType="centerInside"
-            android:layout_marginLeft="10dp"/>
     </RelativeLayout>
 
     <TextView
@@ -28,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#ffffff"
-        android:text="个人资料"
+        android:text="医生在线"
         android:textSize="20sp" />
 
 

@@ -15,7 +15,7 @@ import com.example.admin.people_blood.base.BaseActivity;
  */
 
 public class App extends Application {
-    public static BaseActivity baseActivity;
+    public static BaseActivity baseActivity,activity;
 
     @Override
     public void onCreate() {

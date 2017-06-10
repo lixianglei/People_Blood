@@ -20,12 +20,12 @@
             android:layout_gravity="center_vertical"
             android:text="名字"
             android:textColor="#d4d4d4"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
             android:text="女"/>
@@ -55,12 +55,12 @@
             android:layout_gravity="center_vertical"
             android:text="性别"
             android:textColor="#d4d4d4"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
             android:text="女"/>
@@ -90,12 +90,12 @@
             android:layout_gravity="center_vertical"
             android:text="身高"
             android:textColor="#d4d4d4"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
             android:text="175"/>
@@ -125,12 +125,12 @@
             android:layout_gravity="center_vertical"
             android:text="体重"
             android:textColor="#d4d4d4"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
             android:text="请选择"/>
@@ -160,12 +160,12 @@
             android:layout_gravity="center_vertical"
             android:text="生日"
             android:textColor="#d4d4d4"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="25sp"
+            android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
             android:text="1997-11-15"/>

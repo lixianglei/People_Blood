@@ -18,7 +18,7 @@
             android:layout_gravity="center_horizontal"
             android:text="您还没有登录哦"/>
         <Button
-            android:layout_width="175px"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textColor="#333"
@@ -35,13 +35,13 @@
         android:orientation="horizontal"
         android:gravity="center_vertical"
         android:background="#ffffff"
-        android:layout_height="90px">
+        android:layout_height="50dp">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36px"
-            android:src="@drawable/gerenzhongxin_03"
+            android:src="@drawable/img_jiahao"
             android:id="@+id/imageView" />
 
         <TextView
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36px"
-            android:src="@drawable/gerenzhongxin_06"/>
+            android:src="@drawable/img_collect"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -123,7 +123,7 @@ android:id="@+id/My_ZiLiao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="36px"
-        android:src="@drawable/gerenzhongxin_08"/>
+        android:src="@drawable/img_info"/>
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
@@ -164,7 +164,7 @@ android:id="@+id/My_ZiLiao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36px"
-            android:src="@drawable/gerenzhongxin_10"/>
+            android:src="@drawable/img_message"/>
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -204,7 +204,7 @@ android:id="@+id/My_SheZhi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="36px"
-        android:src="@drawable/gerenzhongxin_12"/>
+        android:src="@drawable/img_setting"/>
     <TextView
         android:layout_width="0dp"
         android:layout_weight="1"
