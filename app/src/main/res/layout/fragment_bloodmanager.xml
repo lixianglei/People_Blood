@@ -4,14 +4,15 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/shanghcuan"
         android:id="@+id/xueyaceliang"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shanghcuan" />
 
     <TextView
-        android:id="@+id/shuju"
+
+        android:id="@+id/boold_shuju"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/xueyaceliang"
@@ -22,30 +23,58 @@
         android:textStyle="bold" />
 
     <RadioGroup
-        android:showDividers="middle"
-        android:divider="#000"
-        android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
+        android:id="@+id/boold_tongji"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/shuju"
-        android:orientation="horizontal">
+        android:layout_below="@id/boold_shuju"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="horizontal"
+        android:showDividers="middle">
 
         <RadioButton
-            android:gravity="center"
-            android:button="@null"
+            android:id="@+id/tongji_day"
             android:layout_width="0dp"
+           android:textColor="@drawable/boold_text"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="日" />
+            android:background="@drawable/boold"
+            android:button="@null"
+            android:gravity="center"
+            android:text="日"
+            android:textColorHighlight="@color/color_write" />
         <RadioButton
-            android:gravity="center"
-            android:button="@null"
+            android:id="@+id/tongji_zhou"
             android:layout_width="0dp"
+           android:textColor="@drawable/boold_text"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="日" />
-
-
+            android:background="@drawable/boold"
+            android:button="@null"
+            android:gravity="center"
+            android:text="周"
+            android:textColorHighlight="@color/color_write" />
+        <RadioButton
+            android:id="@+id/tongji_month"
+            android:layout_width="0dp"
+           android:textColor="@drawable/boold_text"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boold"
+            android:button="@null"
+            android:gravity="center"
+            android:text="月"
+            android:textColorHighlight="@color/color_write" />
+        <RadioButton
+            android:id="@+id/tongji_year"
+            android:layout_width="0dp"
+           android:textColor="@drawable/boold_text"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/boold"
+            android:button="@null"
+            android:gravity="center"
+            android:text="年"
+            android:textColorHighlight="@color/color_write" />
     </RadioGroup>
 </RelativeLayout>

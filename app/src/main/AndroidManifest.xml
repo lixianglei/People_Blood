@@ -18,6 +18,7 @@
         <activity android:name=".view.fragment.activity.GuanJianZiActivity"></activity>
         <activity android:name=".view.fragment.activity.ShengFenActivity"/>
         <activity android:name=".MainActivity"/>
+        <activity android:name=".view.ShouDongCeLiangActivity"></activity>
     </application>
 
 </manifest>
