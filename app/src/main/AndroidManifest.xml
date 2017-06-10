@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.fragment.activity.Activity_Message" />
+        <activity android:name=".view.fragment.activity.Activity_My_JiaHao"></activity>
+        <activity android:name=".view.fragment.activity.Activity_My_ShouCang"></activity>
+        <activity android:name=".view.fragment.activity.Activity_PerSonMessage"></activity>
+        <activity android:name=".view.fragment.activity.Activity_SheZhi"></activity>
     </application>
 
 </manifest>

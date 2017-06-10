@@ -2,25 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<include
-    android:id="@+id/fuy"
-    layout="@layout/doctor_title"></include>
+
+    <include
+        layout="@layout/doctor_title"></include>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:background="#e8e8e8">
+        android:layout_height="50dp"
+        android:background="#f0f0f0">
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="114dp"
             android:layout_height="wrap_content"
             android:src="@drawable/jiahao"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="5dp"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="20sp"
             android:text="向医生提问"
-            android:textSize="30sp"
             android:layout_gravity="center_vertical"
             android:textColor="#000"/>
     </LinearLayout>
+
 </LinearLayout>
