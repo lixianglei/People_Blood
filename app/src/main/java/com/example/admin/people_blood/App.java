@@ -1,7 +1,8 @@
 package com.example.admin.people_blood;
 
-import android.app.Activity;
 import android.app.Application;
+
+import com.example.admin.people_blood.base.BaseActivity;
 
 /**
  * 项目名称: 血压测量
@@ -14,5 +15,11 @@ import android.app.Application;
  */
 
 public class App extends Application {
-    public static  Activity  activity;
+    public static BaseActivity baseActivity;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+    }
 }

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/shanghcuan"
+        android:id="@+id/xueyaceliang"
+        android:layout_width="100dp"
+        android:layout_height="100dp" />
+
+    <TextView
+        android:id="@+id/shuju"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/xueyaceliang"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="128/80 今天"
+        android:textSize="32px"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:showDividers="middle"
+        android:divider="#000"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shuju"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:gravity="center"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="日" />
+        <RadioButton
+            android:gravity="center"
+            android:button="@null"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="日" />
+
+
+    </RadioGroup>
+</RelativeLayout>
