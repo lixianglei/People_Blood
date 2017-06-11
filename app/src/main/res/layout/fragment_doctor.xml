@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fdf9ea"
+    android:id="@+id/Doctor_Line"
     android:orientation="vertical">
     <!--<include-->
     <!--layout="@layout/zaixaindoctor_title">-->
@@ -28,6 +29,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/Shengfen"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -50,6 +52,7 @@
                 android:src="@drawable/item_arrow_right" />
 
             <ImageView
+                android:id="@+id/MyLoction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -64,6 +67,7 @@
 
 
         <LinearLayout
+            android:id="@+id/YiShengZhiCheng"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -93,6 +97,7 @@
 
 
         <LinearLayout
+            android:id="@+id/YiYuanDengJi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -122,6 +127,7 @@
 
 
         <LinearLayout
+            android:id="@+id/GuanJianZi"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:background="#fff"
@@ -191,6 +197,7 @@
         </RelativeLayout>
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="9dp"
@@ -201,6 +208,7 @@
             android:showDividers="middle">
 
             <TextView
+                android:id="@+id/MianFeiWenYiSheng"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -212,6 +220,7 @@
                 android:text="免费问医生" />
 
             <TextView
+                android:id="@+id/JianKangGuWen"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -251,11 +260,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_below="@id/doctor_huanyihuan"
-                android:layout_marginTop="20dp"
                 android:background="@color/color_black"
                 android:numColumns="4"></GridView>
         </RelativeLayout>
-
     </LinearLayout>
-
 </ScrollView>

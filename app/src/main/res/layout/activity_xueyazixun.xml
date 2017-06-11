@@ -1,16 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <include
-        layout="@layout/include_titlebar"
+        layout="@layout/back_titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <GridView
-        android:id="@+id/zixun_gridview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:numColumns="2"></GridView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@drawable/line_e7e6_2px"
+        android:orientation="vertical"
+        android:showDividers="middle|beginning|end">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/line_e7e6_2px"
+            android:showDividers="middle|beginning|end">
+
+            <LinearLayout
+                android:id="@+id/gxy_changshi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zixun_1" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高血压常识" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gxy_shipu"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zixun_2" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高血压食谱" />
+            </LinearLayout>
+        </LinearLayout>
+<include layout="@layout/line_ececec" android:layout_width="match_parent"
+    android:layout_height="1dp"></include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/line_e7e6_2px"
+            android:showDividers="middle|beginning|end">
+
+            <LinearLayout
+                android:id="@+id/gxy_yufang"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zixun_3" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高血压预防" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/gxy_zhiliao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zixun_4" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高血压治疗" />
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/line_ececec" android:layout_width="match_parent"
+            android:layout_height="1dp"></include>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:divider="@drawable/line_e7e6_2px"
+            android:showDividers="middle|beginning|end"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:id="@+id/gxy_jiancha"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/zixun_5" />
+
+                <TextView
+                    android:textSize="18sp"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="高血压检查" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>

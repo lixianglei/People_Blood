@@ -1,21 +1,20 @@
 package com.example.admin.people_blood.view.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
-import com.example.admin.people_blood.view.fragment.activity.Activity_Message;
-import com.example.admin.people_blood.view.fragment.activity.Activity_My_JiaHao;
-import com.example.admin.people_blood.view.fragment.activity.Activity_My_ShouCang;
-import com.example.admin.people_blood.view.fragment.activity.Activity_PerSonMessage;
-import com.example.admin.people_blood.view.fragment.activity.Activity_SheZhi;
+import com.example.admin.people_blood.view.activity.Activity_Message;
+import com.example.admin.people_blood.view.activity.Activity_My_JiaHao;
+import com.example.admin.people_blood.view.activity.Activity_My_ShouCang;
+import com.example.admin.people_blood.view.activity.Activity_PerSonMessage;
+import com.example.admin.people_blood.view.activity.Activity_SheZhi;
+import com.example.admin.people_blood.view.activity.LoginActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -47,7 +46,8 @@ public class PersonCenterFragment extends BaseFragment {
     LinearLayout MyXiaoXi;
     @Bind(R.id.My_SheZhi)
     LinearLayout MySheZhi;
-
+    @Bind(R.id.loginbtn)
+    Button loginBtn;
     @Override
     protected int ViewID() {
         return R.layout.person_center;
@@ -68,13 +68,6 @@ public class PersonCenterFragment extends BaseFragment {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
-    }
 
     @Override
     public void onDestroyView() {
@@ -82,7 +75,7 @@ public class PersonCenterFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.Login_Image, R.id.imageView, R.id.My_JiaHao, R.id.My_ShouCang, R.id.My_ZiLiao, R.id.My_XiaoXi, R.id.My_SheZhi})
+    @OnClick({R.id.Login_Image, R.id.loginbtn,R.id.imageView, R.id.My_JiaHao, R.id.My_ShouCang, R.id.My_ZiLiao, R.id.My_XiaoXi, R.id.My_SheZhi})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.Login_Image:
@@ -108,6 +101,10 @@ public class PersonCenterFragment extends BaseFragment {
             case R.id.My_SheZhi:
                 Intent intent4=new Intent(getContext(), Activity_SheZhi.class);
                 startActivity(intent4);
+                break;
+            case R.id.loginbtn:
+                Intent  intent5=new Intent(getContext(), LoginActivity.class);
+                startActivity(intent5);
                 break;
         }
     }
