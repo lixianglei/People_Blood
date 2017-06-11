@@ -11,6 +11,7 @@ package com.example.admin.people_blood.bean;
  */
 
 public class LoginBean {
+
     /**
      * state : 200
      * userid : 116928347

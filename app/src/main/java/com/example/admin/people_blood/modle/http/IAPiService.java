@@ -14,6 +14,7 @@ import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 /**
  * 项目名称: 城市通
@@ -32,8 +33,8 @@ public interface IAPiService {
     Observable<ResponseBody> get(@Path("url") String url, @QueryMap Map<String, String> map);
 
     @FormUrlEncoded
-    @POST("{url}")
-    Observable<ResponseBody> post(@Path("url") String url, @FieldMap Map<String, String> map);
+    @POST
+    Observable<ResponseBody> post(@Url String url, @FieldMap Map<String, String> map);
 
     @Multipart
     @POST("{url}")

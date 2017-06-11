@@ -1,10 +1,7 @@
 package com.example.admin.people_blood.view.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -12,12 +9,12 @@ import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
-import com.example.admin.people_blood.view.fragment.activity.Activity_Message;
-import com.example.admin.people_blood.view.fragment.activity.Activity_My_JiaHao;
-import com.example.admin.people_blood.view.fragment.activity.Activity_My_ShouCang;
-import com.example.admin.people_blood.view.fragment.activity.Activity_PerSonMessage;
-import com.example.admin.people_blood.view.fragment.activity.Activity_SheZhi;
-import com.example.admin.people_blood.view.fragment.activity.LoginActivity;
+import com.example.admin.people_blood.view.activity.Activity_Message;
+import com.example.admin.people_blood.view.activity.Activity_My_JiaHao;
+import com.example.admin.people_blood.view.activity.Activity_My_ShouCang;
+import com.example.admin.people_blood.view.activity.Activity_PerSonMessage;
+import com.example.admin.people_blood.view.activity.Activity_SheZhi;
+import com.example.admin.people_blood.view.activity.LoginActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;

@@ -1,4 +1,4 @@
-package com.example.admin.people_blood.view.fragment.activity;
+package com.example.admin.people_blood.view.activity;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;

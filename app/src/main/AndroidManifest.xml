@@ -41,6 +41,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.Activity_Message" />
+        <activity android:name=".view.activity.Activity_My_JiaHao"></activity>
+        <activity android:name=".view.activity.Activity_My_ShouCang"></activity>
+        <activity android:name=".view.activity.Activity_PerSonMessage"></activity>
+        <activity android:name=".view.activity.Activity_SheZhi"></activity>
+        <activity android:name=".view.activity.GuanJianZiActivity" />
+        <activity android:name=".view.activity.ShengFenActivity" />
+        <activity android:name=".view.activity.LoginActivity"></activity>
         <activity android:name=".view.fragment.activity.Activity_Message" />
         <activity android:name=".view.fragment.activity.Activity_My_JiaHao"></activity>
         <activity android:name=".view.fragment.activity.Activity_My_ShouCang"></activity>

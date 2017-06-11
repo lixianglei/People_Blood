@@ -12,5 +12,6 @@ package com.example.admin.people_blood.utils;
 
 public class HostUtils {
     //登录携带uid的
-    public static final String lgoinuid="http://api.wws.xywy.com/index.php?act=kbb&fun=users&type=pullAccountInfo&tag=wjk&userid=116928347&sign=ee3dd4651821d3a45f4329a86d459cb7";
+    public static final String lgoinuid="http://api.wws.xywy.com/?tag=BloodAndroid&sign=2c19b2821ebc5306c3ac37bac5b4288b&act=kbb&\n" +
+            "fun=users&type=login";
 }

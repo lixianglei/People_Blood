@@ -1,8 +1,6 @@
-package com.example.admin.people_blood.view.fragment.activity;
+package com.example.admin.people_blood.view.activity;
 
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,14 +11,10 @@ import com.example.admin.people_blood.adapter.GuanJianZiAdapter;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.modle.db.Manager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static android.os.Build.VERSION_CODES.M;
 
 public class GuanJianZiActivity extends BaseActivity {
 
