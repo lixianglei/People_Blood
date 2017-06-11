@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+   <!--问医生界面的布局-->
+    <include
+        layout="@layout/back_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/TiWen_layout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#E9E9E9"
+        >
+         <ImageView
+
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center_vertical"
+             android:layout_marginLeft="100dp"
+             android:src="@drawable/add_questin_img"
+             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="向医生提问"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="#161414"
+            />
+    </LinearLayout>
+</LinearLayout>

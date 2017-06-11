@@ -31,11 +31,13 @@ public class WelcomeActivity extends BaseActivity implements WelcomeActivityimpl
 
     @Override
     protected int layoutId() {
+
         return R.layout.activity_welcome;
     }
 
     @Override
     protected void initView() {
+
         welcomeActivityPresenter = new WelcomeActivityPresenter(this);
     }
 
