@@ -1,15 +1,13 @@
 package com.example.admin.people_blood.view;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
 
@@ -29,17 +27,24 @@ import butterknife.OnClick;
 
 public class XueYaZiXunActivity extends BaseActivity {
 
+
     @Bind(R.id.image_Back)
     ImageView imageBack;
     @Bind(R.id.Center_Text)
     TextView CenterText;
-    @Bind(R.id.zixun_gridview)
-    GridView zixunGridview;
-    private int[] images = {R.drawable.zixun_1,
-            R.drawable.zixun_2,
-            R.drawable.zixun_3,
-            R.drawable.zixun_4,
-            R.drawable.zixun_5};
+    @Bind(R.id.gxy_changshi)
+    LinearLayout gxyChangshi;
+    @Bind(R.id.imageView2)
+    ImageView imageView2;
+    @Bind(R.id.gxy_shipu)
+    LinearLayout gxyShipu;
+    @Bind(R.id.gxy_yufang)
+    LinearLayout gxyYufang;
+    @Bind(R.id.gxy_zhiliao)
+    LinearLayout gxyZhiliao;
+    @Bind(R.id.gxy_jiancha)
+    LinearLayout gxyJiancha;
+    private Intent intent;
 
     @Override
     protected int layoutId() {
@@ -49,12 +54,11 @@ public class XueYaZiXunActivity extends BaseActivity {
     @Override
     protected void initView() {
         CenterText.setText("血压资讯");
-
+        intent = new Intent(XueYaZiXunActivity.this, GaoXueYaActivity.class);
     }
 
     @Override
     protected void loadData() {
-        zixunGridview.setAdapter(new MyZiXunAdapter());
     }
 
     @Override
@@ -69,45 +73,39 @@ public class XueYaZiXunActivity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.image_Back)
-    public void onViewClicked() {
-    }
 
-    class MyZiXunAdapter extends BaseAdapter {
+    @OnClick({R.id.image_Back, R.id.gxy_changshi, R.id.gxy_shipu, R.id.gxy_yufang, R.id.gxy_zhiliao, R.id.gxy_jiancha})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.image_Back:
+                finish();
+                break;
+            case R.id.gxy_changshi:
+                intent.putExtra("typeid", "18031");
+                intent.putExtra("dir", "zhuanti_nk");
+                startActivity(intent);
+                break;
+            case R.id.gxy_shipu:
 
-        @Override
-        public int getCount() {
-
-            return images.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return null;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder viewHolder = null;
-            if (convertView == null) {
-                convertView = LayoutInflater.from(App.baseActivity).inflate(R.layout.item_zixun, null);
-                viewHolder = new ViewHolder();
-                viewHolder.imageView = (ImageView) convertView.findViewById(R.id.item_zixun);
-                convertView.setTag(viewHolder);
-            } else {
-                viewHolder = (ViewHolder) convertView.getTag();
-            }
-            viewHolder.imageView.setImageResource(images[position]);
-            return convertView;
-        }
-
-        private class ViewHolder {
-            ImageView imageView;
+                intent.putExtra("typeid", "7938");
+                intent.putExtra("dir", "zhuzhan_ys");
+                startActivity(intent);
+                break;
+            case R.id.gxy_yufang:
+                intent.putExtra("typeid", "18033");
+                intent.putExtra("dir", "zhuanti_nk");
+                startActivity(intent);
+                break;
+            case R.id.gxy_zhiliao:
+                intent.putExtra("typeid", "18035");
+                intent.putExtra("dir", "zhuanti_nk");
+                startActivity(intent);
+                break;
+            case R.id.gxy_jiancha:
+                intent.putExtra("typeid", "18032");
+                intent.putExtra("dir", "zhuanti_nk");
+                startActivity(intent);
+                break;
         }
     }
 }

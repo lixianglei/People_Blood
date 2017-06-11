@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="5dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/item_gaoxueya_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="高血压冠心病如何保健有效"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/item_gaoxueya_date"
+        android:textColor="@color/color_999"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="2017-03-31" />
+
+    <include
+        layout="@layout/line_ececec"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></include>
+
+    <TextView
+        android:id="@+id/item_gaoxueya_content"
+        android:textColor="@color/color_6767"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:text="哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈"
+        android:textSize="16sp" />
+
+    <include
+        layout="@layout/line_ececec"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"></include>
+
+    <TextView
+        android:textColor="@color/color_999"
+        android:text="阅读全文"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
