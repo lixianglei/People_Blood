@@ -4,6 +4,7 @@
     android:layout_height="match_parent">
 
     <include
+        android:id="@+id/asacda"
         layout="@layout/myjiahao_title"></include>
 
     <LinearLayout

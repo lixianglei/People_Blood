@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
+import android.net.Uri;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,17 +19,13 @@ import android.widget.TextView;
 import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
-import com.example.admin.people_blood.utils.ToastUtils;
+import com.example.admin.people_blood.view.activity.Activity_Message;
 import com.example.admin.people_blood.view.activity.GuanJianZiActivity;
 import com.example.admin.people_blood.view.activity.ShengFenActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-import static android.R.attr.background;
-import static android.R.attr.id;
-import static com.baidu.location.d.j.t;
 
 /**
  * 项目名称: 血压测量
@@ -142,6 +138,8 @@ public class DoctorLineFragment extends BaseFragment {
             case R.id.doct_jiahao:
                 break;
             case R.id.MianFeiWenYiSheng:
+                Intent intent2=new Intent(App.baseActivity, Activity_Message.class);
+                startActivity(intent2);
                 break;
             case R.id.JianKangGuWen:
                  initDialog();
@@ -166,7 +164,10 @@ public class DoctorLineFragment extends BaseFragment {
         mBtnSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ToastUtils.showLongToast("打电话");
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:400-9700-120s"));
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+
             }
         });
         dialog.show();

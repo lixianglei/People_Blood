@@ -4,7 +4,7 @@
     android:layout_height="50dp"
     android:background="#07ba5a"
     android:gravity="center_vertical"
-    android:orientation="horizontal" >
+    android:orientation="vertical">
     <RelativeLayout
         android:id="@+id/left_layout"
         android:layout_width="40dp"
@@ -28,8 +28,6 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="#ffffff"
-        android:text="问医生"
-        android:textSize="20sp" />
-
-
+        android:text="关于血压卫士"
+        android:textSize="25sp" />
 </RelativeLayout>

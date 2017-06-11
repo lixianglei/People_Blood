@@ -5,8 +5,9 @@
 <include
     android:id="@+id/fuy"
     layout="@layout/doctor_title"></include>
+
     <LinearLayout
-        android:id="@+id/Name"
+        android:id="@+id/Name_XuanZe"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
@@ -14,7 +15,6 @@
         >
         <TextView
             android:layout_marginLeft="20dp"
-            android:id="@+id/My_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -23,6 +23,7 @@
             android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
+            android:id="@+id/Text_Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -36,12 +37,13 @@
             android:src="@drawable/ccoo_icon_back_777"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:background="#e8e8e8"></LinearLayout>
     <LinearLayout
-        android:id="@+id/Sex"
+        android:id="@+id/Sex_XuanZe"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
@@ -49,7 +51,6 @@
         >
         <TextView
             android:layout_marginLeft="20dp"
-            android:id="@+id/MyJiaHao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -62,6 +63,7 @@
             android:layout_height="wrap_content"
             android:textSize="20sp"
             android:textColor="#000"
+            android:id="@+id/set_Sex"
             android:layout_gravity="center_vertical"
             android:text="女"/>
         <ImageView
@@ -76,7 +78,7 @@
         android:layout_height="2dp"
         android:background="#e8e8e8"></LinearLayout>
     <LinearLayout
-        android:id="@+id/Height"
+        android:id="@+id/Height_XuanZe"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
@@ -111,7 +113,7 @@
         android:layout_height="2dp"
         android:background="#e8e8e8"></LinearLayout>
     <LinearLayout
-        android:id="@+id/Weight"
+        android:id="@+id/Weight_XuanZe"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
@@ -119,7 +121,6 @@
         >
         <TextView
             android:layout_marginLeft="20dp"
-            android:id="@+id/My_Weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -145,8 +146,9 @@
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#e8e8e8"></LinearLayout>
+
     <LinearLayout
-        android:id="@+id/Day"
+        android:id="@+id/Day_XuanZe"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:weightSum="1"
@@ -163,6 +165,7 @@
             android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
+            android:id="@+id/Text_Time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
@@ -176,6 +179,7 @@
             android:src="@drawable/ccoo_icon_back_777"
             />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="2dp"

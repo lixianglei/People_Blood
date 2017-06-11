@@ -1,12 +1,12 @@
 package com.example.admin.people_blood.view.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
@@ -16,22 +16,24 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * Created by d on 2017/6/10.
+ * Created by d on 2017/6/12.
  */
 
-public class Activity_Message extends BaseActivity {
+public class Activity_MessageFanKui extends BaseActivity {
     @Bind(R.id.left_image)
     ImageView leftImage;
     @Bind(R.id.left_layout)
     RelativeLayout leftLayout;
-    @Bind(R.id.title)
-    TextView title;
-    @Bind(R.id.TiWen)
-    LinearLayout TiWen;
+    @Bind(R.id.Yijian_FanKui)
+    TextView YijianFanKui;
+    @Bind(R.id.Message_fasong)
+    TextView MessageFasong;
+    @Bind(R.id.Medit)
+    EditText Medit;
 
     @Override
     protected int layoutId() {
-        return R.layout.activity_doctor;
+        return R.layout.yijianfankui_activity;
     }
 
     @Override
@@ -56,16 +58,18 @@ public class Activity_Message extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-
-    @OnClick({R.id.left_image, R.id.TiWen})
+    @OnClick({R.id.left_image, R.id.Message_fasong})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.left_image:
                 finish();
                 break;
-            case R.id.TiWen:
-                Intent intent=new Intent(this,Activity_TiWen.class);
-                startActivity(intent);
+            case R.id.Message_fasong:
+                if (Medit.getText().toString().isEmpty()){
+                    Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }

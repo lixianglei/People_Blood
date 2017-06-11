@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9e3e3">
+<include
+    layout="@layout/fankui_title"></include>
+    <EditText
+        android:id="@+id/Medit"
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="20sp"
+        android:hint="请提出您的宝贵意见"
+        />
+</LinearLayout>

@@ -22,5 +22,22 @@
     <color name="color_4cbf58">#4cbf58</color>
     <color name="color_999">#999999</color>
     <color name="color_6767">#676767</color>
+    <color name="colorGrays">#B4B4B4</color>
+    <color name="colorBlack">#333333</color>
+    <color name="colorGraya">#ffffff</color>
+    <color name="colorLine">#ECECEC</color>
+    <color name="colorText">#D0D0D0</color>
+    <color name="colorBack">#02c25f</color>
+    <color name="colorBackground">#fcf8f3</color>
+    <color name="colorLineV">#fcf8f3</color>
+    <color name="colorTexts">#999999</color>
+    <color name="colorName">#737373</color>
+    <color name="gray_bg1">#ebebeb</color>
+
+
+    <color name="colorBlue">#3F51B5</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorGray">#cccccc</color>
+
 
 </resources>

@@ -3,18 +3,19 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
+        android:id="@+id/wev"
         layout="@layout/shezhi_title"></include>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="21px"
         android:background="#dedada"></LinearLayout>
     <LinearLayout
+        android:id="@+id/ZhangHu"
         android:layout_width="match_parent"
         android:layout_height="110px"
         android:weightSum="1">
         <TextView
             android:layout_marginLeft="20dp"
-            android:id="@+id/ZhangHu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -30,12 +31,12 @@
             />
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/Clear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
         <TextView
             android:layout_marginLeft="20dp"
-            android:id="@+id/Clear"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -55,6 +56,7 @@
         android:layout_height="35px"
         android:background="#dedada"></LinearLayout>
     <LinearLayout
+        android:id="@+id/About_Blood"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
