@@ -3,6 +3,7 @@ package com.example.admin.people_blood.view.fragment;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,7 @@ import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
 import com.example.admin.people_blood.view.ShouDongCeLiangActivity;
+import com.example.admin.people_blood.view.XueYaZiXunActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -48,6 +50,12 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     RadioButton tongjiYear;
     @Bind(R.id.boold_tongji)
     RadioGroup booldTongji;
+    @Bind(R.id.boold_wendoctor)
+    TextView booldWendoctor;
+    @Bind(R.id.boold_zixun)
+    TextView booldZixun;
+    @Bind(R.id.boold_tixing)
+    TextView booldTixing;
     private PopupWindow popupWindow;
     private BloodManagerPressenter bloodManagerPressenter;
 
@@ -134,14 +142,36 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
         ButterKnife.unbind(this);
     }
 
-    @OnClick({R.id.xueyaceliang, R.id.boold_shuju})
+    @OnClick({R.id.xueyaceliang, R.id.boold_shuju, R.id.boold_wendoctor, R.id.boold_tixing, R.id.boold_zixun})
     public void onViewClicked(View view) {
         switch (view.getId()) {
+            //选择测量
             case R.id.xueyaceliang:
                 bloodManagerPressenter.shangchuan();
                 break;
+            //更改 没用
             case R.id.boold_shuju:
+
+                break;
+            //提醒
+            case R.id.boold_tixing:
+                break;
+            //问医生
+            case R.id.boold_wendoctor:
+                break;
+            //资讯
+            case R.id.boold_zixun:
+                Intent intent = new Intent(App.baseActivity, XueYaZiXunActivity.class);
+                startActivity(intent);
                 break;
         }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
     }
 }
