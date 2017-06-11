@@ -1,7 +1,6 @@
 package com.example.admin.people_blood.modle.http;
 
 
-import com.example.admin.people_blood.customizeview.HttpDialogManager;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.utils.GsonUtils;
 
@@ -41,9 +40,7 @@ public class RetrofitClient implements IHttp {
     private static RetrofitClient retrofitClient;
     private IAPiService iaPiService;
     private String baseul = IAPiService.HOST;
-private HttpDialogManager dialogManager;
     private RetrofitClient() {
-        dialogManager = new HttpDialogManager();
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
@@ -69,7 +66,6 @@ private HttpDialogManager dialogManager;
         get(classBean, url, map, httpCallBack, false);
     }
     public void get(final Class classBean, String url, Map<String, String> map, final HttpCallBack httpCallBack, final boolean boo) {
-        dialogManager.showDialog();
         iaPiService.get(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -81,7 +77,6 @@ private HttpDialogManager dialogManager;
         post(classBean, url, map, httpCallBack, false);
     }
     public void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack, boolean boo) {
-        dialogManager.showDialog();
         iaPiService.post(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

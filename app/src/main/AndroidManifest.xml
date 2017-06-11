@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin.people_blood">
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <!-- 百度定位的权限 -->
     <!-- 这个权限用于进行网络定位 -->
@@ -48,6 +49,8 @@
         <activity android:name=".view.fragment.activity.GuanJianZiActivity" />
         <activity android:name=".view.fragment.activity.ShengFenActivity" />
         <activity android:name=".view.fragment.activity.LoginActivity"></activity>
+        <activity android:name=".view.XueYaZiXunActivity"/>
+        <activity android:name=".view.GaoXueYaActivity"/>
     </application>
 
 </manifest>
