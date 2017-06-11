@@ -16,7 +16,7 @@ import com.example.admin.people_blood.base.BaseFragment;
 public class DoctorLineFragment extends BaseFragment {
     @Override
     protected int ViewID() {
-        return R.layout.doctor_activity;
+        return R.layout.fragment_doctor;
     }
 
     @Override
