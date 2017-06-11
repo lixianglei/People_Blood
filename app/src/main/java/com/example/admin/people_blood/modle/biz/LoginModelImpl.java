@@ -1,11 +1,16 @@
 package com.example.admin.people_blood.modle.biz;
 
 import com.example.admin.people_blood.bean.LoginBean;
+import com.example.admin.people_blood.bean.LoginTwoBean;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.modle.http.RetrofitClient;
 import com.example.admin.people_blood.utils.HostUtils;
 
 import java.util.HashMap;
+import java.util.Map;
+
+import static android.R.attr.tag;
+import static android.R.attr.type;
 
 /**
  * 项目名称: 血压测量
@@ -34,5 +39,17 @@ public class LoginModelImpl implements ILoginModel {
     @Override
     public void loginDoctor(HttpCallBack httpCallBack) {
 
+    }
+
+    @Override
+    public void loginImage(String userid, HttpCallBack httpCallBack) {
+        Map<String,String>  map=new HashMap<>();
+        map.put("act","kbb");
+        map.put("fun","users");
+        map.put("type","pullAccountInfo");
+        map.put("tag","wjk");
+        map.put("userid",userid);
+        map.put("sign","ee3dd4651821d3a45f4329a86d459cb7");
+        RetrofitClient.getInstance().get(LoginTwoBean.class,"/index.php",map,httpCallBack);
     }
 }

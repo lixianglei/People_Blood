@@ -13,7 +13,6 @@ import java.util.List;
  */
 
 public class LoginTwoBean {
-
     /**
      * state : 200
      * email :

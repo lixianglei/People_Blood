@@ -19,4 +19,6 @@ public interface ILoginModel {
     void loginBack(HttpCallBack httpCallBack);
     //登录之后获取热门医生
     void  loginDoctor(HttpCallBack httpCallBack);
+    //登录返回头像
+    void  loginImage(String userid,HttpCallBack httpCallBack);
 }
