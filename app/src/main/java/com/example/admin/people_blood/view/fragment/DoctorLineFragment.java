@@ -38,6 +38,7 @@ import butterknife.OnClick;
  */
 
 public class DoctorLineFragment extends BaseFragment {
+
     @Bind(R.id.MyLoction)
     ImageView MyLoction;
     @Bind(R.id.Shengfen)
