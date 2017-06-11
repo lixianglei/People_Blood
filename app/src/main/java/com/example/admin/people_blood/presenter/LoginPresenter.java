@@ -3,6 +3,7 @@ package com.example.admin.people_blood.presenter;
 import android.util.Log;
 
 import com.example.admin.people_blood.bean.LoginBean;
+import com.example.admin.people_blood.bean.LoginTwoBean;
 import com.example.admin.people_blood.modle.biz.ILoginModel;
 import com.example.admin.people_blood.modle.biz.LoginModelImpl;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
@@ -41,6 +42,17 @@ public class LoginPresenter implements ILoginPresenter {
               @Override
               public void onFailure(String message) {
                   loginView.onFiel(message);
+              }
+          });
+    }
+
+    @Override
+    public void logintwo() {
+          loginModel.loginImage(loginView.userid(), new HttpCallBack() {
+              @Override
+              public void onSuccess(Object object) {
+                  LoginTwoBean loginBean = (LoginTwoBean) object;
+                  loginView.logintwo(loginBean);
               }
           });
     }

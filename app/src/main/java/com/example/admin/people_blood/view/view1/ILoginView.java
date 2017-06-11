@@ -1,6 +1,7 @@
 package com.example.admin.people_blood.view.view1;
 
 import com.example.admin.people_blood.bean.LoginBean;
+import com.example.admin.people_blood.bean.LoginTwoBean;
 
 /**
  * 项目名称: 血压测量
@@ -24,4 +25,7 @@ public interface ILoginView {
     //得到实体类
     void   login(LoginBean lo);
     void   onFiel(String message);
+
+    String userid();
+    void  logintwo(LoginTwoBean  loginTwoBean);
 }
