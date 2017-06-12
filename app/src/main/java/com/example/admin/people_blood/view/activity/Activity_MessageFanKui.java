@@ -2,11 +2,8 @@ package com.example.admin.people_blood.view.activity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
@@ -24,12 +21,14 @@ public class Activity_MessageFanKui extends BaseActivity {
     ImageView leftImage;
     @Bind(R.id.left_layout)
     RelativeLayout leftLayout;
-    @Bind(R.id.Yijian_FanKui)
-    TextView YijianFanKui;
-    @Bind(R.id.Message_fasong)
-    TextView MessageFasong;
-    @Bind(R.id.Medit)
-    EditText Medit;
+    @Bind(R.id.custom_edit)
+    AnFQNumEditText customEdit;
+    //    @Bind(R.id.Yijian_FanKui)
+//    TextView YijianFanKui;
+//    @Bind(R.id.Message_fasong)
+//    TextView MessageFasong;
+//    @Bind(R.id.Medit)
+//    EditText Medit;
 
     @Override
     protected int layoutId() {
@@ -38,14 +37,18 @@ public class Activity_MessageFanKui extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        customEdit = (AnFQNumEditText) findViewById(R.id.custom_edit);
+        customEdit.setEtHint("内容")//设置提示文字
+                .setEtMinHeight(200)//设置最小高度，单位px
+                .setLength(100 / 1)//设置总字数
+                .setType(AnFQNumEditText.PERCENTAGE) //TextView显示类型(SINGULAR单数类型)(PERCENTAGE百分比类型)
+//                .setLineColor("#3F51B5")//设置横线颜色
+                .show();
     }
 
     @Override
     protected void loadData() {
-
     }
-
     @Override
     protected void listener() {
 
@@ -65,12 +68,13 @@ public class Activity_MessageFanKui extends BaseActivity {
                 finish();
                 break;
             case R.id.Message_fasong:
-                if (Medit.getText().toString().isEmpty()) {
-                    Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
-                }
+//                if (customEdit.getText().toString().isEmpty()) {
+//                    Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
+//                }
                 break;
         }
     }
+
 }

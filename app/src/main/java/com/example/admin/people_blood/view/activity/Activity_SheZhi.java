@@ -70,6 +70,8 @@ public class Activity_SheZhi extends BaseActivity {
                 finish();
                 break;
             case R.id.ZhangHu:
+                Intent intent1=new Intent(this,Activity_ZhangHu.class);
+                startActivity(intent1);
                 break;
             case R.id.Clear:
                 break;

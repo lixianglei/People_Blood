@@ -3,14 +3,39 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#e9e3e3">
-<include
-    layout="@layout/fankui_title"></include>
-    <EditText
-        android:id="@+id/Medit"
-        android:background="#fff"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_marginTop="20sp"
-        android:hint="请提出您的宝贵意见"
-        />
+<!--<include-->
+    <!--layout="@layout/fankui_title"></include>-->
+    <!--<EditText-->
+        <!--android:id="@+id/askDocotor_Editext"-->
+
+        <!--android:layout_marginLeft="2dp"-->
+        <!--android:layout_marginTop="2dp"-->
+        <!--android:layout_marginRight="2dp"-->
+        <!--android:gravity="top|left"-->
+        <!--android:hint="请提出您的宝贵意见。"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:background="@color/colorWhite"-->
+        <!--/>-->
+
+    <!--<RelativeLayout-->
+        <!--android:layout_marginLeft="2dp"-->
+        <!--android:layout_marginBottom="2dp"-->
+        <!--android:layout_marginRight="2dp"-->
+        <!--android:background="@color/colorWhite"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="58dp">-->
+        <!--<TextView-->
+            <!--android:layout_margin="10dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentBottom="true"-->
+            <!--android:text="0/600"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content" />-->
+    <!--</RelativeLayout>-->
+    <com.example.admin.people_blood.view.activity.AnFQNumEditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/custom_edit">
+    </com.example.admin.people_blood.view.activity.AnFQNumEditText>
 </LinearLayout>
