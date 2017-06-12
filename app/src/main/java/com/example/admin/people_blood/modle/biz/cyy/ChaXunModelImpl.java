@@ -37,7 +37,8 @@ public class ChaXunModelImpl implements IChaXunModel {
         map.put("Illid","%E9%AB%98%E8%A1%80%E5%8E%8B");
         map.put("Isplus","0");
         map.put("Level",Level);
-//        Log.i("集合",map.toString());
-        RetrofitClient.getInstance().get(ChaXunZhuanJiaBean.class,"http://api.wws.xywy.com/index.php",map,httpCallBack);
+        Log.i("集合",map.toString());
+        //""http://api.wws.xywy.com/index.php""
+        RetrofitClient.getInstance().get(ChaXunZhuanJiaBean.class,"/index.php",map,httpCallBack);
     }
 }

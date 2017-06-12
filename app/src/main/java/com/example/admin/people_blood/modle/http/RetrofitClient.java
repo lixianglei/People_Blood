@@ -64,7 +64,6 @@ public class RetrofitClient implements IHttp {
 
     @Override
     public void get(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack) {
-
         get(classBean, url, map, httpCallBack, false);
     }
     public void get(final Class classBean, String url, Map<String, String> map, final HttpCallBack httpCallBack, final boolean boo) {

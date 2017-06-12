@@ -29,8 +29,8 @@ import retrofit2.http.Url;
 public interface IAPiService {
     public static final String HOST = "http://api.wws.xywy.com/";
 
-    @GET
-    Observable<ResponseBody> get(@Url String url, @QueryMap Map<String, String> map);
+    @GET("{url}")
+    Observable<ResponseBody> get(@Path("url")  String url, @QueryMap Map<String, String> map);
 
     @FormUrlEncoded
     @POST

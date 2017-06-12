@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.utils.ToastUtils;
+import com.example.admin.people_blood.view.activity.ChaXunZhuanJiaActivity;
 import com.example.admin.people_blood.view.activity.GuanJianZiActivity;
 import com.example.admin.people_blood.view.activity.ShengFenActivity;
 
@@ -64,6 +66,8 @@ public class DoctorLineFragment extends BaseFragment {
     TextView doctorHuanyihuan;
     @Bind(R.id.daoctor_gridviwe)
     GridView daoctorGridviwe;
+    @Bind(R.id.ChaXunZhuanJia)
+    Button  chaxunZhuanjia;
     private PopupWindow  mPopupZc,mPopupDJ;
     private Dialog  dialog;
     private Button  mBtnCancle,mBtnSure;
@@ -111,7 +115,7 @@ public class DoctorLineFragment extends BaseFragment {
         ButterKnife.unbind(this);
     }
 //
-    @OnClick({R.id.MyLoction, R.id.Shengfen, R.id.YiShengZhiCheng, R.id.YiYuanDengJi, R.id.GuanJianZi, R.id.doct_jiahao, R.id.MianFeiWenYiSheng, R.id.JianKangGuWen, R.id.doctor_huanyihuan})
+    @OnClick({R.id.MyLoction, R.id.ChaXunZhuanJia,R.id.Shengfen, R.id.YiShengZhiCheng, R.id.YiYuanDengJi, R.id.GuanJianZi, R.id.doct_jiahao, R.id.MianFeiWenYiSheng, R.id.JianKangGuWen, R.id.doctor_huanyihuan})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.MyLoction:
@@ -148,6 +152,7 @@ public class DoctorLineFragment extends BaseFragment {
             case R.id.doctor_huanyihuan:
                 break;
             case  R.id.ChaXunZhuanJia:
+                ToastUtils.showLongToast("Ddffdf");
                 Intent  intent2=new Intent(App.baseActivity, ChaXunZhuanJiaActivity.class);
                 startActivity(intent2);
                 break;
