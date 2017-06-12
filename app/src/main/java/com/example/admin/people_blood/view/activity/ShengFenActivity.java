@@ -1,9 +1,11 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -23,7 +25,8 @@ public class ShengFenActivity extends BaseActivity{
     private TextView tv,title;
     private ListView listview;
     private NavView nv;
-
+     private SharedPreferences  mShared;
+     private SharedPreferences.Editor mEditor;
     private List<User> list;
     private UserAdapter adapter;
     private String[] name = new String[]{
@@ -39,6 +42,8 @@ public class ShengFenActivity extends BaseActivity{
     }
 
     public void initView() {
+        mShared=getSharedPreferences("data",MODE_PRIVATE);
+        mEditor=mShared.edit();
         tv = (TextView) findViewById(R.id.tv);
         listview = (ListView) findViewById(R.id.listview);
         title= (TextView) findViewById(R.id.Center_Text);
@@ -73,7 +78,15 @@ public class ShengFenActivity extends BaseActivity{
         //填充ListView
         adapter = new UserAdapter(this, list);
         listview.setAdapter(adapter);
-
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String username = list.get(position).getUsername();
+                mEditor.putString("username",username);
+                mEditor.commit();
+                finish();
+            }
+        });
     }
 
 

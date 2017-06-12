@@ -37,7 +37,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -58,6 +57,20 @@
         <activity android:name=".view.activity.ChaXunZhuanJiaActivity" />
         <activity android:name=".view.activity.DoctorDetailActivity" />
         <activity android:name=".view.activity.WenYiShengActivity"></activity>
+        <activity android:name=".view.activity.Activity_ZhangHu"></activity>
+        <activity android:name=".view.activity.Activity_Password"></activity>
+        <activity android:name=".view.activity.Activity_Phone"></activity>
+        <activity android:name=".view.activity.Activity_TiWen"></activity>
+        <activity android:name=".view.activity.Activity_Name"></activity>
+        <activity android:name=".view.activity.LoginActivity"></activity>
+        <activity android:name=".view.activity.Activity_About_Boold"></activity>
+        <activity android:name=".view.activity.Activity_MessageFanKui"></activity>
+        <activity android:name=".view.activity.ChaXunZhuanJiaActivity" />
+        <activity android:name=".view.xueyaguanli.XueYaZiXunActivity"/>
+        <activity android:name=".view.xueyaguanli.GaoXueYaActivity"/>
+        <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity"/>
+        <activity android:name=".view.xueyaguanli.WenZhangDetil"/>
+
     </application>
 
 </manifest>
