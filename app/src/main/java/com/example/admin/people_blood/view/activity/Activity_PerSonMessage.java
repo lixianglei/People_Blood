@@ -162,7 +162,6 @@ public class Activity_PerSonMessage extends BaseActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 // which 下标从0开始
-                // ...To-do
                 String item = items[which];
                 setSex.setText(item);
                 Toast.makeText(Activity_PerSonMessage.this,
@@ -172,7 +171,5 @@ public class Activity_PerSonMessage extends BaseActivity {
         });
         listDialog.show();
     }
-
-
 }
 

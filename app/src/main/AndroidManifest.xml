@@ -46,6 +46,9 @@
         <activity android:name=".view.activity.Activity_SheZhi"></activity>
         <activity android:name=".view.activity.GuanJianZiActivity" />
         <activity android:name=".view.activity.ShengFenActivity" />
+        <activity android:name=".view.activity.Activity_ZhangHu"></activity>
+        <activity android:name=".view.activity.Activity_Password"></activity>
+        <activity android:name=".view.activity.Activity_Phone"></activity>
         <activity android:name=".view.activity.Activity_TiWen"></activity>
         <activity android:name=".view.activity.Activity_Name"></activity>
         <activity android:name=".view.activity.LoginActivity"></activity>

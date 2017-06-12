@@ -40,7 +40,6 @@
         android:orientation="vertical">
     <EditText
         android:id="@+id/askDocotor_Editext"
-
         android:layout_marginLeft="2dp"
         android:layout_marginTop="2dp"
         android:layout_marginRight="2dp"
@@ -67,6 +66,7 @@
                 android:src="@drawable/add_questin_img" />
 
             <TextView
+                android:id="@+id/MyText"
                 android:layout_margin="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
@@ -115,6 +115,7 @@
         </RadioGroup>
 
         <EditText
+            android:id="@+id/Edit"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
