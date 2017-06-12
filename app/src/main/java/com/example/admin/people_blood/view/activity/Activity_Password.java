@@ -2,6 +2,7 @@ package com.example.admin.people_blood.view.activity;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -57,26 +58,40 @@ public class Activity_Password extends BaseActivity {
 
     @Override
     protected void listener() {
-
     }
 
     private void showListDialog() {
-        final String[] items = {"男", "女"};
-        AlertDialog.Builder listDialog =
-                new AlertDialog.Builder(Activity_Password.this);
-        listDialog.setTitle("选择性别");
-        listDialog.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // which 下标从0开始
-                String item = items[which];
-                ShuRu.setText(item);
-                Toast.makeText(Activity_Password.this,
-                        "修改成功",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        listDialog.show();
+        final EditText et = new EditText(this);
+
+        new AlertDialog.Builder(this).setTitle("验证密码")
+                .setMessage("验证原密码，更新密码前，请输入旧密码来保证您的账户安全")
+                .setView(et)
+                .setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        String input = et.getText().toString();
+                        if (input.equals("")) {
+                            Toast.makeText(getApplicationContext(), "请输入密码" + input, Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Intent intent = new Intent();
+                            intent.putExtra("content", input);
+                            intent.setClass(Activity_Password.this, Activity_Password.class);
+                            startActivity(intent);
+                        }
+                    }
+                })
+                .setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String string=et.getText().toString();
+                        if(string.equals("")){
+                            Intent intent=new Intent();
+                            intent.setClass(Activity_Password.this,Activity_ZhangHu.class);
+                            startActivity(intent);
+                        }
+                    }
+                })
+                .show();
     }
 
     @Override
