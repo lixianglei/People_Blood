@@ -23,6 +23,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 /**
  * Created by d on 2017/6/10.
  */
@@ -135,7 +136,7 @@ public class Activity_PerSonMessage extends BaseActivity {
      * 设置日期 利用StringBuffer追加
      */
     public void display() {
-        TextTime.setText(new StringBuffer().append(mMonth + 1).append("-").append(mDay).append("-").append(mYear).append(" "));
+        TextTime.setText(new StringBuffer().append(mYear).append("-").append(mMonth + 1).append("-").append(mDay).append(""));
     }
 
     private DatePickerDialog.OnDateSetListener mdateListener = new DatePickerDialog.OnDateSetListener() {

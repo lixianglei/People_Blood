@@ -8,10 +8,10 @@ import butterknife.ButterKnife.ViewBinder;
 public class GuanJianZiActivity$$ViewBinder<T extends com.example.admin.people_blood.view.activity.GuanJianZiActivity> implements ViewBinder<T> {
   @Override public void bind(final Finder finder, final T target, Object source) {
     View view;
-    view = finder.findRequiredView(source, 2131493071, "field 'GuanJianZiEditText'");
-    target.GuanJianZiEditText = finder.castView(view, 2131493071, "field 'GuanJianZiEditText'");
-    view = finder.findRequiredView(source, 2131493072, "field 'GuanJianZiSure' and method 'onViewClicked'");
-    target.GuanJianZiSure = finder.castView(view, 2131493072, "field 'GuanJianZiSure'");
+    view = finder.findRequiredView(source, 2131493077, "field 'GuanJianZiEditText'");
+    target.GuanJianZiEditText = finder.castView(view, 2131493077, "field 'GuanJianZiEditText'");
+    view = finder.findRequiredView(source, 2131493078, "field 'GuanJianZiSure' and method 'onViewClicked'");
+    target.GuanJianZiSure = finder.castView(view, 2131493078, "field 'GuanJianZiSure'");
     view.setOnClickListener(
       new butterknife.internal.DebouncingOnClickListener() {
         @Override public void doClick(
@@ -20,8 +20,8 @@ public class GuanJianZiActivity$$ViewBinder<T extends com.example.admin.people_b
           target.onViewClicked();
         }
       });
-    view = finder.findRequiredView(source, 2131493073, "field 'GuanJianZiListView'");
-    target.GuanJianZiListView = finder.castView(view, 2131493073, "field 'GuanJianZiListView'");
+    view = finder.findRequiredView(source, 2131493079, "field 'GuanJianZiListView'");
+    target.GuanJianZiListView = finder.castView(view, 2131493079, "field 'GuanJianZiListView'");
   }
 
   @Override public void unbind(T target) {
