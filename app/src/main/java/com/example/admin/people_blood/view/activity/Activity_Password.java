@@ -75,7 +75,7 @@ public class Activity_Password extends BaseActivity {
                         else {
                             Intent intent = new Intent();
                             intent.putExtra("content", input);
-                            intent.setClass(Activity_Password.this, Activity_Password.class);
+//                            intent.setClass(Activity_Password.this, Activity_Password.class);
                             startActivity(intent);
                         }
                     }
