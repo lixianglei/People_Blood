@@ -18,7 +18,6 @@ import butterknife.OnClick;
 
 public class Activity_MessageFanKui extends BaseActivity {
 
-
     @Bind(R.id.left_image)
     ImageView leftImage;
     @Bind(R.id.left_layout)
