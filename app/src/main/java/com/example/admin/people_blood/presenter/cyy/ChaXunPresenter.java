@@ -32,7 +32,7 @@ public class ChaXunPresenter {
     }
 
     public   void  chaxun(){
-          chaXunModel.chaxun("", "", "10", "1", "", "", new HttpCallBack() {
+          chaXunModel.chaxun("","", "50", "30","","", new HttpCallBack() {
               @Override
               public void onSuccess(Object object) {
                ChaXunZhuanJiaBean  bean= (ChaXunZhuanJiaBean) object;
@@ -44,7 +44,7 @@ public class ChaXunPresenter {
               @Override
               public void onFailure(String message) {
                   super.onFailure(message);
-                  Toast.makeText(App.baseActivity, "dsadsads"+message, Toast.LENGTH_SHORT).show();
+//                  Toast.makeText(App.baseActivity, "dsadsads"+message, Toast.LENGTH_SHORT).show();
                   Log.i("集合",message);
               }
           });

@@ -40,7 +40,6 @@ public class MainActivity extends BaseActivity {
     protected int layoutId() {
         return R.layout.activity_main;
     }
-
     @Override
     protected void initView() {
         TitleText.setText("医生在线");

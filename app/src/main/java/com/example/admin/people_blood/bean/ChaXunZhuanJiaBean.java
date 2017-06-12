@@ -55,6 +55,13 @@ public class ChaXunZhuanJiaBean {
         return data;
     }
 
+    @Override
+    public String toString() {
+        return "ChaXunZhuanJiaBean{" +
+                "data=" + data +
+                '}';
+    }
+
     public void setData(List<DataBean> data) {
         this.data = data;
     }

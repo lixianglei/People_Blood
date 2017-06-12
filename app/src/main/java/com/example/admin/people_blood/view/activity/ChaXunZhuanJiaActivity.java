@@ -1,15 +1,18 @@
 package com.example.admin.people_blood.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
@@ -42,7 +45,6 @@ public class ChaXunZhuanJiaActivity extends BaseActivity  implements ChaXunView{
 
     @Override
     protected void initView() {
-        CenterText.setText("全国有122343位专家");
         presenter=new ChaXunPresenter(this);
         mList=new ArrayList<>();
         mAdapter=new ChaXunAdapter();
@@ -56,7 +58,24 @@ public class ChaXunZhuanJiaActivity extends BaseActivity  implements ChaXunView{
 
     @Override
     protected void listener() {
+       ChaXunListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+           @Override
+           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                 ChaXunZhuanJiaBean.DataBean  bean=mList.get(position);
 
+               Intent   intent=new Intent(App.baseActivity,DoctorDetailActivity.class);
+               intent.putExtra("app_image",bean.getApp_image());
+               intent.putExtra("doc_title",bean.getTitle());
+               intent.putExtra("doc_teach",bean.getTeach());
+               intent.putExtra("doc_hospital",bean.getHospital());
+               intent.putExtra("document_id",bean.getDocument_id() );
+               intent.putExtra("doc_content",bean.getGoodat());
+               intent.putExtra("expert_id",bean.getExpert_id());
+               intent.putExtra("doc_depart",bean.getDepart());
+               intent.putExtra("doc_name",bean.getName());
+                startActivity(intent);
+           }
+       });
     }
 
 
@@ -68,14 +87,12 @@ public class ChaXunZhuanJiaActivity extends BaseActivity  implements ChaXunView{
 
     @Override
     public void chaxun(List<ChaXunZhuanJiaBean.DataBean> beanList) {
-        Log.i("集合",beanList.toString());
               mList.addAll(beanList);
         mAdapter.notifyDataSetChanged();
     }
-
     @Override
     public void doctorNum(int number) {
-//          CenterText.setText(number+"");
+          CenterText.setText("全国有"+number+"位专家");
     }
 
     class ChaXunAdapter extends BaseAdapter{
@@ -117,8 +134,9 @@ public class ChaXunZhuanJiaActivity extends BaseActivity  implements ChaXunView{
              holder.name.setText(bean.getName());
              holder.content.setText(bean.getGoodat());
              holder.yiyuan.setText(bean.getHospital());
-             holder.jibie.setText(bean.getLevel());
+             holder.jibie.setText(bean.getTitle());
              holder.zhicheng.setText(bean.getTeach());
+            Glide.with(App.baseActivity).load(bean.getApp_image()).into(holder.TouXiang);
             return convertView;
         }
         class   Holder{
