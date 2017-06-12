@@ -4,7 +4,7 @@ import com.example.admin.people_blood.bean.GaoXueYaZiXun;
 import com.example.admin.people_blood.biz.GaoXueYaBiz;
 import com.example.admin.people_blood.biz.GaoXueYaBizImpl;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
-import com.example.admin.people_blood.view.GaoXueXueYaActivityImpl;
+import com.example.admin.people_blood.view.xueyaguanli.GaoXueXueYaActivityImpl;
 
 /**
  * 项目名称: 血压宝
@@ -39,4 +39,5 @@ public class GaoXueYaActivityPresenter {
             }
         });
     }
+
 }

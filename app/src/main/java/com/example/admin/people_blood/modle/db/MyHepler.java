@@ -15,14 +15,16 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class MyHepler extends SQLiteOpenHelper {
-    public MyHepler(Context context, String name,  int version) {
-        super(context, name,null, version);
+    public MyHepler(Context context, String name, int version) {
+        super(context, name, null, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-          String sql="create table xueya(name varchar(30) primary key)";
-          db.execSQL(sql);
+        String sql = "create table xueya(name varchar(30) primary key)";
+        db.execSQL(sql);
+        String sqlce = "create table celiang(date varchar(30),time varchar(30),name varchar(30),gaoya varchar(30),diya varchar(30))";
+        db.execSQL(sqlce);
     }
 
     @Override

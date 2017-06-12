@@ -82,6 +82,7 @@
     </RadioGroup>
 
     <LinearLayout
+        android:id="@+id/blood_Bottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -123,4 +124,21 @@
             android:paddingTop="5dp"
             android:text="提醒" />
     </LinearLayout>
+    <lecho.lib.hellocharts.view.LineChartView
+        android:padding="10dp"
+        android:id="@+id/Boold_FrameLayout"
+        android:layout_below="@id/boold_tongji"
+        android:layout_above="@id/blood_Bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></lecho.lib.hellocharts.view.LineChartView>
+    <TextView
+        android:visibility="gone"
+        android:textSize="26sp"
+        android:gravity="center"
+        android:layout_below="@id/boold_tongji"
+        android:layout_above="@id/blood_Bottom"
+        android:id="@+id/load_text"
+        android:text="暂时没有数据哦"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
