@@ -114,4 +114,22 @@ public class Manager {
         return list;
 
     }
+
+    public List<CeLiangMesageBean> query() {
+
+        List<CeLiangMesageBean> list = new ArrayList<>();
+        //游标查询
+        Cursor cursor = mDB.query(TAB_SHUJU, null, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String dat = cursor.getString(cursor.getColumnIndex("date"));
+            String time = cursor.getString(cursor.getColumnIndex("time"));
+            String name = cursor.getString(cursor.getColumnIndex("name"));
+            String gaoya = cursor.getString(cursor.getColumnIndex("gaoya"));
+            String diya = cursor.getString(cursor.getColumnIndex("diya"));
+            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya);
+            list.add(ceLiangMesageBean);
+        }
+        return list;
+
+    }
 }

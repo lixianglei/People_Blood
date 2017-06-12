@@ -2,8 +2,11 @@ package com.example.admin.people_blood.view.fragment;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +20,33 @@ import android.widget.Toast;
 import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
+import com.example.admin.people_blood.bean.CeLiangMesageBean;
+import com.example.admin.people_blood.modle.db.Manager;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
+import com.example.admin.people_blood.utils.DateUtils;
+import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import lecho.lib.hellocharts.gesture.ContainerScrollType;
+import lecho.lib.hellocharts.gesture.ZoomType;
+import lecho.lib.hellocharts.model.Axis;
+import lecho.lib.hellocharts.model.AxisValue;
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
+import lecho.lib.hellocharts.model.ValueShape;
+import lecho.lib.hellocharts.view.LineChartView;
 
 /**
  * 项目名称: 血压测量
@@ -56,8 +79,19 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     TextView booldZixun;
     @Bind(R.id.boold_tixing)
     TextView booldTixing;
+    @Bind(R.id.Boold_FrameLayout)
+    LineChartView BooldFrameLayout;
+    @Bind(R.id.load_text)
+    TextView loadText;
+    private boolean isboolean;
     private PopupWindow popupWindow;
     private BloodManagerPressenter bloodManagerPressenter;
+    private List<AxisValue> listX;
+    private List<AxisValue> listY;
+    private List<PointValue> listGaoYa;
+    private List<PointValue> listDiYa;
+    private Manager manager;
+    private List<CeLiangMesageBean> listshuju;
 
     @Override
     protected int ViewID() {
@@ -67,8 +101,29 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     @Override
     protected void initView() {
         bloodManagerPressenter = new BloodManagerPressenter(this);
+        manager = new Manager(App.baseActivity);
+        EventBus.getDefault().register(this);
+        listX = new ArrayList<>();
+        listY = new ArrayList<>();
+        listGaoYa = new ArrayList<>();
+        listDiYa = new ArrayList<>();
         initpopwindow();
+        Long date = System.currentTimeMillis();
+        String date1 = DateUtils.format(date, "yyyy-MM-dd");
+        Log.e("TAG", date1);
+        listshuju = manager.query(date1);
+        if (listshuju.isEmpty()) {
+            loadText.setVisibility(View.VISIBLE);
+            BooldFrameLayout.setVisibility(View.GONE);
 
+        } else {
+            loadText.setVisibility(View.GONE);
+            BooldFrameLayout.setVisibility(View.VISIBLE);
+            initDay();
+            initY();
+            initdian();
+            initChatLine();
+        }
     }
 
     private void initpopwindow() {
@@ -105,7 +160,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
 
     @Override
     protected void listener() {
-
+        radioGroupListener();
     }
 
 
@@ -174,5 +229,255 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         ButterKnife.bind(this, rootView);
         return rootView;
+    }
+
+    private void radioGroupListener() {
+        booldTongji.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                switch (checkedId) {
+                    case R.id.tongji_day:
+                        listshuju.clear();
+                        long date = System.currentTimeMillis();
+                        String date1 = DateUtils.format(date, "yyyy-MM-dd");
+                        List<CeLiangMesageBean> query2 = manager.query(date1);
+                        listshuju.addAll(query2);
+                        initDay();
+                        initdian();
+                        BooldFrameLayout.setVisibility(View.VISIBLE);
+                        initChatLine();
+                        break;
+                    case R.id.tongji_zhou:
+                        ToastUtils.showShortToast("周");
+                        break;
+                    case R.id.tongji_month:
+                        ToastUtils.showShortToast("月");
+                        listshuju.clear();
+                        List<CeLiangMesageBean> query = manager.query();
+                        listshuju.addAll(query);
+                        initMonth();
+                        initdian();
+                        BooldFrameLayout.setVisibility(View.VISIBLE);
+                        initChatLine();
+                        break;
+                    case R.id.tongji_year:
+                        listshuju.clear();
+                        List<CeLiangMesageBean> query1 = manager.query();
+                        listshuju.addAll(query1);
+                        initYear();
+                        initdian();
+                        BooldFrameLayout.setVisibility(View.VISIBLE);
+                     initChatLine();
+                        ToastUtils.showShortToast("年");
+                        break;
+                }
+            }
+        });
+    }
+
+    /**
+     * 初始化统计表
+     */
+    private void initChatLine() {
+        List<Line> lines = new ArrayList<>();
+        //高压
+        Line lineG = new Line(listGaoYa);
+        //不显示线
+        lineG.setHasLines(false);
+        lineG.setStrokeWidth(1);
+        //设置点的颜色
+        lineG.setPointColor(Color.parseColor("#6CCA77"));
+        //设置点的半径
+        lineG.setPointRadius(3);
+        lineG.setShape(ValueShape.DIAMOND);
+        lineG.setCubic(false);
+        lineG.setFilled(false);
+        lineG.setHasLabelsOnlyForSelected(true);
+        lineG.setHasPoints(true);
+
+
+        Line lineD = new Line(listDiYa);
+        //不显示线
+        lineD.setHasLines(false);
+        lineD.setStrokeWidth(1);
+        //设置点的颜色
+        lineD.setPointColor(Color.parseColor("#000000"));
+        //设置点的半径
+        lineD.setPointRadius(3);
+        lineD.setShape(ValueShape.DIAMOND);
+        lineD.setCubic(false);
+        lineD.setFilled(false);
+        lineD.setHasLabelsOnlyForSelected(true);
+        lineD.setHasPoints(true);
+        lines.add(lineD);
+        lines.add(lineG);
+
+
+        LineChartData data = new LineChartData();
+        data.setValueLabelBackgroundAuto(true);// 设置数据背景是否跟随节点颜色
+        data.setLines(lines);
+
+
+        Axis axisX = new Axis();
+        //x轴坐标字体是斜的还是正的 true为斜的
+        axisX.setHasTiltedLabels(false);
+        //设置字体颜色
+        axisX.setTextColor(Color.parseColor("#000000"));
+        axisX.setHasSeparationLine(true);
+        //设置字体类型
+        axisX.setTypeface(Typeface.DEFAULT_BOLD);
+        //设置字体大小
+        axisX.setTextSize(10);
+        //最多几个x轴坐标
+//        axisX.setMaxLabelChars(8);
+        //填充x轴的坐标名称
+        axisX.setValues(listX);
+        Log.e("TAG",listX.size()+"个");
+        axisX.setHasLines(true);
+        data.setAxisXBottom(axisX);
+
+
+        Axis axisY = new Axis();
+        axisY.setLineColor(Color.parseColor("#F15A24"));
+        axisY.setTextColor(Color.parseColor("#000000"));
+//        axisY.setValues(listY);
+        axisY.setTextSize(10);
+        //最多几个x轴坐标
+        axisY.setMaxLabelChars(8);
+        axisY.setHasLines(true);
+        //x轴标注
+        axisY.setName("");
+        //Y轴设置在左边
+        data.setAxisYLeft(axisY);
+
+
+        BooldFrameLayout.setInteractive(true);
+        BooldFrameLayout.setZoomType(ZoomType.HORIZONTAL);
+        BooldFrameLayout.setZoomEnabled(false);
+        BooldFrameLayout.setMaxZoom((float) 2);//最大方法比例
+        BooldFrameLayout.setContainerScrollEnabled(true, ContainerScrollType.HORIZONTAL);
+        BooldFrameLayout.setLineChartData(data);
+        BooldFrameLayout.setVisibility(View.VISIBLE);
+    }
+
+    /**
+     * 设置为天是x轴的内容
+     */
+    private void initDay() {
+        listX.clear();
+        for (int i = 0; i < listshuju.size(); i++) {
+            String time = listshuju.get(i).getTime();
+            listX.add(new AxisValue(i).setLabel(time));
+        }
+    }
+
+    /**
+     * 设置为月x轴的内容
+     */
+    private void initMonth() {
+        boolean boo;
+        boo = false;
+        List<CeLiangMesageBean> list = new ArrayList<>();
+
+        for (int i = 0; i < listshuju.size(); i++) {
+            if (listshuju.get(i).getDate().split("-")[0].equals(String.valueOf(DateUtils.getCurYear()))) {
+                list.add(listshuju.get(i));
+            }
+        }
+
+        listshuju.clear();
+        listshuju.addAll(list);
+        list.clear();
+        for (int i = 0; i < listshuju.size(); i++) {
+            if (i == 0) {
+                list.add(listshuju.get(i));
+            }
+            boo = false;
+            for (int i1 = 0; i1 < list.size(); i1++) {
+                if (list.get(i1).getDate().equals(listshuju.get(i).getDate())) {
+                    boo = true;
+                }
+                if (i1 == list.size() - 1) {
+                    if (!boo) {
+                        list.add(listshuju.get(i));
+                    }
+                }
+
+            }
+
+        }
+        listshuju.clear();
+        listshuju.addAll(list);
+        listX.clear();
+        for (int i = 0; i < listshuju.size(); i++) {
+            String time = listshuju.get(i).getDate().split("-")[2];
+            listX.add(new AxisValue(i).setLabel(time));
+        }
+        Log.d("BloodManagerFragment", "listX.size():" + listX.size());
+    }
+
+    /**
+     * 设置为年的x轴显示内容
+     */
+    private void initYear() {
+        boolean boo;
+        boo = false;
+        List<CeLiangMesageBean> list = new ArrayList<>();
+        for (int i = 0; i < listshuju.size(); i++) {
+            if (i == 0) {
+                list.add(listshuju.get(i));
+            }
+            boo = false;
+            for (int i1 = 0; i1 < list.size(); i1++) {
+                if (list.get(i1).getDate().split("-")[0].equals(listshuju.get(i).getDate().split("-")[0])) {
+                    boo = true;
+                }
+                if (i1 == list.size() - 1) {
+                    if (!boo) {
+                        list.add(listshuju.get(i));
+                    }
+                }
+            }
+        }
+        listshuju.clear();
+        listshuju.addAll(list);
+        listX.clear();
+        for (int i = 0; i < listshuju.size(); i++) {
+            String time = listshuju.get(i).getDate().split("-")[0];
+            listX.add(new AxisValue(i).setLabel(time));
+        }
+    }
+
+    //设置点数据
+    private void initdian() {
+        listDiYa.clear();
+        listGaoYa.clear();
+        for (int i = 0; i < listshuju.size(); i++) {
+            float gaoya = Float.parseFloat(listshuju.get(i).getGaoya());
+            float diya = Float.parseFloat(listshuju.get(i).getDiya());
+            listDiYa.add(new PointValue(i, diya));
+            listGaoYa.add(new PointValue(i, gaoya));
+
+        }
+    }
+
+    //设置Y轴内容
+    private void initY() {
+        listY.add(new AxisValue(0).setLabel("60"));
+        listY.add(new AxisValue(1).setLabel("80"));
+        listY.add(new AxisValue(2).setLabel("100"));
+        listY.add(new AxisValue(3).setLabel("120"));
+        listY.add(new AxisValue(4).setLabel("140"));
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
+    public void getEvent(CeLiangMesageBean ceLiangMesageBean) {
+        isboolean = true;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }

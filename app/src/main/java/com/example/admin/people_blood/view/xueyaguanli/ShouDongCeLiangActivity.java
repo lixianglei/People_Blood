@@ -77,6 +77,8 @@ public class ShouDongCeLiangActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        LinearLayout linearLayout = new LinearLayout(this);
+
         manager = new Manager(this);
         Calendar cal = Calendar.getInstance();
         year = cal.get(Calendar.YEAR);       //获取年月日时分秒
@@ -84,13 +86,31 @@ public class ShouDongCeLiangActivity extends BaseActivity {
         day = cal.get(Calendar.DAY_OF_MONTH);//获取到日
         hour = cal.get(Calendar.HOUR_OF_DAY);//获取到小时 24
         mintune = cal.get(Calendar.MINUTE);
-        textDate.setText(year + "-" + (month + 1) + "-" + day);
+        String s = String.valueOf(month + 1);
+        if (s.length() == 1) {
+            s = "0" + s;
+
+        }
+        String day1 = String.valueOf(day);
+        if (day1.length() == 1) {
+            day1 = "0" + day1;
+        }
+        textDate.setText(year + "-" + s + "-" + day1);
         textTime.setText(hour + ":" + mintune);
         DateDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 Log.e("TAG", year + "---" + month + "---" + dayOfMonth);
-                textDate.setText(year + "-" + (month + 1) + "-" + dayOfMonth);
+                String s = String.valueOf(month + 1);
+                if (s.length() == 1) {
+                    s = "0" + s;
+
+                }
+                String day1 = String.valueOf(dayOfMonth);
+                if (day1.length() == 1) {
+                    day1 = "0" + day1;
+                }
+                textDate.setText(year + "-" + s + "-" + day1);
             }
         }, year, month, day);
         TimeDialog = new TimePickerDialog(this, new TimePickerDialog.OnTimeSetListener() {
