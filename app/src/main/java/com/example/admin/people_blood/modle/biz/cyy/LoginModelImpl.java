@@ -1,16 +1,14 @@
-package com.example.admin.people_blood.modle.biz;
+package com.example.admin.people_blood.modle.biz.cyy;
 
 import com.example.admin.people_blood.bean.LoginBean;
 import com.example.admin.people_blood.bean.LoginTwoBean;
+import com.example.admin.people_blood.modle.biz.cyy.ILoginModel;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.modle.http.RetrofitClient;
 import com.example.admin.people_blood.utils.HostUtils;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static android.R.attr.tag;
-import static android.R.attr.type;
 
 /**
  * 项目名称: 血压测量

@@ -4,7 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
+import android.os.Bundle;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,13 +19,17 @@ import android.widget.TextView;
 import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
-import com.example.admin.people_blood.view.activity.Activity_Message;
+import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.activity.GuanJianZiActivity;
 import com.example.admin.people_blood.view.activity.ShengFenActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
+import static android.R.attr.background;
+import static android.R.attr.id;
+import static com.baidu.location.d.j.t;
 
 /**
  * 项目名称: 血压测量
@@ -38,7 +42,6 @@ import butterknife.OnClick;
  */
 
 public class DoctorLineFragment extends BaseFragment {
-
     @Bind(R.id.MyLoction)
     ImageView MyLoction;
     @Bind(R.id.Shengfen)
@@ -135,19 +138,19 @@ public class DoctorLineFragment extends BaseFragment {
                 Intent  intent1=new Intent(App.baseActivity, GuanJianZiActivity.class);
                 startActivity(intent1);
                 break;
-
             case R.id.doct_jiahao:
                 break;
             case R.id.MianFeiWenYiSheng:
-                Intent intent2=new Intent(App.baseActivity, Activity_Message.class);
-                startActivity(intent2);
                 break;
             case R.id.JianKangGuWen:
                  initDialog();
                 break;
             case R.id.doctor_huanyihuan:
                 break;
-
+            case  R.id.ChaXunZhuanJia:
+                Intent  intent2=new Intent(App.baseActivity, ChaXunZhuanJiaActivity.class);
+                startActivity(intent2);
+                break;
         }
     }
 

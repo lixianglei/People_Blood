@@ -1,11 +1,9 @@
 package com.example.admin.people_blood.presenter;
 
-import android.util.Log;
-
 import com.example.admin.people_blood.bean.LoginBean;
 import com.example.admin.people_blood.bean.LoginTwoBean;
-import com.example.admin.people_blood.modle.biz.ILoginModel;
-import com.example.admin.people_blood.modle.biz.LoginModelImpl;
+import com.example.admin.people_blood.modle.biz.cyy.ILoginModel;
+import com.example.admin.people_blood.modle.biz.cyy.LoginModelImpl;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.view.view1.ILoginView;
 

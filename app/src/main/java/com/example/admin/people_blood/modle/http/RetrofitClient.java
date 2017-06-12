@@ -1,6 +1,8 @@
 package com.example.admin.people_blood.modle.http;
 
 
+import android.util.Log;
+
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.utils.GsonUtils;
 
@@ -112,6 +114,7 @@ public class RetrofitClient implements IHttp {
             @Override
             public void accept(@NonNull ResponseBody responseBody) throws Exception {
                 String res = responseBody.string();
+                Log.e("集合",res);
                 if (boo) {
                     httpCallBack.onSuccess(GsonUtils.gsonList(res, classBean));
                 } else {

@@ -183,7 +183,7 @@
                 android:textSize="16sp" />
 
             <Button
-
+              android:id="@+id/ChaXunZhuanJia"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_alignParentRight="true"
