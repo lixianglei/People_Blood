@@ -1,7 +1,5 @@
 package com.example.admin.people_blood.view.activity;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +7,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
@@ -78,26 +75,8 @@ public class Activity_ZhangHu extends BaseActivity {
             case R.id.Password:
                 Intent intent1=new Intent(this,Activity_Password.class);
                 startActivity(intent1);
-                showListDialog();
                 break;
         }
     }
-    private void showListDialog() {
-        final String[] items = {"男", "女"};
-        AlertDialog.Builder listDialog =
-                new AlertDialog.Builder(Activity_ZhangHu.this);
-        listDialog.setTitle("选择性别");
-        listDialog.setItems(items, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                // which 下标从0开始
-                String item = items[which];
-                TextPassword.setText(item);
-                Toast.makeText(Activity_ZhangHu.this,
-                        "修改成功",
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
-        listDialog.show();
-    }
+
 }
