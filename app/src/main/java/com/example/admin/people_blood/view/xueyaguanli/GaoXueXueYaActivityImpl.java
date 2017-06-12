@@ -1,5 +1,6 @@
-package com.example.admin.people_blood.view;
+package com.example.admin.people_blood.view.xueyaguanli;
 
+import com.example.admin.people_blood.bean.GaoXueYaDetil;
 import com.example.admin.people_blood.bean.GaoXueYaZiXun;
 
 /**
@@ -17,4 +18,5 @@ public interface GaoXueXueYaActivityImpl{
     String getDir();
     void getSucc(GaoXueYaZiXun gaoXueYaZiXun);
     void getFal(String string);
+    void getItemSucc(GaoXueYaDetil gaoXueYaDetil);
 }

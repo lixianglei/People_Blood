@@ -65,9 +65,9 @@ public class Activity_MessageFanKui extends BaseActivity {
                 finish();
                 break;
             case R.id.Message_fasong:
-                if (Medit.getText().toString().isEmpty()){
+                if (Medit.getText().toString().isEmpty()) {
                     Toast.makeText(this, "内容不能为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(this, "发送成功", Toast.LENGTH_SHORT).show();
                 }
                 break;

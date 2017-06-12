@@ -1,11 +1,11 @@
-package com.example.admin.people_blood.view;
+package com.example.admin.people_blood.view.xueyaguanli;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
+import com.example.admin.people_blood.bean.GaoXueYaDetil;
 import com.example.admin.people_blood.bean.GaoXueYaZiXun;
 import com.example.admin.people_blood.presenter.GaoXueYaActivityPresenter;
 import com.example.admin.people_blood.utils.DateUtils;
@@ -44,6 +45,7 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
     private String typeid;
     private String dir;
     private GaoXueYaActivityPresenter Presenter;
+    private List<GaoXueYaZiXun.DataBean> data;
 
     @Override
     protected int layoutId() {
@@ -72,15 +74,19 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
 
     @Override
     protected void listener() {
-
+        gaoxueyaListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                GaoXueYaZiXun.DataBean dataBean = data.get(position);
+                Intent intent = new Intent(GaoXueYaActivity.this,WenZhangDetil.class);
+                intent.putExtra("wen_id",dataBean.getId());
+                intent.putExtra("wen_dir",dir);
+                startActivity(intent);
+            }
+        });
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick(R.id.image_Back)
     public void onViewClicked() {
@@ -98,6 +104,7 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
 
     @Override
     public void getSucc(GaoXueYaZiXun gaoXueYaZiXun) {
+        data = gaoXueYaZiXun.getData();
         gaoxueyaListView.setAdapter(new MyGaoxueYaAdapter(gaoXueYaZiXun.getData()));
     }
 
@@ -106,7 +113,12 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
         Log.e("TAG", "失败-----" + string);
     }
 
-     class MyGaoxueYaAdapter extends BaseAdapter {
+    @Override
+    public void getItemSucc(GaoXueYaDetil gaoXueYaDetil) {
+
+    }
+
+    class MyGaoxueYaAdapter extends BaseAdapter {
         private List<GaoXueYaZiXun.DataBean> list;
 
         public MyGaoxueYaAdapter(List<GaoXueYaZiXun.DataBean> list) {
@@ -145,7 +157,7 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
             return convertView;
         }
 
-          class ViewHolder {
+        class ViewHolder {
             @Bind(R.id.item_gaoxueya_title)
             TextView itemGaoxueyaTitle;
             @Bind(R.id.item_gaoxueya_date)

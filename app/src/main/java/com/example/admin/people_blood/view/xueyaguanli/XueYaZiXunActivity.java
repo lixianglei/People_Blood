@@ -1,7 +1,6 @@
-package com.example.admin.people_blood.view;
+package com.example.admin.people_blood.view.xueyaguanli;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;

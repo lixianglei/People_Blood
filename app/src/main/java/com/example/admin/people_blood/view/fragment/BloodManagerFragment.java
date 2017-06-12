@@ -18,8 +18,8 @@ import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
-import com.example.admin.people_blood.view.ShouDongCeLiangActivity;
-import com.example.admin.people_blood.view.XueYaZiXunActivity;
+import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
+import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -158,6 +158,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
                 break;
             //问医生
             case R.id.boold_wendoctor:
+//                Intent intent = new Intent(App.baseActivity,)
                 break;
             //资讯
             case R.id.boold_zixun:

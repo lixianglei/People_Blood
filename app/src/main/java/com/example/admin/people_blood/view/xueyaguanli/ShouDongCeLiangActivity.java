@@ -1,4 +1,4 @@
-package com.example.admin.people_blood.view;
+package com.example.admin.people_blood.view.xueyaguanli;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
