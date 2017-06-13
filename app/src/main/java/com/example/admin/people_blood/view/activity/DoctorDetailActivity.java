@@ -1,11 +1,9 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.widget.ImageView;
@@ -15,7 +13,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
-import com.example.admin.people_blood.adapter.MyFragmentAdapter;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.view.fragment.HuiFuFragment;
@@ -26,7 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class DoctorDetailActivity extends BaseActivity {

@@ -4,7 +4,20 @@
     android:layout_width="match_parent"
     android:weightSum="10"
     android:layout_height="match_parent">
-
+<!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:background="#05d639"-->
+    <!--&gt;-->
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:gravity="center_horizontal"-->
+        <!--android:text="个人中心"-->
+        <!--android:textSize="20sp"-->
+        <!--android:textColor="#fff"/>-->
+<!--</LinearLayout>-->
     <LinearLayout
         android:orientation="vertical"
         android:background="#e8e8e8"
@@ -113,10 +126,11 @@
             android:layout_width="fill_parent"
             android:layout_height="1dp"
             android:background="#f1f1f1"        />
-    </LinearLayout> <LinearLayout
+    </LinearLayout>
+    <LinearLayout
     android:layout_width="match_parent"
     android:orientation="horizontal"
-android:id="@+id/My_ZiLiao"
+     android:id="@+id/My_ZiLiao"
     android:gravity="center_vertical"
     android:background="#ffffff"
     android:layout_height="50dp">

@@ -37,7 +37,7 @@ public class NumEditText extends RelativeLayout {
 
     public NumEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        LayoutInflater.from(context).inflate(R.layout.activity_freeask, this, true);
+        LayoutInflater.from(context).inflate(R.layout.activity_wendoctor, this, true);
         etContent = (EditText) findViewById(R.id.askDocotor_Editext);
         tvNum = (TextView) findViewById(R.id.MyText);
         Mbtn= (Button) findViewById(R.id.TiJiao_ShuJu);
@@ -99,7 +99,6 @@ public class NumEditText extends RelativeLayout {
         this.MaxNum = num;
         return this;
     }
-
     /**
      * 设置文本框的Hint
      * @param str --设置内容
@@ -119,7 +118,6 @@ public class NumEditText extends RelativeLayout {
         etContent.setMinHeight(px);
         return this;
     }
-
 
     /**
      * 感觉这个方法是核心方法

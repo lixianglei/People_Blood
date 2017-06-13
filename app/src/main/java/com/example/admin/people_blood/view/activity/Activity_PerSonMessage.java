@@ -198,8 +198,7 @@ public class Activity_PerSonMessage extends BaseActivity {
     }
     private void Dialog() {
         final String[] items = {"50-60", "60-70", "70-80", "80-90","90以上"};
-        AlertDialog.Builder listDialog =
-                new AlertDialog.Builder(Activity_PerSonMessage.this);
+        AlertDialog.Builder listDialog = new AlertDialog.Builder(Activity_PerSonMessage.this);
         listDialog.setTitle("选择身高");
         listDialog.setItems(items, new DialogInterface.OnClickListener() {
             @Override
