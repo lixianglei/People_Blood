@@ -57,15 +57,11 @@ private Intent intent;
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
+
 
     @OnClick(R.id.image_Back)
     public void onViewClicked() {
+        finish();
     }
     private void initData() {
         intent = getIntent();
