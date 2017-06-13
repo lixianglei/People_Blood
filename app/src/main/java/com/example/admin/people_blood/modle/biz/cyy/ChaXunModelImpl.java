@@ -29,16 +29,15 @@ public class ChaXunModelImpl implements IChaXunModel {
         map.put("sign","2c19b2821ebc5306c3ac37bac5b4288b");
         map.put("act","zhuanjia");
         map.put("fun","SearchDoctor");
-        map.put("Province",Province);
-        map.put("Title",Title);
         map.put("PageCount",PageCount);
         map.put("PageNum",PageNum);
+        map.put("Province",Province);
+        map.put("Title",Title);
         map.put("Keyword",Keyword);
         map.put("Illid","%E9%AB%98%E8%A1%80%E5%8E%8B");
         map.put("Isplus","0");
         map.put("Level",Level);
         Log.i("集合",map.toString());
-        //""http://api.wws.xywy.com/index.php""
         RetrofitClient.getInstance().get(ChaXunZhuanJiaBean.class,"/index.php",map,httpCallBack);
     }
 }

@@ -3,7 +3,7 @@
 
     <!-- 设置一个黑色边框 -->
     <stroke android:width="2px" android:color="#000000"/>
-    
+    <!---->
     <padding
         android:left="5dp"
         android:top="5dp"

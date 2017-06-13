@@ -104,7 +104,6 @@ public class Manager {
         //游标查询
         Cursor cursor = mDB.query(TAB_SHUJU, null, "date=?", new String[]{date}, null, null, null);
         while (cursor.moveToNext()) {
-
             String dat = cursor.getString(cursor.getColumnIndex("date"));
             String time = cursor.getString(cursor.getColumnIndex("time"));
             String name = cursor.getString(cursor.getColumnIndex("name"));

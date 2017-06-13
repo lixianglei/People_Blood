@@ -25,7 +25,7 @@
         android:background="@color/color_write"
         android:id="@+id/Main_ViewPager"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="380dp"
         android:layout_above="@id/Main_Tablayout"
         android:layout_below="@+id/layout_title"></android.support.v4.view.ViewPager>
 </RelativeLayout>

@@ -63,6 +63,11 @@
         <activity android:name=".view.xueyaguanli.WenZhangDetil" />
         <activity android:name=".view.xueyaguanli.ShuJuKuListActivity" />
         <activity android:name=".view.xueyaguanli.ShuJuKuXiangQingActivity"/>
+        <activity android:name=".view.xueyaguanli.XueYaZiXunActivity" />
+        <activity android:name=".view.xueyaguanli.GaoXueYaActivity" />
+        <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity" />
+        <activity android:name=".view.xueyaguanli.WenZhangDetil" />
+        <activity android:name=".view.activity.MianFeiTiWenActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.admin.people_blood.view.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -10,6 +11,7 @@ import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.adapter.GuanJianZiAdapter;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.modle.db.Manager;
+import com.example.admin.people_blood.view.fragment.DoctorLineFragment;
 
 import java.util.List;
 
@@ -33,7 +35,7 @@ public class GuanJianZiActivity extends BaseActivity {
     protected int layoutId() {
         return R.layout.guanjianzi;
     }
-
+//
     @Override
     protected void initView() {
         mShared=getSharedPreferences("data",MODE_PRIVATE);
@@ -70,6 +72,10 @@ public class GuanJianZiActivity extends BaseActivity {
             }else {
                 Toast.makeText(this, "插入失败", Toast.LENGTH_SHORT).show();
             }
+            Intent intent=new Intent(GuanJianZiActivity.this, DoctorLineFragment.class);
+            intent.putExtra("search_content",name);
+            setResult(200,intent);
+            finish();
         }
     }
 }
