@@ -1,6 +1,7 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.bean.User;
+import com.example.admin.people_blood.view.fragment.DoctorLineFragment;
 import com.example.admin.people_blood.view.fragment.NavView;
 
 import java.util.ArrayList;
@@ -81,9 +83,18 @@ public class ShengFenActivity extends BaseActivity{
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String username = list.get(position).getUsername();
-                mEditor.putString("username",username);
-                mEditor.commit();
+                User user = list.get(position);
+                String username = user.getUsername();
+//                    mEditor.putString("username",username);
+//                    mEditor.commit();
+//                    DoctorLineFragment  doctorLineFragment=new DoctorLineFragment();
+//                    Bundle  bundle=new Bundle();
+//                    bundle.Province("username",username);
+//                    doctorLineFragment.setArguments(bundle);
+                Intent intent=new Intent(ShengFenActivity.this, DoctorLineFragment.class);
+                intent.putExtra("Province",username);
+                setResult(250,intent);
+
                 finish();
             }
         });

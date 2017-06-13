@@ -39,6 +39,7 @@ android:id="@+id/Doctor_Line"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/ShengFen_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -77,6 +78,7 @@ android:id="@+id/Doctor_Line"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/ZhiCheng"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -107,6 +109,7 @@ android:id="@+id/Doctor_Line"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/Dengji"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
@@ -137,6 +140,7 @@ android:id="@+id/Doctor_Line"
                 android:weightSum="1">
 
                 <TextView
+                    android:id="@+id/GuanJianZi_Text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
