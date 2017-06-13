@@ -10,6 +10,7 @@
         android:layout_height="60dp"
         android:id="@+id/title"
         />
+    <!---->
     <ImageView
         android:layout_below="@+id/title"
         android:id="@+id/Doctor_Image"

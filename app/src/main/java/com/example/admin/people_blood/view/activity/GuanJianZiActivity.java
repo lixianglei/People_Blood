@@ -35,7 +35,7 @@ public class GuanJianZiActivity extends BaseActivity {
     protected int layoutId() {
         return R.layout.guanjianzi;
     }
-
+//
     @Override
     protected void initView() {
         mShared=getSharedPreferences("data",MODE_PRIVATE);

@@ -94,7 +94,7 @@ public class ShengFenActivity extends BaseActivity{
                 Intent intent=new Intent(ShengFenActivity.this, DoctorLineFragment.class);
                 intent.putExtra("Province",username);
                 setResult(250,intent);
-
+//
                 finish();
             }
         });

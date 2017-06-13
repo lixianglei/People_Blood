@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:text="医生职称"/>
-
+<!---->
         <com.example.admin.people_blood.view.MyGridLayout
             android:id="@+id/dragable_myGridLayout"
             android:layout_width="match_parent"

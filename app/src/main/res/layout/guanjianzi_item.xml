@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     >
+    <!---->
     <TextView
         android:id="@+id/guanjianzi_text"
         android:layout_width="wrap_content"

@@ -72,10 +72,8 @@ public class MainActivity extends BaseActivity {
         im.setImageResource(iconID);
         return newtab;
     }
-
     @Override
     protected void loadData() {
-
     }
 
     @Override

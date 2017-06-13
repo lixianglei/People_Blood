@@ -27,7 +27,7 @@ public class WenYiShengActivity extends BaseActivity {
     protected void loadData() {
 
     }
-
+//
     @Override
     protected void listener() {
 

@@ -284,6 +284,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
                 startActivityForResult(intent,400);
                 break;
             case R.id.YiShengZhiCheng:
+
 //               if (mPopupZc.isShowing()){
 //                   mPopupZc.dismiss();
 //               }else {
