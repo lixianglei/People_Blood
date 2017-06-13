@@ -23,7 +23,7 @@ public class MyHepler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table xueya(name varchar(30) primary key)";
         db.execSQL(sql);
-        String sqlce = "create table celiang(date varchar(30),time varchar(30),name varchar(30),gaoya varchar(30),diya varchar(30))";
+        String sqlce = "create table celiang(date varchar(30),time varchar(30),name varchar(30),gaoya varchar(30),diya varchar(30),isshoudong varchar(30))";
         db.execSQL(sqlce);
     }
 

@@ -57,11 +57,12 @@
         <activity android:name=".view.activity.Activity_About_Boold"></activity>
         <activity android:name=".view.activity.Activity_MessageFanKui"></activity>
         <activity android:name=".view.activity.ChaXunZhuanJiaActivity" />
-        <activity android:name=".view.xueyaguanli.XueYaZiXunActivity"/>
-        <activity android:name=".view.xueyaguanli.GaoXueYaActivity"/>
-        <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity"/>
-        <activity android:name=".view.xueyaguanli.WenZhangDetil"/>
-
+        <activity android:name=".view.xueyaguanli.XueYaZiXunActivity" />
+        <activity android:name=".view.xueyaguanli.GaoXueYaActivity" />
+        <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity" />
+        <activity android:name=".view.xueyaguanli.WenZhangDetil" />
+        <activity android:name=".view.xueyaguanli.ShuJuKuListActivity" />
+        <activity android:name=".view.xueyaguanli.ShuJuKuXiangQingActivity"/>
     </application>
 
 </manifest>

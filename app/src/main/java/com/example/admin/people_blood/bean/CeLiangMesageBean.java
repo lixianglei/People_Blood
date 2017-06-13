@@ -16,13 +16,15 @@ public class CeLiangMesageBean {
     private String name;
     private String diya;
     private String gaoya;
+    private String isshoudong;
 
-    public CeLiangMesageBean(String date, String time, String name, String diya, String gaoya) {
+    public CeLiangMesageBean(String date, String time, String name, String diya, String gaoya, String isshoudong) {
         this.date = date;
         this.time = time;
         this.name = name;
         this.diya = diya;
         this.gaoya = gaoya;
+        this.isshoudong = isshoudong;
     }
 
     public String getDate() {
@@ -63,5 +65,13 @@ public class CeLiangMesageBean {
 
     public void setGaoya(String gaoya) {
         this.gaoya = gaoya;
+    }
+
+    public String getIsshoudong() {
+        return isshoudong;
+    }
+
+    public void setIsshoudong(String isshoudong) {
+        this.isshoudong = isshoudong;
     }
 }

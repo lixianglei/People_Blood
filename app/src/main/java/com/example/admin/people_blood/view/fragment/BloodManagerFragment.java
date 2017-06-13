@@ -21,11 +21,12 @@ import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.bean.CeLiangMesageBean;
+import com.example.admin.people_blood.eventbus.ShuJuKuDetl;
 import com.example.admin.people_blood.modle.db.Manager;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
 import com.example.admin.people_blood.utils.DateUtils;
-import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
+import com.example.admin.people_blood.view.xueyaguanli.ShuJuKuListActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -107,6 +108,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
         listY = new ArrayList<>();
         listGaoYa = new ArrayList<>();
         listDiYa = new ArrayList<>();
+        tongjiDay.setChecked(true);
         initpopwindow();
         Long date = System.currentTimeMillis();
         String date1 = DateUtils.format(date, "yyyy-MM-dd");
@@ -161,6 +163,15 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     @Override
     protected void listener() {
         radioGroupListener();
+        BooldFrameLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(App.baseActivity, ShuJuKuListActivity.class);
+                EventBus.getDefault().postSticky(new ShuJuKuDetl(listshuju));
+                startActivity(intent);
+
+            }
+        });
     }
 
 
@@ -168,11 +179,13 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     public void shoudongshangchuan() {
         Intent intent = new Intent(App.baseActivity, ShouDongCeLiangActivity.class);
         startActivity(intent);
+        popupWindow.dismiss();
     }
 
     @Override
     public void kangBaoBeiShangChuan() {
         Toast.makeText(App.baseActivity, "康宝贝测量", Toast.LENGTH_SHORT).show();
+        popupWindow.dismiss();
     }
 
     @Override
@@ -237,42 +250,51 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
                 switch (checkedId) {
                     case R.id.tongji_day:
-                        listshuju.clear();
-                        long date = System.currentTimeMillis();
-                        String date1 = DateUtils.format(date, "yyyy-MM-dd");
-                        List<CeLiangMesageBean> query2 = manager.query(date1);
-                        listshuju.addAll(query2);
-                        initDay();
-                        initdian();
-                        BooldFrameLayout.setVisibility(View.VISIBLE);
-                        initChatLine();
+                        dayShuaXin();
                         break;
                     case R.id.tongji_zhou:
-                        ToastUtils.showShortToast("周");
+
                         break;
                     case R.id.tongji_month:
-                        ToastUtils.showShortToast("月");
                         listshuju.clear();
                         List<CeLiangMesageBean> query = manager.query();
                         listshuju.addAll(query);
                         initMonth();
-                        initdian();
-                        BooldFrameLayout.setVisibility(View.VISIBLE);
-                        initChatLine();
+                        shuaxin();
                         break;
                     case R.id.tongji_year:
                         listshuju.clear();
                         List<CeLiangMesageBean> query1 = manager.query();
                         listshuju.addAll(query1);
                         initYear();
-                        initdian();
-                        BooldFrameLayout.setVisibility(View.VISIBLE);
-                     initChatLine();
-                        ToastUtils.showShortToast("年");
+                        shuaxin();
+
                         break;
                 }
             }
         });
+    }
+
+    private void dayShuaXin() {
+        listshuju.clear();
+        long date = System.currentTimeMillis();
+        String date1 = DateUtils.format(date, "yyyy-MM-dd");
+        List<CeLiangMesageBean> query2 = manager.query(date1);
+        listshuju.addAll(query2);
+        initDay();
+        shuaxin();
+    }
+
+    private void shuaxin() {
+        if (listshuju.isEmpty()) {
+            BooldFrameLayout.setVisibility(View.GONE);
+            loadText.setVisibility(View.VISIBLE);
+        } else {
+            BooldFrameLayout.setVisibility(View.VISIBLE);
+            loadText.setVisibility(View.GONE);
+            initdian();
+            initChatLine();
+        }
     }
 
     /**
@@ -282,26 +304,26 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
         List<Line> lines = new ArrayList<>();
         //高压
         Line lineG = new Line(listGaoYa);
-        //不显示线
-        lineG.setHasLines(false);
         lineG.setStrokeWidth(1);
         //设置点的颜色
         lineG.setPointColor(Color.parseColor("#6CCA77"));
+        lineG.setColor(Color.parseColor("#6CCA77"));
         //设置点的半径
         lineG.setPointRadius(3);
         lineG.setShape(ValueShape.DIAMOND);
         lineG.setCubic(false);
         lineG.setFilled(false);
+        lineG.setHasLines(true);
         lineG.setHasLabelsOnlyForSelected(true);
         lineG.setHasPoints(true);
 
 
         Line lineD = new Line(listDiYa);
-        //不显示线
-        lineD.setHasLines(false);
         lineD.setStrokeWidth(1);
+        lineD.setHasLines(true);
         //设置点的颜色
         lineD.setPointColor(Color.parseColor("#000000"));
+        lineD.setColor(Color.parseColor("#000000"));
         //设置点的半径
         lineD.setPointRadius(3);
         lineD.setShape(ValueShape.DIAMOND);
@@ -332,7 +354,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
 //        axisX.setMaxLabelChars(8);
         //填充x轴的坐标名称
         axisX.setValues(listX);
-        Log.e("TAG",listX.size()+"个");
+        Log.e("TAG", listX.size() + "个");
         axisX.setHasLines(true);
         data.setAxisXBottom(axisX);
 
@@ -472,7 +494,9 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
 
     @Subscribe(threadMode = ThreadMode.MAIN, sticky = true)
     public void getEvent(CeLiangMesageBean ceLiangMesageBean) {
-        isboolean = true;
+        tongjiDay.setChecked(true);
+        dayShuaXin();
+        booldShuju.setText(ceLiangMesageBean.getGaoya()+"/"+ceLiangMesageBean.getDiya()+"  今天");
     }
 
     @Override
