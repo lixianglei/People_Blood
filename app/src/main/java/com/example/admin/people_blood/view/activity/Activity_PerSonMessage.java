@@ -57,6 +57,10 @@ public class Activity_PerSonMessage extends BaseActivity {
     TextView TextName;
     @Bind(R.id.set_Sex)
     TextView setSex;
+    @Bind(R.id.height_text)
+    TextView heightText;
+    @Bind(R.id.weight_text)
+    TextView weightText;
 
     @Override
     protected int layoutId() {
@@ -109,8 +113,10 @@ public class Activity_PerSonMessage extends BaseActivity {
                 showListDialog();
                 break;
             case R.id.Height_XuanZe:
+                showDialog();
                 break;
             case R.id.Weight_XuanZe:
+                Dialog();
                 break;
             case R.id.Day_XuanZe:
                 showDialog(DATE_DIALOG);
@@ -171,5 +177,43 @@ public class Activity_PerSonMessage extends BaseActivity {
         });
         listDialog.show();
     }
+
+    private void showDialog() {
+        final String[] items = {"150-160", "160-170", "170-180", "180以上"};
+        AlertDialog.Builder listDialog =
+                new AlertDialog.Builder(Activity_PerSonMessage.this);
+        listDialog.setTitle("选择身高");
+        listDialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // which 下标从0开始
+                String item = items[which];
+                heightText.setText(item);
+                Toast.makeText(Activity_PerSonMessage.this,
+                        "修改成功",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        listDialog.show();
+    }
+    private void Dialog() {
+        final String[] items = {"50-60", "60-70", "70-80", "80-90","90以上"};
+        AlertDialog.Builder listDialog =
+                new AlertDialog.Builder(Activity_PerSonMessage.this);
+        listDialog.setTitle("选择身高");
+        listDialog.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // which 下标从0开始
+                String item = items[which];
+                weightText.setText(item);
+                Toast.makeText(Activity_PerSonMessage.this,
+                        "修改成功",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+        listDialog.show();
+    }
+
 }
 

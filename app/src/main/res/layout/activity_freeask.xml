@@ -125,6 +125,7 @@
             android:numeric="integer" />
     </LinearLayout>
     <Button
+        android:id="@+id/TiJiao_ShuJu"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
         android:layout_width="match_parent"
