@@ -31,6 +31,7 @@ public class GuanJianZiActivity extends BaseActivity {
     private List<String>  mList;
     private SharedPreferences  mShared;
     private SharedPreferences.Editor  mEditor;
+
     @Override
     protected int layoutId() {
         return R.layout.guanjianzi;

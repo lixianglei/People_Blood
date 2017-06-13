@@ -28,7 +28,6 @@ import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.bean.ReMenDoctorBean;
 import com.example.admin.people_blood.presenter.cyy.ReMenPresenter;
-import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.MyGridLayout;
 import com.example.admin.people_blood.view.activity.ChaXunZhuanJiaActivity;
 import com.example.admin.people_blood.view.activity.DoctorDetailActivity;
@@ -44,11 +43,6 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static android.R.attr.background;
-import static android.R.attr.id;
-import static android.R.string.yes;
-import static com.baidu.location.d.j.S;
-
 /**
  * 项目名称: 血压测量
  * 类描述:医生在线的fragment
@@ -59,7 +53,7 @@ import static com.baidu.location.d.j.S;
  * 修改时间:
  */
 
-public class DoctorLineFragment extends BaseFragment implements IReMenView{
+public class DoctorLineFragment extends BaseFragment implements IReMenView {
     @Bind(R.id.MyLoction)
     ImageView MyLoction;
     @Bind(R.id.Shengfen)
@@ -70,8 +64,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
     LinearLayout YiYuanDengJi;
     @Bind(R.id.GuanJianZi)
     LinearLayout GuanJianZi;
-    @Bind(R.id.doct_image)
-    ImageView doctImage;
+
     @Bind(R.id.doct_jiahao)
     TextView doctJiahao;
     @Bind(R.id.doctor_huanyihuan)
@@ -88,7 +81,12 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
     TextView JianKangGuWen;
     @Bind(R.id.GuanJianZi_Text)
     TextView guanjianzi;
-    private MyGridLayout mGridLayout1;
+    @Bind(R.id.ZhiCheng_Text)
+    TextView ZhiChengText;
+    @Bind(R.id.DengJi_Text)
+    TextView DengJiText;
+
+    private MyGridLayout mGridLayout1, mGridLayout2;
     private Button yes;
     private PopupWindow popupWindow_zhicheng;
     private Button sure_btn1;
@@ -99,46 +97,47 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
     @Bind(R.id.daoctor_gridviwe)
     GridView daoctorGridviwe;
     @Bind(R.id.ChaXunZhuanJia)
-    Button  chaxunZhuanjia;
-    private PopupWindow  mPopupZc,mPopupDJ;
-    private Dialog  dialog;
-    private Button  mBtnCancle,mBtnSure;
-    private ReMenPresenter  presenter;
-    private List<ReMenDoctorBean.DataBean>  mList;
-    private ReMenAdapter  mAdapter;
-    private int  page=1;
+    Button chaxunZhuanjia;
+    private PopupWindow mPopupZc, mPopupDJ;
+    private Dialog dialog;
+    private Button mBtnCancle, mBtnSure;
+    private ReMenPresenter presenter;
+    private List<ReMenDoctorBean.DataBean> mList;
+    private ReMenAdapter mAdapter;
+    private int page = 1;
+    private String s;
 
     @Override
     protected int ViewID() {
         return R.layout.fragment_doctor;
     }
-    private SharedPreferences  mShared;
+
+    private SharedPreferences mShared;
+
     @Override
     protected void initView() {
+        mList2 = new ArrayList<>();
+        shengText.setText("省份");
         initPopupZc();
         initPopupDj();
-        presenter=new ReMenPresenter(this);
-        mList=new ArrayList<>();
-        mAdapter=new ReMenAdapter();
+        presenter = new ReMenPresenter(this);
+        mList = new ArrayList<>();
+        mAdapter = new ReMenAdapter();
         daoctorGridviwe.setAdapter(mAdapter);
-        mShared=getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
-        String  username=mShared.getString("username","");
-//        Bundle  bundle=getArguments();
-        shengText.setText(username);
-        guanjianzi.setText(mShared.getString("name",""));
+        mShared = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
     }
 
     private void initPopupDj() {
-        View  view1=LayoutInflater.from(App.baseActivity).inflate(R.layout.ysdj_popup,null);
-        mPopupDJ=new PopupWindow(view1,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
+        View view1 = LayoutInflater.from(App.baseActivity).inflate(R.layout.ysdj_popup, null);
+        mPopupDJ = new PopupWindow(view1, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
         mPopupDJ.setOutsideTouchable(true);
         mPopupDJ.setBackgroundDrawable(new ColorDrawable());
     }
 
     private void initPopupZc() {
 
-        View  view=LayoutInflater.from(App.baseActivity).inflate(R.layout.yszcpopup,null);
-        mPopupZc=new PopupWindow(view,ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT,true);
+        View view = LayoutInflater.from(App.baseActivity).inflate(R.layout.yszcpopup, null);
+        mPopupZc = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
         mPopupZc.setBackgroundDrawable(new ColorDrawable());
         mPopupZc.setOutsideTouchable(true);
 
@@ -154,21 +153,22 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
         daoctorGridviwe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                ReMenDoctorBean.DataBean  bean=mList.get(position);
-                Intent  intent=new Intent(App.baseActivity, DoctorDetailActivity.class);
-                intent.putExtra("app_image",bean.getApp_image());
-                intent.putExtra("doc_title",bean.getTitle());
-                intent.putExtra("doc_teach",bean.getTeach());
-                intent.putExtra("doc_hospital",bean.getHospital());
-                intent.putExtra("document_id",bean.getDocument_id() );
-                intent.putExtra("doc_content",bean.getGoodat());
-                intent.putExtra("expert_id",bean.getExpert_id());
-                intent.putExtra("doc_depart",bean.getDepart());
-                intent.putExtra("doc_name",bean.getName());
+                ReMenDoctorBean.DataBean bean = mList.get(position);
+                Intent intent = new Intent(App.baseActivity, DoctorDetailActivity.class);
+                intent.putExtra("app_image", bean.getApp_image());
+                intent.putExtra("doc_title", bean.getTitle());
+                intent.putExtra("doc_teach", bean.getTeach());
+                intent.putExtra("doc_hospital", bean.getHospital());
+                intent.putExtra("document_id", bean.getDocument_id());
+                intent.putExtra("doc_content", bean.getGoodat());
+                intent.putExtra("expert_id", bean.getExpert_id());
+                intent.putExtra("doc_depart", bean.getDepart());
+                intent.putExtra("doc_name", bean.getName());
                 startActivity(intent);
             }
         });
     }
+
     private void showTechnical(View view) {
         View inflate = View.inflate(getActivity(), R.layout.activity_dactor_name, null);
         mGridLayout1 = (MyGridLayout) inflate.findViewById(R.id.dragable_myGridLayout);
@@ -181,16 +181,13 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ZhiChengText.setText(mGridLayout1.getLastView().getText());
                 popupWindow_zhicheng.dismiss();
+
             }
         });
-        mGridLayout1.setOnClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s=mList1.get(position);
-                Zhicheng.setText(s);
-            }
-        });
+        //
+
     }
 
     private void initDatas() {
@@ -207,7 +204,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
     private void showHosrank(View view) {
 
         View inflate = View.inflate(getActivity(), R.layout.activity_hospital_dengji, null);
-        mGridLayout1 = (MyGridLayout) inflate.findViewById(R.id.dragable_myGridLayout);
+        mGridLayout2 = (MyGridLayout) inflate.findViewById(R.id.mDocdragable_myGridLayout);
         sure_btn1 = (Button) inflate.findViewById(R.id.sure);
         initDatatwo();
         popupWindow_dengji = new PopupWindow(inflate, LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT, true);
@@ -218,34 +215,28 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
         sure_btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DengJiText.setText(mGridLayout2.getLastView().getText());
+
                 popupWindow_dengji.dismiss();
             }
 
         });
-        mGridLayout1.setOnClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s=mList1.get(position);
-                Dengji.setText(s);
-            }
-        });
+
 
     }
 
     private void initDatatwo() {
-
 //        mGridLayout1.setBoo;
         mList1 = new ArrayList<String>();
-        mList1.add("不限");
-        mList1.add("三级甲等");
-        mList1.add("三级乙等");
-        mList1.add("三级丙等");
-        mList1.add("三级");
-        mList1.add("二级甲等");
-        mList1.add("二级已等");
-        mList1.add("二级丙等");
-        mGridLayout1.setItems(mList1);
-
+        mList2.add("不限");
+        mList2.add("三级甲等");
+        mList2.add("三级乙等");
+        mList2.add("三级丙等");
+        mList2.add("三级");
+        mList2.add("二级甲等");
+        mList2.add("二级已等");
+        mList2.add("二级丙等");
+        mGridLayout2.setItems(mList2);
     }
 
     @Override
@@ -253,7 +244,6 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
-//
     /**
      * 搜索页面的跳转回传。
      *
@@ -274,40 +264,31 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
         }
 
     }
-    @OnClick({R.id.MyLoction, R.id.ChaXunZhuanJia,R.id.Shengfen, R.id.YiShengZhiCheng, R.id.YiYuanDengJi, R.id.GuanJianZi, R.id.doct_jiahao, R.id.MianFeiWenYiSheng, R.id.JianKangGuWen, R.id.doctor_huanyihuan})
+
+    @OnClick({R.id.MyLoction, R.id.ChaXunZhuanJia, R.id.Shengfen, R.id.YiShengZhiCheng, R.id.YiYuanDengJi, R.id.GuanJianZi, R.id.doct_jiahao, R.id.MianFeiWenYiSheng, R.id.JianKangGuWen, R.id.doctor_huanyihuan})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.MyLoction:
                 break;
             case R.id.Shengfen:
-                Intent  intent=new Intent(App.baseActivity, ShengFenActivity.class);
-                startActivityForResult(intent,400);
+                Intent intent = new Intent(App.baseActivity, ShengFenActivity.class);
+                startActivityForResult(intent, 400);
                 break;
             case R.id.YiShengZhiCheng:
-
-//               if (mPopupZc.isShowing()){
-//                   mPopupZc.dismiss();
-//               }else {
-//                   mPopupZc.showAtLocation(App.baseActivity.findViewById(R.id.Doctor_Line), Gravity.BOTTOM,0,0);
-//               }
                 showTechnical(view);
                 break;
             case R.id.YiYuanDengJi:
-//                if (mPopupDJ.isShowing()){
-//                    mPopupDJ.dismiss();
-//                }else {
-//                    mPopupDJ.showAtLocation(App.baseActivity.findViewById(R.id.Doctor_Line), Gravity.BOTTOM,0,0);
-//                }
                 showHosrank(view);
                 break;
             case R.id.GuanJianZi:
-                Intent  intent1=new Intent(App.baseActivity, GuanJianZiActivity.class);
-                startActivityForResult(intent1,300);
+                Intent intent1 = new Intent(App.baseActivity, GuanJianZiActivity.class);
+                startActivityForResult(intent1, 300);
                 break;
             case R.id.doct_jiahao:
+
                 break;
             case R.id.MianFeiWenYiSheng:
-                Intent  intent2=new Intent(App.baseActivity, WenYiShengActivity.class);
+                Intent intent2 = new Intent(App.baseActivity, WenYiShengActivity.class);
                 startActivity(intent2);
                 break;
             case R.id.JianKangGuWen:
@@ -317,20 +298,19 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
                 mList.clear();
                 page++;
                 presenter.remen();
-//                mAdapter.notifyDataSetChanged();
                 break;
-            case  R.id.ChaXunZhuanJia:
-                Intent  intent3=new Intent(App.baseActivity, ChaXunZhuanJiaActivity.class);
+            case R.id.ChaXunZhuanJia:
+                Intent intent3 = new Intent(App.baseActivity, ChaXunZhuanJiaActivity.class);
                 startActivity(intent3);
                 break;
         }
     }
 
     private void initDialog() {
-        View view2=LayoutInflater.from(App.baseActivity).inflate(R.layout.phone_dialog,null);
-        dialog=new AlertDialog.Builder(App.baseActivity).setView(view2).create();
-        mBtnSure= (Button) view2.findViewById(R.id.Sure_Btn);
-        mBtnCancle= (Button) view2.findViewById(R.id.Cancle_Btn);
+        View view2 = LayoutInflater.from(App.baseActivity).inflate(R.layout.phone_dialog, null);
+        dialog = new AlertDialog.Builder(App.baseActivity).setView(view2).create();
+        mBtnSure = (Button) view2.findViewById(R.id.Sure_Btn);
+        mBtnCancle = (Button) view2.findViewById(R.id.Cancle_Btn);
         mBtnCancle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -351,26 +331,25 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
     @Override
     public void remen(List<ReMenDoctorBean.DataBean> dataBeen) {
         mList.addAll(dataBeen);
-        Log.i("Sd",mList.toString());
+        Log.i("Sd", mList.toString());
         mAdapter.notifyDataSetChanged();
     }
 
     @Override
     public int page() {
-        return   page;
+        return page;
     }
+
 
 
 
     //这是每个gridLayout 的点击事件
 
 
-
-
-    class   ReMenAdapter extends BaseAdapter{
+    class ReMenAdapter extends BaseAdapter {
         @Override
         public int getCount() {
-            return mList.isEmpty()?0:mList.size();
+            return mList.isEmpty() ? 0 : mList.size();
         }
 
         @Override
@@ -385,24 +364,25 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView{
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            Holder  holder=null;
-            if (convertView==null){
-                holder=new Holder();
-                convertView=LayoutInflater.from(App.baseActivity).inflate(R.layout.remengrid_item,null);
-                holder.mName= (TextView) convertView.findViewById(R.id.ReMen_Name);
-                holder.mImageView= (ImageView) convertView.findViewById(R.id.RenMen_ImageView);
+            Holder holder = null;
+            if (convertView == null) {
+                holder = new Holder();
+                convertView = LayoutInflater.from(App.baseActivity).inflate(R.layout.remengrid_item, null);
+                holder.mName = (TextView) convertView.findViewById(R.id.ReMen_Name);
+                holder.mImageView = (ImageView) convertView.findViewById(R.id.RenMen_ImageView);
                 convertView.setTag(holder);
-            }else {
-                holder= (Holder) convertView.getTag();
+            } else {
+                holder = (Holder) convertView.getTag();
             }
-            ReMenDoctorBean.DataBean  bean=mList.get(position);
+            ReMenDoctorBean.DataBean bean = mList.get(position);
             holder.mName.setText(bean.getName());
             Glide.with(App.baseActivity).load(bean.getApp_image()).into(holder.mImageView);
             return convertView;
         }
-        class   Holder{
-            private TextView  mName;
-            private ImageView  mImageView;
+
+        class Holder {
+            private TextView mName;
+            private ImageView mImageView;
         }
     }
 }

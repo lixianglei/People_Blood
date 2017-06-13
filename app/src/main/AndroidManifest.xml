@@ -53,25 +53,19 @@
         <activity android:name=".view.activity.LoginActivity" />
         <activity android:name=".view.activity.Activity_About_Boold" />
         <activity android:name=".view.activity.Activity_MessageFanKui" />
-        <activity android:name=".view.XueYaZiXunActivity" />
-        <activity android:name=".view.GaoXueYaActivity" />
         <activity android:name=".view.activity.ChaXunZhuanJiaActivity" />
         <activity android:name=".view.activity.DoctorDetailActivity" />
         <activity android:name=".view.activity.WenYiShengActivity" />
         <activity android:name=".view.activity.Activity_ZhangHu" />
         <activity android:name=".view.activity.Activity_Password" />
         <activity android:name=".view.activity.Activity_Phone" />
-        <activity android:name=".view.activity.Activity_TiWen" />
-        <activity android:name=".view.activity.Activity_Name" />
-        <activity android:name=".view.activity.LoginActivity" />
-        <activity android:name=".view.activity.Activity_About_Boold" />
-        <activity android:name=".view.activity.Activity_MessageFanKui" />
-        <activity android:name=".view.activity.ChaXunZhuanJiaActivity" />
+
         <activity android:name=".view.xueyaguanli.XueYaZiXunActivity" />
         <activity android:name=".view.xueyaguanli.GaoXueYaActivity" />
         <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity" />
         <activity android:name=".view.xueyaguanli.WenZhangDetil" />
-        <activity android:name=".view.activity.MianFeiTiWenActivity"></activity>
+        <activity android:name=".view.activity.MianFeiTiWenActivity" />
+        <activity android:name=".view.activity.YuYueActivity"></activity>
     </application>
 
 </manifest>
