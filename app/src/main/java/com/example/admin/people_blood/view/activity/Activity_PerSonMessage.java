@@ -258,7 +258,7 @@ public class Activity_PerSonMessage extends BaseActivity {
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int whichButton) {
                         setTitle(edtInput.getText());
-                        Nameoo.setText(edtInput.getText());
+                        TextName.setText(edtInput.getText());
                         ToastUtils.showShortToast("修改成功~");
                     }
                 });

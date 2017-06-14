@@ -14,7 +14,6 @@
         android:background="#fff">
         >
         <TextView
-            android:id="@+id/Nameoo"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
