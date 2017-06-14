@@ -15,5 +15,5 @@ import com.example.admin.people_blood.bean.LoginBean;
 public interface ILoginPresenter {
       void login(String phonenum,String password);
 
-      void logintwo();
+      void logintwo(String  userid);
 }

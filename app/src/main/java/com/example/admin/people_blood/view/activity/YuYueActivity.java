@@ -34,9 +34,6 @@ private Intent intent;
     TextView DoctorHosptial;
     @Bind(R.id.Doctor_Content)
     TextView DoctorContent;
-    @Bind(R.id.YuYueListView)
-    ListView YuYueListView;
-
     @Override
     protected int layoutId() {
         return R.layout.activity_yu_yue;

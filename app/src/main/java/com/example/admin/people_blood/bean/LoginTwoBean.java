@@ -11,7 +11,7 @@ import java.util.List;
  * 修改内容:
  * 修改时间:
  */
-
+//返回登陆的实体类
 public class LoginTwoBean {
     /**
      * state : 200

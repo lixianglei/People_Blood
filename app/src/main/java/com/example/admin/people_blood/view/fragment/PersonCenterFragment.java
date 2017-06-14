@@ -1,6 +1,8 @@
 package com.example.admin.people_blood.view.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,14 +11,24 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
+import com.example.admin.people_blood.bean.LoginBean;
+import com.example.admin.people_blood.bean.LoginTwoBean;
+import com.example.admin.people_blood.presenter.LoginPresenter;
 import com.example.admin.people_blood.view.activity.Activity_My_JiaHao;
 import com.example.admin.people_blood.view.activity.Activity_My_ShouCang;
 import com.example.admin.people_blood.view.activity.Activity_PerSonMessage;
 import com.example.admin.people_blood.view.activity.Activity_SheZhi;
 import com.example.admin.people_blood.view.activity.Activity_TiWen;
 import com.example.admin.people_blood.view.activity.LoginActivity;
+import com.example.admin.people_blood.view.view1.ILoginView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -32,15 +44,12 @@ import butterknife.OnClick;
  * 修改时间:
  */
 
-public class PersonCenterFragment extends BaseFragment {
-
-
+public class PersonCenterFragment extends BaseFragment implements ILoginView{
+    private Intent intent;
     @Bind(R.id.Login_Image)
     ImageView LoginImage;
     @Bind(R.id.DianjiText)
     TextView DianjiText;
-//    @Bind(R.id.imageView)
-//    ImageView imageView;
     @Bind(R.id.My_JiaHao)
     LinearLayout MyJiaHao;
     @Bind(R.id.My_ShouCang)
@@ -51,7 +60,9 @@ public class PersonCenterFragment extends BaseFragment {
     LinearLayout MyXiaoXi;
     @Bind(R.id.My_SheZhi)
     LinearLayout MySheZhi;
-
+  private String  userid,phonenum;
+    private LoginPresenter  presenter;
+    private SharedPreferences  mShared;
     @Override
     protected int ViewID() {
         return R.layout.person_center;
@@ -59,25 +70,27 @@ public class PersonCenterFragment extends BaseFragment {
 
     @Override
     protected void initView() {
+        if(!EventBus.getDefault().isRegistered(this)){
+            EventBus.getDefault().register(this);
+        }
 
+         mShared=App.baseActivity.getSharedPreferences("data", Context.MODE_PRIVATE);
+        userid=mShared.getString("userid","");
+        phonenum=mShared.getString("phonenum","");
+        DianjiText.setText(phonenum);
+        presenter=new LoginPresenter(this);
     }
 
     @Override
     protected void loadData() {
-
+        if(userid.length()!=0 || !userid.isEmpty()){
+            presenter.logintwo(userid);
+        }
     }
 
     @Override
     protected void listener() {
 
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
     }
 
     @Override
@@ -119,5 +132,58 @@ public class PersonCenterFragment extends BaseFragment {
                 startActivity(intent6);
                 break;
         }
+    }
+
+    @Override
+    public String getPhoneNum() {
+        return  null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public void getLogin() {
+
+    }
+
+    @Override
+    public void getHome() {
+
+    }
+
+    @Override
+    public void login(LoginBean lo) {
+
+    }
+
+    @Override
+    public void onFiel(String message) {
+
+    }
+
+    @Override
+    public String userid() {
+        return null;
+    }
+
+    @Override
+    public void logintwo(LoginTwoBean loginTwoBean) {
+        String avatar = loginTwoBean.getAvatar();
+        Glide.with(App.baseActivity).load(avatar).into(LoginImage);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onEvent(LoginBean loginBean){
+        presenter.logintwo(loginBean.getUserid());
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
     }
 }
