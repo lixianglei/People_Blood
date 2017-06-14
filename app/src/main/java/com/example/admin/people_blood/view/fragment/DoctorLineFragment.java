@@ -269,6 +269,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.MyLoction:
+                shengText.setText("北京市");
                 break;
             case R.id.Shengfen:
                 Intent intent = new Intent(App.baseActivity, ShengFenActivity.class);
