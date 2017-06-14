@@ -15,6 +15,7 @@
         android:background="#ffffe9"
         >
         <TextView
+            android:id="@+id/Text_DianJi"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="未获取到内容，请确认您是否已经加号，请您点击重试"

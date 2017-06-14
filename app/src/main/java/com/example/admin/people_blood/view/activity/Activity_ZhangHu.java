@@ -1,8 +1,10 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
+import com.example.admin.people_blood.utils.ToastUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -84,7 +87,11 @@ public class Activity_ZhangHu extends BaseActivity {
                 startActivity(intent1);
                 break;
             case R.id.TuiChuDengLu:
-                showListDialog();
+                SharedPreferences sp = getSharedPreferences("DATA", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sp.edit();
+                editor.clear();
+                editor.commit();
+                ToastUtils.showShortToast("已经退出登录！");
                 break;
         }
     }

@@ -86,8 +86,6 @@ public class GaoXueYaActivity extends BaseActivity implements GaoXueXueYaActivit
         });
     }
 
-
-
     @OnClick(R.id.image_Back)
     public void onViewClicked() {
     }

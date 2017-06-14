@@ -3,10 +3,7 @@ package com.example.admin.people_blood.view.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -22,8 +19,8 @@ import com.example.admin.people_blood.view.activity.Activity_My_JiaHao;
 import com.example.admin.people_blood.view.activity.Activity_My_ShouCang;
 import com.example.admin.people_blood.view.activity.Activity_PerSonMessage;
 import com.example.admin.people_blood.view.activity.Activity_SheZhi;
-import com.example.admin.people_blood.view.activity.Activity_TiWen;
 import com.example.admin.people_blood.view.activity.LoginActivity;
+import com.example.admin.people_blood.view.activity.WenYiShengActivity;
 import com.example.admin.people_blood.view.view1.ILoginView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -110,7 +107,6 @@ public class PersonCenterFragment extends BaseFragment implements ILoginView{
                 Intent intent1=new Intent(getContext(), LoginActivity.class);
                 startActivity(intent1);
                 break;
-
             case R.id.My_JiaHao:
                 Intent intent2=new Intent(getContext(), Activity_My_JiaHao.class);
                 startActivity(intent2);
@@ -124,7 +120,7 @@ public class PersonCenterFragment extends BaseFragment implements ILoginView{
                 startActivity(intent4);
                 break;
             case R.id.My_XiaoXi:
-                Intent intent5=new Intent(getContext(), Activity_TiWen.class);
+                Intent intent5=new Intent(getContext(), WenYiShengActivity.class);
                 startActivity(intent5);
                 break;
             case R.id.My_SheZhi:

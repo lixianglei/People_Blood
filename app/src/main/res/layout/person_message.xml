@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-<!--<include-->
-    <!--android:id="@+id/fuy"-->
-    <!--layout="@layout/doctor_title"></include>-->
+<include
+    android:id="@+id/fuy"
+    layout="@layout/doctor_title"></include>
 
     <LinearLayout
         android:id="@+id/Name_XuanZe"
@@ -14,6 +14,7 @@
         android:background="#fff">
         >
         <TextView
+            android:id="@+id/Nameoo"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -21,7 +22,7 @@
             android:text="名字"
             android:textColor="#d4d4d4"
             android:textSize="20sp"
-            android:layout_weight="0.99" />
+            android:layout_weight="0.87" />
         <TextView
             android:id="@+id/Text_Name"
             android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
             android:textSize="20sp"
             android:textColor="#000"
             android:layout_gravity="center_vertical"
-            android:text="女"/>
+            android:text=""/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -50,6 +51,7 @@
         android:background="#fff">
         >
         <TextView
+            android:id="@+id/TextNv"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -121,6 +123,7 @@
         android:background="#fff">
         >
         <TextView
+
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,7 +133,7 @@
             android:textSize="20sp"
             android:layout_weight="0.99" />
         <TextView
-            android:id="@+id/weight_text"
+            android:id="@+id/Weight"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"

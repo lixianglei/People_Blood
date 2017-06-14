@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
 import com.example.admin.people_blood.adapter.MyFragmentAdapter;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.base.BaseFragment;
@@ -26,10 +27,10 @@ public class MainActivity extends BaseActivity {
 
     @Bind(R.id.Title_Text)
     TextView TitleText;
-    @Bind(R.id.Main_ViewPager)
-    ViewPager MainViewPager;
     @Bind(R.id.Main_Tablayout)
     TabLayout MainTablayout;
+    @Bind(R.id.Main_ViewPager)
+    ViewPager MainViewPager;
     @Bind(R.id.activity_main)
     RelativeLayout activityMain;
     private List<BaseFragment> fragments;
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity {
     protected int layoutId() {
         return R.layout.activity_main;
     }
+
     @Override
     protected void initView() {
         TitleText.setText("医生在线");
@@ -72,6 +74,7 @@ public class MainActivity extends BaseActivity {
         im.setImageResource(iconID);
         return newtab;
     }
+
     @Override
     protected void loadData() {
     }
