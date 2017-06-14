@@ -7,9 +7,11 @@ import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
 
@@ -22,11 +24,12 @@ public class NumEditText extends RelativeLayout {
     //类型2(百分比类型)：TextView显示总字数和当前输入的字数，例：0/100，1/100，2/100
     public static final String SINGULAR = "Singular";//类型1(单数类型)
     public static final String PERCENTAGE = "Percentage";//类型2(百分比类型)
-    private EditText etContent;//文本框
+    private EditText etContent,i;//文本框
     private TextView tvNum;//字数显示TextView
     private View vLine;//底部横线
     private String TYPES = SINGULAR;//类型
     private int MaxNum = 600;//最大字符
+    private Button Mbtn;
 
     public NumEditText(Context context) {
         this(context, null);
@@ -34,9 +37,20 @@ public class NumEditText extends RelativeLayout {
 
     public NumEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        LayoutInflater.from(context).inflate(R.layout.activity_freeask, this, true);
+        LayoutInflater.from(context).inflate(R.layout.activity_wendoctor, this, true);
         etContent = (EditText) findViewById(R.id.askDocotor_Editext);
         tvNum = (TextView) findViewById(R.id.MyText);
+        Mbtn= (Button) findViewById(R.id.TiJiao_ShuJu);
+        Mbtn.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(etContent.getText().toString().isEmpty()){
+                    Toast.makeText(getContext(), "不能为空", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "你的网络有点慢哦！", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
 //        vLine = findViewById(R.id.vLine);
     }
     /**
@@ -85,7 +99,6 @@ public class NumEditText extends RelativeLayout {
         this.MaxNum = num;
         return this;
     }
-
     /**
      * 设置文本框的Hint
      * @param str --设置内容
@@ -105,7 +118,6 @@ public class NumEditText extends RelativeLayout {
         etContent.setMinHeight(px);
         return this;
     }
-
 
     /**
      * 感觉这个方法是核心方法

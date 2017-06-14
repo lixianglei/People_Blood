@@ -29,7 +29,7 @@
             android:text="医院等级"/>
 
         <com.example.admin.people_blood.view.MyGridLayout
-            android:id="@+id/dragable_myGridLayout"
+            android:id="@+id/mDocdragable_myGridLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         </com.example.admin.people_blood.view.MyGridLayout>

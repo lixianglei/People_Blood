@@ -83,8 +83,17 @@ android:id="@+id/Doctor_Line"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="13sp"
-                    android:layout_weight="0.98"
+                    android:layout_weight="0.9"
                     android:text="医生职称"
+                    android:textSize="20sp" />
+                <TextView
+                    android:id="@+id/ZhiCheng_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13sp"
+                    android:layout_weight="0.1"
+                    android:text=""
                     android:textSize="20sp" />
 
                 <ImageView
@@ -114,10 +123,18 @@ android:id="@+id/Doctor_Line"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="13sp"
-                    android:layout_weight="0.98"
+                    android:layout_weight="0.9"
                     android:text="医院等级"
                     android:textSize="20sp" />
-
+                <TextView
+                    android:id="@+id/DengJi_Text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="13sp"
+                    android:layout_weight="0.1"
+                    android:text=""
+                    android:textSize="20sp" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -169,13 +186,13 @@ android:id="@+id/Doctor_Line"
                 android:background="#fff"
                 android:weightSum="1">
 
-                <ImageView
+                <CheckBox
                     android:id="@+id/doct_image"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15px"
+                   android:layout_marginLeft="10dp"
                     android:src="@drawable/checkbox_normal" />
 
                 <TextView
@@ -184,7 +201,7 @@ android:id="@+id/Doctor_Line"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="15px"
+                    android:layout_marginLeft="5px"
                     android:layout_toRightOf="@id/doct_image"
                     android:text="免费加号"
                     android:textSize="16sp" />
