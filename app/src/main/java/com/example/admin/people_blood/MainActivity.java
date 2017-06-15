@@ -129,9 +129,7 @@ public class MainActivity extends BaseActivity {
                 Log.d("MainActivity", "onTabReselected" + tab.getPosition());
             }
         });
-
     }
-
     private View tab_icon(String name, int iconID) {
         View newtab = LayoutInflater.from(this).inflate(R.layout.tablayout_item, null);
         TextView tv = (TextView) newtab.findViewById(R.id.tablayout_text);
@@ -140,7 +138,6 @@ public class MainActivity extends BaseActivity {
         im.setImageResource(iconID);
         return newtab;
     }
-
     @Override
     protected void loadData() {
     }
@@ -149,7 +146,6 @@ public class MainActivity extends BaseActivity {
     protected void listener() {
 
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

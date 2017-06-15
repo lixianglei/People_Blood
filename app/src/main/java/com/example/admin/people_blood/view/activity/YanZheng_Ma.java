@@ -28,10 +28,6 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class YanZheng_Ma extends BaseActivity {
-//    @Bind(R.id.back_img)
-//    ImageView backImg;
-//    @Bind(R.id.title_text)
-//    TextView titleText;
     @Bind(R.id.Num_Text)
     TextView NumText;
     @Bind(R.id.edit_num)
@@ -77,7 +73,6 @@ public class YanZheng_Ma extends BaseActivity {
     @OnClick({ R.id.Num_Text, R.id.edit_num, R.id.send_yanzhengma})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-
             case R.id.Num_Text:
                 break;
             case R.id.edit_num:
@@ -97,7 +92,6 @@ public class YanZheng_Ma extends BaseActivity {
                             sendYanzhengma.setBackgroundColor(Color.parseColor("#4CBF5B"));
                         }
                     }
-
                     @Override
                     public void afterTextChanged(Editable s) {
                         if (editNum.getText().length() >= 11) {
@@ -106,7 +100,6 @@ public class YanZheng_Ma extends BaseActivity {
                             sendYanzhengma.setBackgroundColor(Color.parseColor("#5f5d5d"));
                         }
                     }
-
                 });
                 Map<String,String > map = new HashMap<>();
                 map.put("act","sms");

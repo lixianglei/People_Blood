@@ -14,9 +14,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.androidkun.PullToRefreshRecyclerView;
-import com.androidkun.adapter.ViewHolder;
-import com.androidkun.callback.PullToRefreshListener;
 import com.baidu.platform.comapi.map.A;
 import com.bumptech.glide.Glide;
 import com.example.admin.people_blood.App;

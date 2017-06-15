@@ -45,10 +45,8 @@ public abstract class BaseFragment extends Fragment {
         loadData();
         listener();
     }
-
     /**
      * fragment隐藏显示时调用 hidden 隐藏时为false
-     *
      * @param hidden
      */
     @Override

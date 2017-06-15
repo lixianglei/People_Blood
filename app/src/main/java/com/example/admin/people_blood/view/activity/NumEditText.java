@@ -1,7 +1,6 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.content.Context;
-import android.content.Intent;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -11,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -51,7 +51,8 @@ public class NumEditText extends RelativeLayout {
     private int MaxNum = 600;//最大字符
     private Button Mbtn;
     private ImageView imageView;
-
+    private PopupWindow popupWindow;
+    private View popupView;
     public NumEditText(Context context) {
         this(context, null);
     }
@@ -65,9 +66,10 @@ public class NumEditText extends RelativeLayout {
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), SelectPicPopupWindow.class);
+                changeIcon();
             }
         });
+
 
         Mbtn = (Button) findViewById(R.id.TiJiao_ShuJu);
         Mbtn.setOnClickListener(new OnClickListener() {
@@ -82,7 +84,10 @@ public class NumEditText extends RelativeLayout {
         });
 //        vLine = findViewById(R.id.vLine);
     }
+    private void changeIcon() {
+            popupView = View.inflate(getContext(), R.layout.item_change_icon, null);
 
+    }
     /**
      * 设置显示
      *

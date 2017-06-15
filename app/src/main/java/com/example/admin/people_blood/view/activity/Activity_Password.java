@@ -47,6 +47,7 @@ public class Activity_Password extends BaseActivity {
 
     @Override
     protected void initView() {
+        Toast.makeText(this, "进入页面时会弹出一个对话框，请输入旧密码来保证账户安全", Toast.LENGTH_SHORT).show();
         showListDialog();
 
     }
@@ -62,17 +63,17 @@ public class Activity_Password extends BaseActivity {
 
     private void showListDialog() {
         final EditText et = new EditText(this);
-
         new AlertDialog.Builder(this).setTitle("验证密码")
                 .setMessage("验证原密码，更新密码前，请输入旧密码来保证您的账户安全")
                 .setView(et)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String input = et.getText().toString();
-                        if (input.equals("")) {
-                            Toast.makeText(getApplicationContext(), "请输入密码" + input, Toast.LENGTH_LONG).show();
+                        if (et.getText().toString().isEmpty()) {
+                            Toast.makeText(getApplicationContext(), "验证失败" + input, Toast.LENGTH_LONG).show();
                         }
                         else {
+
                             Intent intent = new Intent();
                             intent.putExtra("content", input);
 //                            intent.setClass(Activity_Password.this, Activity_Password.class);

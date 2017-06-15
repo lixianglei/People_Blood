@@ -14,11 +14,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MianFeiTiWenActivity extends BaseActivity {
-
     @Bind(R.id.activity_tiwen)
     NumEditText activityTiwen;
     private PopupWindow mPopup;
-
     private View view;
     @Override
     protected int layoutId() {
@@ -34,7 +32,7 @@ public class MianFeiTiWenActivity extends BaseActivity {
                 .setEtMinHeight(200)//设置最小高度，单位px
                 .setLength(100 / 1)//设置总字数
                 .setType(AnFQNumEditText.PERCENTAGE) //TextView显示类型(SINGULAR单数类型)(PERCENTAGE百分比类型)
-//                .setLineColor("#3F51B5")//设置横线颜色
+                .setLineColor("#3F51B5")//设置横线颜色
                 .show();
 
     }
@@ -48,7 +46,6 @@ public class MianFeiTiWenActivity extends BaseActivity {
     protected void listener() {
 
     }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
