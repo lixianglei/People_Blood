@@ -25,18 +25,18 @@ public class ChaXunModelImpl implements IChaXunModel {
     @Override
     public void chaxun(String Province, String Title, String PageCount, String PageNum, String Keyword, String Level, HttpCallBack httpCallBack) {
         Map<String,String>  map=new HashMap<>();
-       map.put("tag","BloodAndroid");
+        map.put("tag","BloodAndroid");
         map.put("sign","2c19b2821ebc5306c3ac37bac5b4288b");
         map.put("act","zhuanjia");
         map.put("fun","SearchDoctor");
-        map.put("PageCount",PageCount);
-        map.put("PageNum",PageNum);
-        map.put("Province",Province);
-        map.put("Title",Title);
-        map.put("Keyword",Keyword);
-        map.put("Illid","%E9%AB%98%E8%A1%80%E5%8E%8B");
-        map.put("Isplus","0");
-        map.put("Level",Level);
+        map.put("pageCount",PageCount);
+        map.put("pageNum",PageNum);
+        map.put("province",Province);
+        map.put("title",Title);
+        map.put("keyword","");
+        map.put("illid","%E9%AB%98%E8%A1%80%E5%8E%8B");
+        map.put("IsPlus","0");
+        map.put("level",Level);
         Log.i("集合",map.toString());
         RetrofitClient.getInstance().get(ChaXunZhuanJiaBean.class,"/index.php",map,httpCallBack);
     }

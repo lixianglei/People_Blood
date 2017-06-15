@@ -6,12 +6,11 @@ import java.util.Date;
 
 /**
  * 日期工具类
- *
+ * 时间实现
  * @author yuyh.
  * @date 16/4/9.
  */
 public class DateUtils {
-
     public static final String DEFAULT_DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
     /**
@@ -35,7 +34,6 @@ public class DateUtils {
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         return sdf.format(new Date(time));
     }
-
     /**
      * 获取当前日期
      *

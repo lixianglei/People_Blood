@@ -31,8 +31,9 @@ public class ChaXunPresenter {
         this.chaXunView = chaXunView;
     }
 
-    public   void  chaxun(){
-          chaXunModel.chaxun("","", "50", "30","","", new HttpCallBack() {
+  //String Province,String Title,String pagecount,String pageNum,String Keeword,String  level
+    public   void  chaxun(String Province,String Title,String pagecount,String pageNum,String Keeword,String  level){
+          chaXunModel.chaxun(Province,Title, pagecount, pageNum,Keeword,level, new HttpCallBack() {
               @Override
               public void onSuccess(Object object) {
                ChaXunZhuanJiaBean  bean= (ChaXunZhuanJiaBean) object;
@@ -40,7 +41,6 @@ public class ChaXunPresenter {
                   chaXunView.chaxun(data);
                   chaXunView.doctorNum(bean.getTotal());
               }
-
               @Override
               public void onFailure(String message) {
                   super.onFailure(message);

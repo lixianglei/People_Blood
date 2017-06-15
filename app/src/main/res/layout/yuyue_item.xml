@@ -1,57 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:weightSum="3"
-    >
-   <LinearLayout
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:layout_weight="1"
-       android:background="#fff"
-       android:orientation="vertical"
-       >
-       <TextView
-           android:id="@+id/ShiJian"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="6月21日"
-          android:layout_gravity="center"
-           />
-       <TextView
-           android:id="@+id/ZhouQi"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="周三"
-           android:layout_gravity="center"
-           />
-   </LinearLayout>
+    android:weightSum="3">
+
     <LinearLayout
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:layout_weight="1"
-       android:background="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:clickable="false"
         android:orientation="vertical"
-       >
+        >
+
         <TextView
-            android:id="@+id/ShenQing"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/JiaHao_ItemTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="申请预约"
-            android:layout_gravity="center"
-            />
+            android:text="打啊打"
+            android:textColor="#D9D9D9" />
+
         <TextView
-            android:id="@+id/ShengYu_num"
+            android:id="@+id/JiaHao_ItemXingqi"
+            android:textColor="#D9D9D9"
+            android:layout_gravity="center_horizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="剩余4个"
-            android:layout_gravity="center"
+            android:text="sas"
             />
+
+
     </LinearLayout>
+
     <LinearLayout
-       android:layout_width="0dp"
-       android:layout_height="wrap_content"
-       android:layout_weight="1"
-       android:background="#fff"
-       ></LinearLayout>
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:orientation="vertical">
+
+        <TextView
+            android:background="#fff"
+            android:id="@+id/JiaHao_ItemMsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:text="打啊打"
+            android:textColor="#D9D9D9" />
+
+        <TextView
+            android:id="@+id/JiaHao_ItemCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="3dp"
+            android:text="dada"
+            android:textColor="#D9D9D9" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_weight="1"
+        android:background="#fff"
+        android:clickable="false">
+
+    </LinearLayout>
 </LinearLayout>

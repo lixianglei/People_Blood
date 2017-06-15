@@ -11,10 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         />
-    <ListView
+    <com.androidkun.PullToRefreshRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/BiaoTi"
         android:id="@+id/ChaXun_ListView"
-        ></ListView>
+        ></com.androidkun.PullToRefreshRecyclerView>
 </RelativeLayout>

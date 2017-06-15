@@ -105,7 +105,8 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
     private ReMenAdapter mAdapter;
     private int page = 1;
     private String s;
-
+     private String  shen,zc,dj,gjz;
+    private SharedPreferences.Editor editor;
     @Override
     protected int ViewID() {
         return R.layout.fragment_doctor;
@@ -124,6 +125,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
         mAdapter = new ReMenAdapter();
         daoctorGridviwe.setAdapter(mAdapter);
         mShared = getActivity().getSharedPreferences("data", Context.MODE_PRIVATE);
+        editor=mShared.edit();
     }
 
     private void initPopupDj() {
@@ -180,6 +182,8 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
         yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+               String  ss= (String) mGridLayout1.getLastView().getText();
+
                 ZhiChengText.setText(mGridLayout1.getLastView().getText());
                 popupWindow_zhicheng.dismiss();
 
@@ -215,7 +219,6 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
             @Override
             public void onClick(View v) {
                 DengJiText.setText(mGridLayout2.getLastView().getText());
-
                 popupWindow_dengji.dismiss();
             }
 
@@ -255,11 +258,14 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 300 && resultCode == 200) {
             String content = data.getStringExtra("search_content");
+            this.gjz=content;
             guanjianzi.setText(content);
         }
         if (requestCode == 400 & resultCode == 250) {
             String Province = data.getStringExtra("Province");
+            this.shen=Province;
             shengText.setText(Province);
+            ;
         }
 
     }
@@ -282,6 +288,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
                 break;
             case R.id.GuanJianZi:
                 Intent intent1 = new Intent(App.baseActivity, GuanJianZiActivity.class);
+
                 startActivityForResult(intent1, 300);
                 break;
             case R.id.doct_jiahao:
@@ -301,6 +308,9 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
                 break;
             case R.id.ChaXunZhuanJia:
                 Intent intent3 = new Intent(App.baseActivity, ChaXunZhuanJiaActivity.class);
+                editor.putString("sheng",shen);
+                editor.putString("gjz",gjz);
+                 editor.commit();
                 startActivity(intent3);
                 break;
         }

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+ <LinearLayout
+     android:background="#e574f7"
+     android:layout_width="match_parent"
+     android:layout_height="50dp"
+     android:weightSum="8.5"
+     >
+     <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+
+         android:layout_weight="1.5"
+         />
+     <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+          android:text="一"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+         android:text="二"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+        android:text="三"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+         android:text="四"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+         android:text="⑤"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+        android:text="六"
+         android:layout_weight="1"
+         /> <TextView
+         android:layout_width="0dp"
+         android:layout_height="match_parent"
+         android:gravity="center"
+         android:text="七"
+         android:layout_weight="1"
+         />
+ </LinearLayout>
+    <LinearLayout
+        android:background="#e574f7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="8.5"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="上午"
+            android:layout_weight="1.5"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=""
+            android:layout_weight="1"
+            /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:background="#e574f7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="8.5"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+  android:text="下午"
+            android:layout_weight="1.5"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=""
+            android:layout_weight="1"
+            /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+    <LinearLayout
+        android:background="#e574f7"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:weightSum="8.5"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+         android:text="晚上"
+            android:layout_weight="1.5"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text=""
+            android:layout_weight="1"
+            /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        /> <TextView
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text=""
+        android:layout_weight="1"
+        />
+    </LinearLayout>
+</LinearLayout>
