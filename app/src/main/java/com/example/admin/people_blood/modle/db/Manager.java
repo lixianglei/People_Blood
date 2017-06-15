@@ -109,8 +109,8 @@ public class Manager {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String gaoya = cursor.getString(cursor.getColumnIndex("gaoya"));
             String diya = cursor.getString(cursor.getColumnIndex("diya"));
-            String isshoudong = cursor.getString(cursor.getColumnIndex("isshoudong"));
-            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya,isshoudong);
+//            String isshoudong = cursor.getString(cursor.getColumnIndex("isshoudong"));
+            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya,null);
             list.add(ceLiangMesageBean);
         }
         return list;

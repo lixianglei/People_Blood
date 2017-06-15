@@ -2,7 +2,6 @@ package com.example.admin.people_blood.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,19 +22,20 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
+
 public class BangDing_Activity extends BaseActivity {
     @Bind(R.id.back_img)
     ImageView backImg;
-    @Bind(R.id.Pnum)
-    TextView Pnum;
     @Bind(R.id.mEdiText_YanZhngMa)
     EditText mEdiTextYanZhngMa;
-    @Bind(R.id.Button_BangDing)
+    @Bind(R.id.BangDing_Btn)
     Button ButtonBangDing;
     @Bind(R.id.title_text)
     TextView titleText;
+    @Bind(R.id.Text_Fa)
+    TextView TextFa;
     private String num;
-   private  String string;
+    private String string;
 
     @Override
     protected int layoutId() {
@@ -44,14 +44,10 @@ public class BangDing_Activity extends BaseActivity {
 
     @Override
     protected void initView() {
-        titleText.setText("绑定手机号");
         Intent intent = getIntent();
-       num =  intent.getStringExtra("aaa");
-        Log.i("vvvvvvvvvvvv",num+"");
-        Pnum.setText("我们已经下发验证码到这个手机号："+num);
+        num = intent.getStringExtra("aaa");
+        TextFa.setText("验证码已发送至这个手机号：" + num);
         string = mEdiTextYanZhngMa.getText().toString().trim();
-
-
 
 
     }
@@ -75,34 +71,32 @@ public class BangDing_Activity extends BaseActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.back_img, R.id.Pnum, R.id.mEdiText_YanZhngMa, R.id.Button_BangDing})
+    @OnClick({R.id.back_img, R.id.mEdiText_YanZhngMa, R.id.BangDing_Btn})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.back_img:
                 onBackPressed();
                 break;
-            case R.id.Pnum:
-                break;
             case R.id.mEdiText_YanZhngMa:
                 break;
-            case R.id.Button_BangDing:
-                Map<String,String > map = new HashMap();
-                map.put("act","sms");
-                map.put("fun","verifyCode");
-                map.put("target",num);
-                map.put("tag","BloodAndroid");
-                map.put("code",string);
-                map.put("yz","1");
-                map.put("sign","2c19b2821ebc5306c3ac37bac5b4288b");
-                map.put("type","3");
+            case R.id.BangDing_Btn:
+                Map<String, String> map = new HashMap();
+                map.put("act", "sms");
+                map.put("fun", "verifyCode");
+                map.put("target", num);
+                map.put("tag", "BloodAndroid");
+                map.put("code", string);
+                map.put("yz", "1");
+                map.put("sign", "2c19b2821ebc5306c3ac37bac5b4288b");
+                map.put("type", "3");
                 RetrofitUtil.getInstance().getRetrofit("http://api.wws.xywy.com/index.php", map, new ResaultCallBack() {
                     @Override
                     public void onSuccess(Object obj) {
-                        BangDing bangdingBean= (BangDing) obj;
-                        if (bangdingBean.getCode()==10000){
-                            ToastUtils.showShortToast("提交成功~");
+                        BangDing bangdingBean = (BangDing) obj;
+                        if (bangdingBean.getCode() == 10000) {
+                            ToastUtils.showShortToast("提交成功");
                             finish();
-                        }else {
+                        } else {
                             ToastUtils.showShortToast("提交失败");
                         }
 

@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
+import com.example.admin.people_blood.utils.UserUtils;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -29,6 +30,7 @@ public class Activity_Phone extends BaseActivity {
     TextView TextPhone;
     @Bind(R.id.Phong_Btn)
     Button PhongBtn;
+    private String num;
 
     @Override
     protected int layoutId() {
@@ -37,6 +39,8 @@ public class Activity_Phone extends BaseActivity {
 
     @Override
     protected void initView() {
+        num = UserUtils.getUSERPHONENUM();
+        TextPhone.setText(num);
 
     }
 
@@ -59,7 +63,7 @@ public class Activity_Phone extends BaseActivity {
 
     @OnClick(R.id.Phong_Btn)
     public void onViewClicked() {
-        Intent intent=new Intent(getBaseContext(),YanZheng_Ma.class);
+        Intent intent=new Intent(getApplicationContext(),YanZheng_Ma.class);
         startActivity(intent);
         finish();
     }

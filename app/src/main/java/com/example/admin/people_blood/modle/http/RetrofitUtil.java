@@ -51,7 +51,7 @@ public class RetrofitUtil {
                     if (response.isSuccessful()) {
                         try {
                             final String body = response.body().string();
-                            App.activity.runOnUiThread(new Runnable() {
+                            App.baseActivity.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     callBack.onSuccess(getGeneric(body, tClass));
@@ -63,7 +63,7 @@ public class RetrofitUtil {
 
 
                     } else {
-                        App.activity.runOnUiThread(new Runnable() {
+                        App.baseActivity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 callBack.notNet("请求失败");
@@ -74,7 +74,7 @@ public class RetrofitUtil {
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, final Throwable t) {
-                    App.activity.runOnUiThread(new Runnable() {
+                    App.baseActivity.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             callBack.onError(t.getMessage());
@@ -107,7 +107,7 @@ public class RetrofitUtil {
                             e.printStackTrace();
                         }
                     } else {
-                        App.activity.runOnUiThread(new Runnable() {
+                        App.baseActivity.runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 callBack.notNet("请求失败");
@@ -118,12 +118,12 @@ public class RetrofitUtil {
 
                 @Override
                 public void onFailure(Call<ResponseBody> call, final Throwable t) {
-//                    App.activity.runOnUiThread(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            callBack.onError(t.getMessage());
-//                        }
-//                    });
+                    App.baseActivity.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            callBack.onError(t.getMessage());
+                        }
+                    });
                 }
             });
         }
@@ -134,4 +134,6 @@ public class RetrofitUtil {
         Gson gson = new Gson();
         return gson.fromJson(jsonData, c);
     }
+
+
 }

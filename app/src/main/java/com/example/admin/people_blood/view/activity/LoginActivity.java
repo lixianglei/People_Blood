@@ -24,8 +24,6 @@ import butterknife.OnClick;
 
 
 public class LoginActivity extends BaseActivity  implements ILoginView {
-
-
     @Bind(R.id.Edit_Phone)
     EditText EditPhone;
     @Bind(R.id.ShuRu_PhoneNum)
@@ -68,13 +66,12 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
     @OnClick(R.id.Login_Btn)
     public void onViewClicked() {
         loginPresenter.login(getPhoneNum(),getPassword());
-//        Intent  intent=new Intent(LoginActivity.this, PersonCenterFragment.class);
-//         intent.putExtra("userid",userid);
-//        intent.putExtra("phonenum",phonenum);
-//        startActivity(intent);
-
-//         loginPresenter.logintwo(userid);
-        Toast.makeText(this, "niss", Toast.LENGTH_SHORT).show();
+        Intent  intent=new Intent(LoginActivity.this, PersonCenterFragment.class);
+         intent.putExtra("userid",userid);
+        intent.putExtra("phonenum",phonenum);
+        startActivity(intent);
+         loginPresenter.logintwo(userid);
+        Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
     }
     @Override
     public String getPhoneNum() {

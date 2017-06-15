@@ -44,15 +44,17 @@ public class NumEditText extends RelativeLayout {
     EditText Edit;
     @Bind(R.id.TiJiao_ShuJu)
     Button TiJiaoShuJu;
+    @Bind(R.id.imageView)
+    ImageView imageView;
     private EditText etContent, i;//文本框
     private TextView tvNum;//字数显示TextView
     private View vLine;//底部横线
     private String TYPES = SINGULAR;//类型
     private int MaxNum = 600;//最大字符
     private Button Mbtn;
-    private ImageView imageView;
     private PopupWindow popupWindow;
     private View popupView;
+
     public NumEditText(Context context) {
         this(context, null);
     }
@@ -66,9 +68,17 @@ public class NumEditText extends RelativeLayout {
         imageView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeIcon();
+                switch (v.getId()){
+                    case R.id.imageView:
+
+//                        menuWindow=new SelectPicPopupWindow(getContext(),itemsOnClick);
+                        Toast.makeText(getContext(), "点击事件", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
+//        //显示窗口
+//        menuWindow.showAtLocation(getContext(), Gravity.BOTTOM|Gravity.CENTER_HORIZONTAL, 0, 0); //设置layout在PopupWindow中显示的位置
 
 
         Mbtn = (Button) findViewById(R.id.TiJiao_ShuJu);
@@ -84,10 +94,12 @@ public class NumEditText extends RelativeLayout {
         });
 //        vLine = findViewById(R.id.vLine);
     }
+
     private void changeIcon() {
-            popupView = View.inflate(getContext(), R.layout.item_change_icon, null);
+        popupView = View.inflate(getContext(), R.layout.item_change_icon, null);
 
     }
+
     /**
      * 设置显示
      *
@@ -230,6 +242,5 @@ public class NumEditText extends RelativeLayout {
         }
         return Math.round(len);
     }
-
 
 }

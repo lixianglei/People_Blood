@@ -18,7 +18,7 @@ import com.example.admin.people_blood.utils.AppUtils;
  */
 
 public class App extends Application {
-    public static BaseActivity baseActivity,activity;
+    public static  BaseActivity baseActivity;
     public static SharedPreferences sharedPreferences;
     @Override
     public void onCreate() {

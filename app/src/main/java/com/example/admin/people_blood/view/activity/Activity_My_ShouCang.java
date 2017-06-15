@@ -1,15 +1,12 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
+import android.content.Intent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.adapter.MyAdapter;
@@ -25,55 +22,41 @@ import java.util.List;
 import java.util.Map;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
 /**
  * Created by d on 2017/6/10.
  */
 
 public class Activity_My_ShouCang extends BaseActivity {
-    @Bind(R.id.left_layout)
-    RelativeLayout leftLayout;
-    @Bind(R.id.title)
-    TextView title;
+
     @Bind(R.id.left_image)
     ImageView leftImage;
-    @Bind(R.id.collection_listview)
-    ListView collectionListview;
+    @Bind(R.id.left_layout)
+    RelativeLayout leftLayout;
+    @Bind(R.id.WoDe_ShouCang)
+    ListView WoDeShouCang;
     private String id;
     ProgressDialog waitingDialog;
     private List<ShouCang.DataBean> mList = new ArrayList<>();
     private MyAdapter myAdapter;
-    private ListView listView;
-
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 200) {
-                waitingDialog.dismiss();
-            }
-        }
-    };
 
     @Override
     protected int layoutId() {
-        return R.layout.my_collection;
+        return R.layout.actitivty_shoucang;
     }
 
     @Override
     protected void initView() {
         id = UserUtils.getUSERID();
-        listView = (ListView) findViewById(R.id.collection_listview);
+        WoDeShouCang = (ListView) findViewById(R.id.WoDe_ShouCang);
         myAdapter = new MyAdapter(this, mList);
-        listView.setAdapter(myAdapter);
-
+        WoDeShouCang.setAdapter(myAdapter);
     }
 
     @Override
     protected void loadData() {
-        handler.sendEmptyMessageDelayed(200, 2000);
         showWaitingDialog();
+
         Map<String, String> map = new HashMap();
         map.put("xywy_userid", id);
         map.put("tag", "BloodAndroid");
@@ -86,10 +69,7 @@ public class Activity_My_ShouCang extends BaseActivity {
                 List<ShouCang.DataBean> dataBeen = shouCangbean.getData();
                 mList.addAll(dataBeen);
                 myAdapter.notifyDataSetChanged();
-
-
             }
-
             @Override
             public void onError(String errorMsg) {
 
@@ -99,43 +79,44 @@ public class Activity_My_ShouCang extends BaseActivity {
             public void notNet(String netData) {
 
             }
-
             @Override
             public void onErrorParams(String errorParams) {
 
             }
         }, ShouCang.class);
 
-
     }
 
     @Override
     protected void listener() {
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        leftImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (v.getId()){
+                    case R.id.left_image:
+                        finish();
+                }
+            }
+        });
+        WoDeShouCang.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 ShouCang.DataBean bean = mList.get(position);
                 String categoryid = bean.getCategoryid();
+                Intent intent = new Intent(Activity_My_ShouCang.this, ShouCang_XiangQing.class);
+                intent.putExtra("111", categoryid);
+                startActivity(intent);
 
             }
         });
 
-    }
 
+    }
     private void showWaitingDialog() {
-        waitingDialog =
-                new ProgressDialog(Activity_My_ShouCang.this);
+        waitingDialog = new ProgressDialog(Activity_My_ShouCang.this);
         waitingDialog.setMessage("等待中...");
         waitingDialog.setIndeterminate(true);
         waitingDialog.setCancelable(false);
         waitingDialog.show();
     }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
-    }
-
 }

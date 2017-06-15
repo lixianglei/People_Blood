@@ -5,7 +5,7 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/y80"
+        android:layout_height="50dp"
         android:background="#4CBF5B">
         <ImageView
             android:id="@+id/back_img"
@@ -19,9 +19,9 @@
             android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="个人资料"
+            android:text="我的收藏"
             android:layout_centerInParent="true"
-            android:textSize="@dimen/x40"
+            android:textSize="20dp"
             android:textColor="#ffffff"/>
     </RelativeLayout>
 

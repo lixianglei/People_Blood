@@ -2,14 +2,13 @@ package com.example.admin.people_blood.bean;
 
 import java.util.List;
 
+
 public class ShouCang {
 
     /**
      * state : 200
      * data : [{"categoryid":"770882","document_id":"0","title":"高血压患者饮食食谱有哪些","meta":"zhuzhan_ys,7938"},{"categoryid":"770334","document_id":"0","title":"高血压患者如何通过膳食缓解呢","meta":"zhuzhan_ys,7938"},{"categoryid":"1495225","document_id":"0","title":"高血压患者需正确认识低盐饮食","meta":"zhuanti_nk,18033"}]
      * error :
-     *
-     *
      */
 
     private int state;

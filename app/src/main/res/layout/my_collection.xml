@@ -4,8 +4,8 @@
     android:layout_height="match_parent">
     <include
         android:id="@+id/collection"
-        layout="@layout/shoucang_title"
-       >
+        layout="@layout/people"
+        >
     </include>
     <ListView
         android:id="@+id/collection_listview"
