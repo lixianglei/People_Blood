@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.admin.people_blood">
 
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 百度定位的权限 -->
     <!-- 这个权限用于进行网络定位 -->
@@ -23,6 +24,12 @@
     <!-- SD卡读取权限，用户写入离线定位数据 -->
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 百度地图key 和value值 -->
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.BLUETOOTH" />
     <meta-data
         android:name="com.baidu.lbsapi.API_KEY"
         android:value="PBZy9o12cmix0v1eTYgEifWDTc8dE9hi" />
@@ -67,6 +74,9 @@
         <activity android:name=".view.xueyaguanli.WenZhangDetil" />
         <activity android:name=".view.activity.MianFeiTiWenActivity" />
         <activity android:name=".view.activity.YuYueActivity"></activity>
+        <activity android:name=".xueyua.ClientActivity"/>
+        <activity android:name=".view.xueyaguanli.ShuJuKuListActivity"/>
+        <activity android:name=".view.xueyaguanli.ShuJuKuXiangQingActivity"/>
     </application>
 
 </manifest>

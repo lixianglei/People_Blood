@@ -1,6 +1,7 @@
 package com.example.admin.people_blood.utils;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -28,8 +29,8 @@ import java.util.Date;
 public class AppUtils {
     public static String COOKIE="cookie";
     private static ProgressDialog dialog;
-    private static SharedPreferences preferences=App.baseActivity.getSharedPreferences("data", Context.MODE_PRIVATE);
-    private static SharedPreferences.Editor editor=preferences.edit();
+//    private static SharedPreferences preferences=getAppContext().getSharedPreferences("data", Context.MODE_PRIVATE);
+//    private static SharedPreferences.Editor editor=preferences.edit();
 
     public static void dialog(){
         dialog=new ProgressDialog(App.baseActivity);
@@ -43,16 +44,16 @@ public class AppUtils {
     }
 
     public static void toast(String str){
-        Toast.makeText(App.activity,str,Toast.LENGTH_SHORT).show();
+        Toast.makeText(App.baseActivity,str,Toast.LENGTH_SHORT).show();
     }
 
-    public static SharedPreferences get(){
-        return preferences;
-    }
+//    public static SharedPreferences get(){
+//        return preferences;
+//    }
 
-    public static SharedPreferences.Editor put(){
-        return editor;
-    }
+//    public static SharedPreferences.Editor put(){
+//        return editor;
+//    }
 
     public static long stringToLong(String strTime, String formatType)
             throws ParseException {
@@ -85,21 +86,21 @@ public class AppUtils {
     }
 
     public static void isPression(String permission, final String[] permissions){
-        if (ContextCompat.checkSelfPermission(App.activity,
+        if (ContextCompat.checkSelfPermission(mContext,
                 permission)
                 != PackageManager.PERMISSION_GRANTED) {
 
-            if (ActivityCompat.shouldShowRequestPermissionRationale(App.baseActivity,
+            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) mContext.getApplicationContext(),
                     permission)) {
                 toast("程序应用需要此权限,请给予授权");
             } else {
-                new AlertDialog.Builder(App.baseActivity)
+                new AlertDialog.Builder(mContext)
                         .setTitle("权限申请")
                         .setMessage("你当前需要一个权限，是否给予授权")
                         .setNeutralButton("确定", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ActivityCompat.requestPermissions(App.baseActivity,
+                                ActivityCompat.requestPermissions((Activity) mContext.getApplicationContext(),
                                         permissions,
                                         1);
                             }

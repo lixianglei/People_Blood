@@ -1,11 +1,12 @@
-package com.example.admin.people_blood.view2;
+package com.example.admin.people_blood.view.view1;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import java.util.Set;
 /**
  * 项目名称: 血压宝
  * 类描述:
- * 创建人:
+ * 创建人: 田晓龙
  * 创建时间: 2017/6/14 17:26
  * 修改人:
  * 修改内容:
@@ -37,7 +38,7 @@ public class KeChengBiaoView extends LinearLayout {
     //每个view的宽度
     private int viewWidth;
     //每个view的高度 这里常量
-    private final int viewHeight = 50;
+    private int viewHeight;
     //用于设置view的宽和高
     private LayoutParams params;
     //星期数组
@@ -52,6 +53,9 @@ public class KeChengBiaoView extends LinearLayout {
     private boolean aBoolean;
     //用于存储调用对外公开的方法 添加的view 存进map集合 以便删除
     private Map<String, Integer> map;
+    private Paint linePaint;
+    private boolean isDraw;
+
     public KeChengBiaoView(Context context) {
         this(context, null);
     }
@@ -70,51 +74,135 @@ public class KeChengBiaoView extends LinearLayout {
         windowWidth = DimenUtils.getScreenWidth();
         //每个子view的宽度为屏幕宽度的8分之1
         viewWidth = windowWidth / 8;
+        viewHeight=windowHeight/15;
+        setWillNotDraw(false);
         //左边距默认为屏幕的宽度
         marginleft = viewWidth;
         //默认上边距为0
         marginTop = 0;
+        linePaint = new Paint();
+        linePaint.setColor(Color.parseColor("#000000"));
+        linePaint.setAntiAlias(true);
+
 //        params = new LayoutParams(viewWidth, viewHeight);
         //其实最后发现这里设置这个已经没啥用了
-        params = new LayoutParams(200, 200);
+        params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 0.5);
+
         //初始化默认的view
         initView();
+
+    }
+    @Override
+    protected void onLayout(boolean changed, int l, int t, int r, int b) {
+//        super.onLayout(changed, l, t, r, b);
+//        int childCount = getChildCount();
+//        View view1 = getChildAt(0);
+//        View view2 = getChildAt(1);
+//        view1.layout(100, 300, 100 + view1.getWidth(), 300 + view1.getHeight());
+//        Log.e("TAG", getChildCount() + "1----->" + System.currentTimeMillis());
+//防止调用2次 出错
+//        if (!aBoolean) {
+//            aBoolean = true;
+//            //遍历所有已经添加的子view
+//            for (int i = 0; i < getChildCount(); i++) {
+//                //i<=6 的时候是星期的view
+////                if (i <= 6) {
+////                    Log.d("KeChengBiaoView", "getChildCount():" + getChildCount());
+////                    TextView view = (TextView) getChildAt(i);
+////
+////                    Log.d("TAG", "--所有数据---->" + marginleft + "--" + marginTop + "--" + viewWidth + "---" + viewHeight);
+////                    view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
+////                    marginleft += viewWidth;
+////                } else {
+//                //重置左边距
+//                marginleft = 0;
+//                //同时上边距为当前的上边距 加 一个字view的高度
+//                marginTop += viewHeight;
+//                View view = getChildAt(i);
+//                view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
+////                }
+//            }
+//            marginleft = viewWidth;
+//        }
+    }
+    @Override
+    protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
+        marginleft = viewWidth;
+        marginTop = viewHeight;
+        float[] lines = {
+                0,0,windowWidth,0,
+                0, viewHeight, windowWidth, viewHeight,
+                0, viewHeight * 2, windowWidth, viewHeight * 2,
+                0, viewHeight * 3, windowWidth, viewHeight * 3,
+                0, viewHeight * 4, windowWidth, viewHeight * 4,
+                viewWidth * 1, 0, viewWidth * 1, viewHeight * 4,
+                viewWidth * 2, 0, viewWidth * 2, viewHeight * 4,
+                viewWidth * 3, 0, viewWidth * 3, viewHeight * 4,
+                viewWidth * 4, 0, viewWidth * 4, viewHeight * 4,
+                viewWidth * 5, 0, viewWidth * 5, viewHeight * 4,
+                viewWidth * 6, 0, viewWidth * 6, viewHeight * 4,
+                viewWidth * 7, 0, viewWidth * 7, viewHeight * 4};
+        canvas.drawLines(lines, linePaint);
+        //---------------------画字体
+        linePaint.setTextSize(50);
+        for (int i = 0; i < sunday.length; i++) {
+            //这里获取到当前字体的宽度
+            float stringWidth = linePaint.measureText(sunday[i]);
+            float x = ((viewWidth - stringWidth) / 2) + marginleft;
+            //这里获取到字体的高度
+            Paint.FontMetrics fontMetrics = linePaint.getFontMetrics();
+            float y = viewHeight / 2 + (Math.abs(fontMetrics.ascent) - fontMetrics.descent) / 2;
+            canvas.drawText(sunday[i], x, y, linePaint);
+            marginleft += viewWidth;
+        }
+
+        for (int i = 0; i < day.length; i++) {
+            float stringWidth = linePaint.measureText(day[i]);
+            float x = ((viewWidth - stringWidth) / 2);
+            Paint.FontMetrics fontMetrics = linePaint.getFontMetrics();
+            float y = (viewHeight / 2 + (Math.abs(fontMetrics.ascent) - fontMetrics.descent) / 2) + marginTop;
+            canvas.drawText(day[i], x, y, linePaint);
+            marginTop += viewHeight;
+        }
     }
 
     private void initView() {
 
-        Log.e("TAG", "0----->" + System.currentTimeMillis());
+//        Log.e("TAG", "0----->" + System.currentTimeMillis());
 //遍历包含星期的数组
-        for (int i = 0; i < sunday.length; i++) {
-            TextView textView = new TextView(context);
-            textView.setLayoutParams(params);
-            textView.setText(sunday[i]);
-            textView.setTextSize(15);
-            textView.setTextColor(Color.parseColor("#000000"));
-//            textView.setGravity(Gravity.CENTER);
-            addView(textView);
-        }
+//        for (int i = 0; i < sunday.length; i++) {
+//            TextView textView = new TextView(context);
+//            textView.setLayoutParams(params);
+//            textView.setText(sunday[i]);
+//            textView.setTextSize(15);
+//            textView.setTextColor(Color.parseColor("#000000"));
+////            textView.setBackgroundColor(Color.parseColor("#000000"));
+////            textView.setGravity(Gravity.CENTER);
+//
+//            addView(textView);
+//        }
         //遍历为时间的数组
-        for (int i = 0; i < day.length; i++) {
-            TextView textView = new TextView(context);
-            textView.setLayoutParams(params);
-            textView.setText(day[i]);
-            textView.setTextSize(15);
-            textView.setTextColor(Color.parseColor("#000000"));
-            addView(textView);
-        }
-
+//        for (int i = 0; i < day.length; i++) {
+//            TextView textView = new TextView(context);
+//            textView.setLayoutParams(params);
+//            textView.setText(day[i]);
+//            textView.setTextSize(15);
+//            textView.setTextColor(Color.parseColor("#000000"));
+//            addView(textView);
+//        }
     }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 
-        // 计算出所有的childView的宽和高
+//         计算出所有的childView的宽和高
         measureChildren(widthMeasureSpec, heightMeasureSpec);
         //设置总view的宽度 这里简单 宽度为屏幕宽度 高度为4个字view的宽度 后面优化布局的话会改变
         setMeasuredDimension(windowWidth, viewHeight * 4);
-//  int width;
+
+//        int width;
 //        int height;
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 //        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
@@ -135,40 +223,7 @@ public class KeChengBiaoView extends LinearLayout {
 //                : height);
     }
 
-    @Override
-    protected void onLayout(boolean changed, int l, int t, int r, int b) {
-//        super.onLayout(changed, l, t, r, b);
-//        int childCount = getChildCount();
-//        View view1 = getChildAt(0);
-//        View view2 = getChildAt(1);
-//        view1.layout(100, 300, 100 + view1.getWidth(), 300 + view1.getHeight());
-//        Log.e("TAG", getChildCount() + "1----->" + System.currentTimeMillis());
-//防止调用2次 出错
-        if (!aBoolean) {
-            aBoolean = true;
-            //遍历所有已经添加的子view
-            for (int i = 0; i < getChildCount(); i++) {
-                //i<=6 的时候是星期的view
-                if (i <= 6) {
-                    Log.d("KeChengBiaoView", "getChildCount():" + getChildCount());
-                    TextView view = (TextView) getChildAt(i);
 
-                    Log.d("TAG", "--所有数据---->" + marginleft + "--" + marginTop + "--" + viewWidth + "---" + viewHeight);
-                    view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
-                    marginleft += viewWidth;
-                } else {
-                    //重置左边距
-                    marginleft = 0;
-                    //同时上边距为当前的上边距 加 一个字view的高度
-                    marginTop += viewHeight;
-                    View view = getChildAt(i);
-                    view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
-                }
-            }
-
-
-        }
-    }
 
     /**
      * @param sunday 星期 1 到 7
@@ -180,16 +235,15 @@ public class KeChengBiaoView extends LinearLayout {
             Toast.makeText(context, "请输入正确的星期或者时间", Toast.LENGTH_SHORT).show();
             return;
         }
-
         Log.e("haha", getChildCount() + "");
         Log.e("haha", "添加是索引" + String.valueOf(sunday) + String.valueOf(type));
-        try {
+        if (map.get(String.valueOf(sunday) + String.valueOf(type)) != null) {
             int index = map.get(String.valueOf(sunday) + String.valueOf(type));
             map.remove(String.valueOf(sunday) + String.valueOf(type));
             removeViewAt(index);
             chongzhimap(index);
             addView(sunday, type);
-        } catch (Exception e) {
+        } else {
             addView(sunday, type);
         }
 
@@ -198,10 +252,12 @@ public class KeChengBiaoView extends LinearLayout {
 
     /**
      * 这里是添加view的方法
+     *
      * @param sunday
      * @param type
      */
     private void addView(int sunday, int type) {
+
         /**
          * 这里由于你添加view 所以当前添加的view索引一定是没添加之前的总子view数
          * key值我想了很久 最后不让重复只能是把当前的2个int值转成 String 值 然后2个拼接起来 才不会重复
@@ -215,41 +271,43 @@ public class KeChengBiaoView extends LinearLayout {
         TextView textView = new TextView(context);
         textView.setLayoutParams(params);
         textView.setTextSize(15);
-        textView.setBackgroundColor(Color.parseColor("#000000"));
+        textView.setText("专家");
+//        textView.setGravity(Gravity.CENTER);
+//        textView.setHint("专家");
+
+        textView.setBackgroundColor(Color.parseColor("#16DCC7"));
         addView(textView);
         textView.layout(left, top, left + viewWidth, top + viewHeight);
     }
 
     /**
      * 这个是删除view的方法
+     *
      * @param sunday
      * @param type
      */
     public void deleteview(int sunday, int type) {
-        //这里 try catch 是由于我这里的判断出了问题 解决后会把这个try catch删掉
-        try {
-            //先map.get() 这里由于没判断好 找不到就会报异常 只能用try catch了
-            if (map.get(String.valueOf(sunday) + String.valueOf(type)) != null || map.get(String.valueOf(sunday) + String.valueOf(type)) != 0) {
-                Log.e("haha", "删除时索引---" + String.valueOf(sunday) + String.valueOf(type));
-                //得到当前的索引
-                int index = map.get(String.valueOf(sunday) + String.valueOf(type));
-                Log.e("haha", index + "");
-                //把当前索引的view删除掉
-                removeViewAt(index);
-                //在map集合里也删除掉
-                map.remove(String.valueOf(sunday) + String.valueOf(type));
-                chongzhimap(index);
+        //判断当前有没有view
+        if (map.get(String.valueOf(sunday) + String.valueOf(type)) != null) {
+            Log.e("haha", "删除时索引---" + String.valueOf(sunday) + String.valueOf(type));
+            //得到当前的索引
+            int index = map.get(String.valueOf(sunday) + String.valueOf(type));
+            Log.e("haha", index + "");
+            //把当前索引的view删除掉
+            removeViewAt(index);
+            //在map集合里也删除掉
+            map.remove(String.valueOf(sunday) + String.valueOf(type));
+            chongzhimap(index);
 
-            }
-        } catch (Exception e) {
-            //异常的话说明我的map集合里面没有这个数据 Toast
-            Toast.makeText(context, "没有内容", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "没有东西哦", Toast.LENGTH_SHORT).show();
         }
 
     }
 
     /**
      * 重置map集合的方法
+     *
      * @param index
      */
     private void chongzhimap(int index) {

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.admin.people_blood.base.BaseActivity;
+import com.example.admin.people_blood.utils.AppUtils;
 
 /**
  * 项目名称: 血压测量
@@ -23,6 +24,6 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
         sharedPreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
-
+        AppUtils.init(getApplicationContext());
     }
 }

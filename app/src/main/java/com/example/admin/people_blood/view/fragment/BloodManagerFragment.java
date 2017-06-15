@@ -28,8 +28,8 @@ import com.example.admin.people_blood.utils.DateUtils;
 import com.example.admin.people_blood.view.activity.WenYiShengActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShuJuKuListActivity;
-import com.example.admin.people_blood.view.xueyaguanli.TiXingListActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
+import com.example.admin.people_blood.xueyua.ClientActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -207,6 +207,8 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     @Override
     public void kangBaoBeiShangChuan() {
         Toast.makeText(App.baseActivity, "康宝贝测量", Toast.LENGTH_SHORT).show();
+        Intent  intent=new Intent(getActivity(), ClientActivity.class);
+        startActivity(intent);
         popupWindow.dismiss();
     }
 
@@ -239,7 +241,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
                 break;
             //提醒
             case R.id.boold_tixing:
-                startActivity(new Intent(App.baseActivity, TiXingListActivity.class));
+//                startActivity(new Intent(App.baseActivity, TiXingListActivity.class));
                 break;
             //问医生
             case R.id.boold_wendoctor:
@@ -284,7 +286,6 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
             }
         });
     }
-
     private void dayShuaXin() {
         listshuju.clear();
         long date = System.currentTimeMillis();
