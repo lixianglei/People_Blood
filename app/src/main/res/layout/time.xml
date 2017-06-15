@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="#fff"
     >
-   <com.example.admin.people_blood.kechengbiao.TimeTableView
+   <com.example.admin.people_blood.view.view1.KeChengBiaoView
        android:background="#f2e9e9"
        android:id="@+id/main_timetable_ly"
        android:layout_width="fill_parent"
@@ -13,5 +13,5 @@
 
        >
 
-   </com.example.admin.people_blood.kechengbiao.TimeTableView>
+   </com.example.admin.people_blood.view.view1.KeChengBiaoView>
 </LinearLayout>
