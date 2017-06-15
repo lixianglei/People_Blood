@@ -1,6 +1,9 @@
 package com.example.admin.people_blood.view.activity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,7 +32,16 @@ public class Activity_My_JiaHao extends BaseActivity {
     LinearLayout QuanJuJiaZai;
     @Bind(R.id.Text_DianJi)
     TextView TextDianJi;
-
+    ProgressDialog waitingDialog;
+    private Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 200) {
+                waitingDialog.dismiss();
+            }
+        }
+    };
     @Override
     protected int layoutId() {
         return R.layout.activity_myjiahao;
@@ -42,12 +54,22 @@ public class Activity_My_JiaHao extends BaseActivity {
 
     @Override
     protected void loadData() {
+        handler.sendEmptyMessageDelayed(200, 2000);
+        showWaitingDialog();
 
     }
 
     @Override
     protected void listener() {
 
+    }
+    private void showWaitingDialog() {
+        waitingDialog =
+                new ProgressDialog(Activity_My_JiaHao.this);
+        waitingDialog.setMessage("等待中...");
+        waitingDialog.setIndeterminate(true);
+        waitingDialog.setCancelable(false);
+        waitingDialog.show();
     }
 
     @Override

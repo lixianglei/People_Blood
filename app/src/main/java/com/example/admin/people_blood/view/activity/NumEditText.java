@@ -1,6 +1,7 @@
 package com.example.admin.people_blood.view.activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
@@ -9,11 +10,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
+
+import butterknife.Bind;
+
 
 /**
  * Created by d on 2017/6/12.
@@ -24,12 +30,27 @@ public class NumEditText extends RelativeLayout {
     //类型2(百分比类型)：TextView显示总字数和当前输入的字数，例：0/100，1/100，2/100
     public static final String SINGULAR = "Singular";//类型1(单数类型)
     public static final String PERCENTAGE = "Percentage";//类型2(百分比类型)
-    private EditText etContent,i;//文本框
+    @Bind(R.id.update_back)
+    ImageView updateBack;
+    @Bind(R.id.askDocotor_Editext)
+    EditText askDocotorEditext;
+    @Bind(R.id.MyText)
+    TextView MyText;
+    @Bind(R.id.MainActivity_Button1)
+    RadioButton MainActivityButton1;
+    @Bind(R.id.MainActivity_Button2)
+    RadioButton MainActivityButton2;
+    @Bind(R.id.Edit)
+    EditText Edit;
+    @Bind(R.id.TiJiao_ShuJu)
+    Button TiJiaoShuJu;
+    private EditText etContent, i;//文本框
     private TextView tvNum;//字数显示TextView
     private View vLine;//底部横线
     private String TYPES = SINGULAR;//类型
     private int MaxNum = 600;//最大字符
     private Button Mbtn;
+    private ImageView imageView;
 
     public NumEditText(Context context) {
         this(context, null);
@@ -40,28 +61,38 @@ public class NumEditText extends RelativeLayout {
         LayoutInflater.from(context).inflate(R.layout.activity_wendoctor, this, true);
         etContent = (EditText) findViewById(R.id.askDocotor_Editext);
         tvNum = (TextView) findViewById(R.id.MyText);
-        Mbtn= (Button) findViewById(R.id.TiJiao_ShuJu);
+        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), SelectPicPopupWindow.class);
+            }
+        });
+
+        Mbtn = (Button) findViewById(R.id.TiJiao_ShuJu);
         Mbtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(etContent.getText().toString().isEmpty()){
+                if (etContent.getText().toString().isEmpty()) {
                     Toast.makeText(getContext(), "不能为空", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     Toast.makeText(getContext(), "你的网络有点慢哦！", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 //        vLine = findViewById(R.id.vLine);
     }
+
     /**
      * 设置显示
+     *
      * @return
      */
-    public NumEditText show(){
-        if(TYPES.equals(SINGULAR)){//类型1
+    public NumEditText show() {
+        if (TYPES.equals(SINGULAR)) {//类型1
             tvNum.setText(String.valueOf(MaxNum));
-        }else if(TYPES.equals(PERCENTAGE)){//类型2
-            tvNum.setText(0+"/"+MaxNum);
+        } else if (TYPES.equals(PERCENTAGE)) {//类型2
+            tvNum.setText(0 + "/" + MaxNum);
         }
         //设置长度
         etContent.setFilters(new InputFilter[]{new InputFilter.LengthFilter(MaxNum)});
@@ -72,60 +103,66 @@ public class NumEditText extends RelativeLayout {
 
     /**
      * 设置横线颜色
+     *
      * @param color --颜色值
      * @return
      */
-    public NumEditText setLineColor(String color){
+    public NumEditText setLineColor(String color) {
 //        vLine.setBackgroundColor(Color.parseColor(color));
         return this;
     }
 
     /**
      * 设置类型
+     *
      * @param type --类型
      * @return
      */
-    public NumEditText setType(String type){
+    public NumEditText setType(String type) {
         TYPES = type;
         return this;
     }
 
     /**
      * 设置最大字数
+     *
      * @param num --字数
      * @return
      */
-    public NumEditText setLength(int num){
+    public NumEditText setLength(int num) {
         this.MaxNum = num;
         return this;
     }
+
     /**
      * 设置文本框的Hint
+     *
      * @param str --设置内容
      * @return
      */
-    public NumEditText setEtHint(String str){
+    public NumEditText setEtHint(String str) {
         etContent.setHint(str);
         return this;
     }
 
     /**
      * 设置文本框的最小高度
+     *
      * @param px --最小高度(单位px)
      * @return
      */
-    public NumEditText setEtMinHeight(int px){
+    public NumEditText setEtMinHeight(int px) {
         etContent.setMinHeight(px);
         return this;
     }
 
     /**
      * 感觉这个方法是核心方法
-     *
      */
     private TextWatcher mTextWatcher = new TextWatcher() {
         private int editStart;
         private int editEnd;
+
         public void afterTextChanged(Editable s) {
             editStart = etContent.getSelectionStart();
             editEnd = etContent.getSelectionEnd();
@@ -143,28 +180,36 @@ public class NumEditText extends RelativeLayout {
             setLeftCount();
         }
 
-        public void beforeTextChanged(CharSequence s, int start, int count,int after) {}
+        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+        }
 
-        public void onTextChanged(CharSequence s, int start, int before,int count) {}
+        public void onTextChanged(CharSequence s, int start, int before, int count) {
+        }
     };
 
-    /** 刷新剩余输入字数 */
+    /**
+     * 刷新剩余输入字数
+     */
     private void setLeftCount() {
-        if(TYPES.equals(SINGULAR)){//类型1
+        if (TYPES.equals(SINGULAR)) {//类型1
             tvNum.setText(String.valueOf((MaxNum - getInputCount())));
-        }else if(TYPES.equals(PERCENTAGE)){//类型2
-            tvNum.setText(MaxNum-(MaxNum - getInputCount())+"/"+MaxNum);
+        } else if (TYPES.equals(PERCENTAGE)) {//类型2
+            tvNum.setText(MaxNum - (MaxNum - getInputCount()) + "/" + MaxNum);
         }
 
     }
 
-    /** 获取用户输入内容字数 */
+    /**
+     * 获取用户输入内容字数
+     */
     private long getInputCount() {
         return calculateLength(etContent.getText().toString());
     }
+
     /**
      * 计算分享内容的字数，一个汉字=两个英文字母，一个中文标点=两个英文标点
      * 注意：该函数的不适用于对单个字符进行计算，因为单个字符四舍五入后都是1
+     *
      * @param cs
      * @return
      */
@@ -180,4 +225,6 @@ public class NumEditText extends RelativeLayout {
         }
         return Math.round(len);
     }
+
+
 }

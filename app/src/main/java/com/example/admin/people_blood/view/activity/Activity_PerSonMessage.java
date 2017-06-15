@@ -49,10 +49,8 @@ public class Activity_PerSonMessage extends BaseActivity {
     TextView TextTime;
     @Bind(R.id.Text_Name)
     TextView TextName;
-    @Bind(R.id.set_Sex)
-    TextView setSex;
-    @Bind(R.id.height_text)
-    TextView heightText;
+    //    @Bind(R.id.set_Sex)
+//    TextView setSex;
     int mYear, mMonth, mDay;
     final int DATE_DIALOG = 1;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -71,10 +69,10 @@ public class Activity_PerSonMessage extends BaseActivity {
     TextView TextNv;
     @Bind(R.id.Weight)
     TextView Weight;
-//    @Bind(R.id.Nameoo)
-//    TextView Nameoo;
     @Bind(R.id.Sex_XuanZe)
     LinearLayout SexXuanZe;
+    @Bind(R.id.height_text)
+    TextView heightText;
 
     @Override
     protected int layoutId() {
@@ -241,8 +239,6 @@ public class Activity_PerSonMessage extends BaseActivity {
 
     };
     //<-------选择性别------>
-
-
 
 
     private void showDialog_Layout(Context context) {
