@@ -13,6 +13,7 @@ import com.example.admin.people_blood.base.BaseActivity;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by d on 2017/6/11.
@@ -56,7 +57,6 @@ public class Activity_Name extends BaseActivity {
                 Activity_Name.this.finish();
             }
         });
-
     }
 
     @Override
@@ -64,5 +64,20 @@ public class Activity_Name extends BaseActivity {
         super.onCreate(savedInstanceState);
         // TODO: add setContentView(...) invocation
         ButterKnife.bind(this);
+    }
+
+    @OnClick({R.id.left_image, R.id.left_layout, R.id.title, R.id.Name_Edit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.left_image:
+                finish();
+                break;
+            case R.id.left_layout:
+                break;
+            case R.id.title:
+                break;
+            case R.id.Name_Edit:
+                break;
+        }
     }
 }

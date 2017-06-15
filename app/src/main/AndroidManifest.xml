@@ -41,6 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.activity.YanZheng_Ma"></activity>
+        <activity android:name=".view.activity.BangDing_Activity"></activity>
         <activity android:name=".view.activity.Activity_Message" />
         <activity android:name=".view.activity.Activity_My_JiaHao" />
         <activity android:name=".view.activity.Activity_My_ShouCang" />
@@ -59,7 +61,6 @@
         <activity android:name=".view.activity.Activity_ZhangHu" />
         <activity android:name=".view.activity.Activity_Password" />
         <activity android:name=".view.activity.Activity_Phone" />
-
         <activity android:name=".view.xueyaguanli.XueYaZiXunActivity" />
         <activity android:name=".view.xueyaguanli.GaoXueYaActivity" />
         <activity android:name=".view.xueyaguanli.ShouDongCeLiangActivity" />

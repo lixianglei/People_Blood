@@ -1,5 +1,6 @@
 package com.example.admin.people_blood.view.activity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.util.Log;
 import android.widget.Button;
@@ -13,7 +14,10 @@ import com.example.admin.people_blood.bean.LoginBean;
 import com.example.admin.people_blood.bean.LoginTwoBean;
 import com.example.admin.people_blood.presenter.ILoginPresenter;
 import com.example.admin.people_blood.presenter.LoginPresenter;
+import com.example.admin.people_blood.view.fragment.PersonCenterFragment;
 import com.example.admin.people_blood.view.view1.ILoginView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import butterknife.Bind;
 import butterknife.OnClick;
@@ -37,7 +41,7 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
     private ILoginPresenter  loginPresenter;
     private SharedPreferences  mShared;
     private SharedPreferences.Editor mEditor;
-    private String  userid;
+    private String  userid,phonenum;
     @Override
     protected int layoutId() {
 
@@ -46,7 +50,6 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
 
     @Override
     protected void initView() {
-
         loginPresenter=new LoginPresenter(this);
         mShared=getSharedPreferences("data",MODE_PRIVATE);
         mEditor=mShared.edit();
@@ -64,11 +67,15 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
 
     @OnClick(R.id.Login_Btn)
     public void onViewClicked() {
-          loginPresenter.login(getPhoneNum(),getPassword());
-         loginPresenter.logintwo();
+        loginPresenter.login(getPhoneNum(),getPassword());
+//        Intent  intent=new Intent(LoginActivity.this, PersonCenterFragment.class);
+//         intent.putExtra("userid",userid);
+//        intent.putExtra("phonenum",phonenum);
+//        startActivity(intent);
+
+//         loginPresenter.logintwo(userid);
         Toast.makeText(this, "niss", Toast.LENGTH_SHORT).show();
     }
-
     @Override
     public String getPhoneNum() {
         String phonenum=EditPhone.getText().toString().trim();
@@ -91,16 +98,17 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
     public void getHome() {
 
     }
-
     @Override
     public void login(LoginBean loginBean) {
         Log.i("TAG",loginBean.getPhonenum());
         String phonenum = loginBean.getPhonenum();
-   userid = loginBean.getUserid();
+        userid = loginBean.getUserid();
         mEditor.putString("userid",userid);
         mEditor.putString("phonenum",phonenum);
+        mEditor.putString("passworld",EditPassword.getText().toString().trim());
         mEditor.commit();
-        Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show();
+        finish();
+        EventBus.getDefault().post(loginBean);
     }
 
     @Override
@@ -120,6 +128,5 @@ public class LoginActivity extends BaseActivity  implements ILoginView {
         String avatar = loginTwoBean.getAvatar();
         Log.i("sd",avatar);
 //        mEditor.putString("avatar",avatar);
-
     }
 }

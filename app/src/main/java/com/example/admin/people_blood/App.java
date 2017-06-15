@@ -1,6 +1,8 @@
 package com.example.admin.people_blood;
 
 import android.app.Application;
+import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.example.admin.people_blood.base.BaseActivity;
 
@@ -16,10 +18,11 @@ import com.example.admin.people_blood.base.BaseActivity;
 
 public class App extends Application {
     public static BaseActivity baseActivity,activity;
-
+    public static SharedPreferences sharedPreferences;
     @Override
     public void onCreate() {
         super.onCreate();
+        sharedPreferences = getSharedPreferences("DATA", Context.MODE_PRIVATE);
 
     }
 }

@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -118,7 +117,7 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
     protected void initView() {
         mList2 = new ArrayList<>();
         shengText.setText("省份");
-        initPopupZc();
+//        initPopupZc();
         initPopupDj();
         presenter = new ReMenPresenter(this);
         mList = new ArrayList<>();
@@ -134,14 +133,14 @@ public class DoctorLineFragment extends BaseFragment implements IReMenView {
         mPopupDJ.setBackgroundDrawable(new ColorDrawable());
     }
 
-    private void initPopupZc() {
-
-        View view = LayoutInflater.from(App.baseActivity).inflate(R.layout.yszcpopup, null);
-        mPopupZc = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
-        mPopupZc.setBackgroundDrawable(new ColorDrawable());
-        mPopupZc.setOutsideTouchable(true);
-
-    }
+//    private void initPopupZc() {
+//
+//        View view = LayoutInflater.from(App.baseActivity).inflate(R.layout.yszcpopup, null);
+//        mPopupZc = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, true);
+//        mPopupZc.setBackgroundDrawable(new ColorDrawable());
+//        mPopupZc.setOutsideTouchable(true);
+//
+//    }
 
     @Override
     protected void loadData() {

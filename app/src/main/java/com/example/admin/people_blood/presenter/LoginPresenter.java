@@ -45,8 +45,8 @@ public class LoginPresenter implements ILoginPresenter {
     }
 
     @Override
-    public void logintwo() {
-          loginModel.loginImage(loginView.userid(), new HttpCallBack() {
+    public void logintwo(String  userid) {
+          loginModel.loginImage(userid, new HttpCallBack() {
               @Override
               public void onSuccess(Object object) {
                   LoginTwoBean loginBean = (LoginTwoBean) object;
