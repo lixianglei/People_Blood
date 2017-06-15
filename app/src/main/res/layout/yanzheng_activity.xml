@@ -21,9 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
-        android:textSize="20px"
+        android:textSize="25px"
         android:layout_marginTop="15px"
-        android:text="更换成功后，下次登录可以使用新的手机号，当前手机号为：15103597440"/>
+        android:text="更换成功后，下次登录可以使用新的手机号"/>
 
         <EditText
             android:id="@+id/edit_num"

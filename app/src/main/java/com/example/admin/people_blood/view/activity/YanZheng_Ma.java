@@ -108,7 +108,6 @@ public class YanZheng_Ma extends BaseActivity {
                     }
 
                 });
-                //http://api.wws.xywy.com/index.php?act=sms&fun=sendCode&target=17600044200&tag=BloodAndroid&sign=2c19b2821ebc5306c3ac37bac5b4288b&type=3
                 Map<String,String > map = new HashMap<>();
                 map.put("act","sms");
                 map.put("fun","sendCode");
@@ -147,9 +146,6 @@ public class YanZheng_Ma extends BaseActivity {
 
                     }
                 }, Phone.class);
-
-
-
 
                 break;
         }
