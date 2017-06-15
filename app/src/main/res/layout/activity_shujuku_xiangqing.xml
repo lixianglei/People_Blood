@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FBF8F4"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/back_titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="#ffffff"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/shuju_one"
+            android:drawablePadding="15dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="血压"
+            android:textColor="#5D5D5D"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/shujuxiangqing_xueya"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/arrow_right"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="150.0"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/shuju_two"
+            android:drawablePadding="15dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="数据来源"
+            android:textColor="#5D5D5D"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/shujuxiangqing_name"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/arrow_right"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="欧姆龙"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/shuju_three"
+            android:drawablePadding="15dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="日期"
+            android:textColor="#5D5D5D"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/shujuxiangqing_date"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/arrow_right"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="2017-06-12"
+            android:textSize="17sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#ffffff"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:drawableLeft="@drawable/shuju_four"
+            android:drawablePadding="15dp"
+            android:gravity="center"
+            android:paddingLeft="8dp"
+            android:text="用户输入数据"
+            android:textColor="#5D5D5D"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/shujuxiangqing_isshoudong"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:drawableRight="@drawable/arrow_right"
+            android:gravity="center"
+            android:paddingRight="8dp"
+            android:text="是"
+            android:textSize="17sp" />
+    </RelativeLayout>
+</LinearLayout>

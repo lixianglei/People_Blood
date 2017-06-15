@@ -173,7 +173,7 @@ public class ShouDongCeLiangActivity extends BaseActivity {
                 String name = shoudongName.getText().toString().trim();
                 String gaogao = shoudongGaoya.getText().toString().trim();
                 String didi = shoudongDiya.getText().toString().trim();
-                CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(date, time, name, gaogao, didi);
+                CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(date, time, name, gaogao, didi,"true");
                 if (manager.insert(ceLiangMesageBean)) {
                     EventBus.getDefault().post(ceLiangMesageBean);
                     finish();

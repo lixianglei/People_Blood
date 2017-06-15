@@ -7,7 +7,7 @@
             <!--设置圆角-->
             <corners android:radius="5dp"></corners>
             <!--stroke设置描边-->
-            <stroke android:width="2dp" android:color="#000"></stroke>
+            <stroke android:width="2dp" android:color="@color/colorGrays"></stroke>
             <solid android:color="@color/color_boold_green"></solid>
         </shape>
     </item>

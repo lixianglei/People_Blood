@@ -65,6 +65,7 @@ public class Manager {
         values.put("name", ceLiangMesageBean.getName());
         values.put("gaoya", ceLiangMesageBean.getGaoya());
         values.put("diya", ceLiangMesageBean.getDiya());
+        values.put("isshoudong",ceLiangMesageBean.getIsshoudong());
         long insert = mDB.insert(TAB_SHUJU, null, values);
         return isBoo(insert);
     }
@@ -92,6 +93,7 @@ public class Manager {
         values.put("name", ceLiangMesageBean.getName());
         values.put("gaoya", ceLiangMesageBean.getGaoya());
         values.put("diya", ceLiangMesageBean.getDiya());
+        values.put("isshoudong",ceLiangMesageBean.getIsshoudong());
         int update = mDB.update(TAB_SHUJU, values, "date=?", new String[]{date});
         return isBoo(update);
     }
@@ -107,7 +109,8 @@ public class Manager {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String gaoya = cursor.getString(cursor.getColumnIndex("gaoya"));
             String diya = cursor.getString(cursor.getColumnIndex("diya"));
-            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya);
+            String isshoudong = cursor.getString(cursor.getColumnIndex("isshoudong"));
+            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya,isshoudong);
             list.add(ceLiangMesageBean);
         }
         return list;
@@ -125,7 +128,8 @@ public class Manager {
             String name = cursor.getString(cursor.getColumnIndex("name"));
             String gaoya = cursor.getString(cursor.getColumnIndex("gaoya"));
             String diya = cursor.getString(cursor.getColumnIndex("diya"));
-            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya);
+            String isshoudong = cursor.getString(cursor.getColumnIndex("isshoudong"));
+            CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(dat, time, name, gaoya, diya,isshoudong);
             list.add(ceLiangMesageBean);
         }
         return list;

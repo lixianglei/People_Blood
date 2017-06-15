@@ -4,9 +4,11 @@ package com.example.admin.people_blood;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,6 +35,8 @@ public class MainActivity extends BaseActivity {
     ViewPager MainViewPager;
     @Bind(R.id.activity_main)
     RelativeLayout activityMain;
+    @Bind(R.id.linetitle_bar)
+    LinearLayout linetitleBar;
     private List<BaseFragment> fragments;
     private List<String> strings;
     private MyFragmentAdapter fragmentAdapter;
@@ -60,9 +64,71 @@ public class MainActivity extends BaseActivity {
         MainViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(MainTablayout));
         MainTablayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(MainViewPager));
         MainTablayout.setupWithViewPager(MainViewPager);
-        MainTablayout.getTabAt(0).setCustomView(tab_icon(strings.get(0), R.drawable.doctorline));
+        MainTablayout.getTabAt(0).setCustomView(tab_icon(strings.get(0), R.drawable.doctor_head_press));
         MainTablayout.getTabAt(1).setCustomView(tab_icon(strings.get(1), R.drawable.booldmanager));
         MainTablayout.getTabAt(2).setCustomView(tab_icon(strings.get(2), R.drawable.personcenter));
+        MainTablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            //最后加载的
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    //医生在线
+                    case 0:
+                        linetitleBar.setVisibility(View.VISIBLE);
+                        TitleText.setText("医生在线");
+                        ImageView imageView3 = (ImageView) MainTablayout.getTabAt(0).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView3.setImageResource(R.drawable.doctor_head_press);
+                        break;
+                    //血压管理
+                    case 1:
+                        linetitleBar.setVisibility(View.VISIBLE);
+                        TitleText.setText("血压管理");
+//                        MainTablayout.getTabAt(1).setCustomView(tab_icon(strings.get(1), R.drawable.blood_manger_press));
+                        ImageView imageView = (ImageView) MainTablayout.getTabAt(1).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView.setImageResource(R.drawable.blood_manger_press);
+                        break;
+                    //个人中心
+                    case 2:
+                        linetitleBar.setVisibility(View.GONE);
+                        ImageView imageView2 = (ImageView) MainTablayout.getTabAt(2).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView2.setImageResource(R.drawable.persional_press);
+                        break;
+
+                }
+            }
+
+            //上一个
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                switch (tab.getPosition()) {
+                    //医生在线
+                    case 0:
+
+                        ImageView imageView3 = (ImageView) MainTablayout.getTabAt(0).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView3.setImageResource(R.drawable.doctor_head_normal);
+                        break;
+                    //血压管理
+                    case 1:
+//                        MainTablayout.getTabAt(1).setCustomView(tab_icon(strings.get(1), R.drawable.blood_manger_normal));
+                        ImageView imageView = (ImageView) MainTablayout.getTabAt(1).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView.setImageResource(R.drawable.blood_manger_normal);
+                        break;
+                    //个人中心
+                    case 2:
+                        ImageView imageView2 = (ImageView) MainTablayout.getTabAt(2).getCustomView().findViewById(R.id.tablayout_image);
+                        imageView2.setImageResource(R.drawable.persional_normal);
+                        break;
+
+                }
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                Log.d("MainActivity", "onTabReselected" + tab.getTag());
+                Log.d("MainActivity", "onTabReselected" + tab.getContentDescription());
+                Log.d("MainActivity", "onTabReselected" + tab.getPosition());
+            }
+        });
 
     }
 

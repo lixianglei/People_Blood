@@ -8,6 +8,7 @@ import com.example.admin.people_blood.utils.GsonUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -42,6 +43,7 @@ public class RetrofitClient implements IHttp {
     private static RetrofitClient retrofitClient;
     private IAPiService iaPiService;
     private String baseul = IAPiService.HOST;
+
     private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
@@ -64,26 +66,42 @@ public class RetrofitClient implements IHttp {
 
     @Override
     public void get(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack) {
+        map = getStringStringMap(map);
         get(classBean, url, map, httpCallBack, false);
     }
+
+    @android.support.annotation.NonNull
+    private Map<String, String> getStringStringMap(Map<String, String> map) {
+        if(map==null){
+            map = new HashMap<>();
+        }
+        return map;
+    }
+
     public void get(final Class classBean, String url, Map<String, String> map, final HttpCallBack httpCallBack, final boolean boo) {
+        map = getStringStringMap(map);
         iaPiService.get(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getConsumer(classBean, httpCallBack, boo), getThrowable(httpCallBack));
     }
+
     @Override
     public void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack) {
+        map = getStringStringMap(map);
         post(classBean, url, map, httpCallBack, false);
     }
+
     public void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack, boolean boo) {
+        map = getStringStringMap(map);
         iaPiService.post(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(getConsumer(classBean, httpCallBack, boo), getThrowable(httpCallBack));
     }
+
     @Override
     public void updateImage(Class classBean, Map<String, String> map, String url, String key, File fileimage, HttpCallBack httpCallBack) {
         if (fileimage == null || key.length() <= 0 || key.isEmpty() || !fileimage.exists()) {
@@ -104,16 +122,12 @@ public class RetrofitClient implements IHttp {
     }
 
 
-
-
-
-
     private Consumer<ResponseBody> getConsumer(final Class classBean, final HttpCallBack httpCallBack, final boolean boo) {
         Consumer<ResponseBody> consumer = new Consumer<ResponseBody>() {
             @Override
             public void accept(@NonNull ResponseBody responseBody) throws Exception {
                 String res = responseBody.string();
-                Log.e("集合",res);
+                Log.e("集合", res);
                 if (boo) {
                     httpCallBack.onSuccess(GsonUtils.gsonList(res, classBean));
                 } else {
@@ -214,6 +228,5 @@ public class RetrofitClient implements IHttp {
             };
         }
     }
-
 
 }
