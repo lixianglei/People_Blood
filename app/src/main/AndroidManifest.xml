@@ -75,6 +75,8 @@
         <activity android:name=".view.activity.MianFeiTiWenActivity" />
         <activity android:name=".view.activity.YuYueActivity"></activity>
         <activity android:name=".xueyua.ClientActivity"/>
+        <activity android:name=".view.xueyaguanli.ShuJuKuListActivity"/>
+        <activity android:name=".view.xueyaguanli.ShuJuKuXiangQingActivity"/>
     </application>
 
 </manifest>

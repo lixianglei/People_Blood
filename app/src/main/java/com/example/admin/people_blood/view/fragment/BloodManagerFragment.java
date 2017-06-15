@@ -28,7 +28,6 @@ import com.example.admin.people_blood.utils.DateUtils;
 import com.example.admin.people_blood.view.activity.WenYiShengActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShuJuKuListActivity;
-import com.example.admin.people_blood.view.xueyaguanli.TiXingListActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
 import com.example.admin.people_blood.xueyua.ClientActivity;
 
@@ -242,7 +241,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
                 break;
             //提醒
             case R.id.boold_tixing:
-                startActivity(new Intent(App.baseActivity, TiXingListActivity.class));
+//                startActivity(new Intent(App.baseActivity, TiXingListActivity.class));
                 break;
             //问医生
             case R.id.boold_wendoctor:

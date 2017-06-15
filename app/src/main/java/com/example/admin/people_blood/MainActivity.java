@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.admin.people_blood.adapter.MyFragmentAdapter;
@@ -27,16 +26,17 @@ import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity {
 
+
     @Bind(R.id.Title_Text)
     TextView TitleText;
-    @Bind(R.id.Main_Tablayout)
-    TabLayout MainTablayout;
-    @Bind(R.id.Main_ViewPager)
-    ViewPager MainViewPager;
-    @Bind(R.id.activity_main)
-    RelativeLayout activityMain;
     @Bind(R.id.linetitle_bar)
     LinearLayout linetitleBar;
+    @Bind(R.id.Main_ViewPager)
+    ViewPager MainViewPager;
+    @Bind(R.id.Main_Tablayout)
+    TabLayout MainTablayout;
+    @Bind(R.id.activity_main)
+    LinearLayout activityMain;
     private List<BaseFragment> fragments;
     private List<String> strings;
     private MyFragmentAdapter fragmentAdapter;
@@ -149,6 +149,7 @@ public class MainActivity extends BaseActivity {
     protected void listener() {
 
     }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
