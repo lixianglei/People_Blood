@@ -71,8 +71,8 @@ public class Activity_PerSonMessage extends BaseActivity {
     TextView TextNv;
     @Bind(R.id.Weight)
     TextView Weight;
-    @Bind(R.id.Nameoo)
-    TextView Nameoo;
+//    @Bind(R.id.Nameoo)
+//    TextView Nameoo;
     @Bind(R.id.Sex_XuanZe)
     LinearLayout SexXuanZe;
 
