@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:padding="15dp"
+    android:layout_height="match_parent">
+<TextView
+    android:textSize="16sp"
+    android:text="服药时间"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+        <LinearLayout
+            android:layout_centerInParent="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <NumberPicker
+                android:id="@+id/numpicker_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></NumberPicker>
+            <NumberPicker
+                android:id="@+id/numpicker_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></NumberPicker>
+        </LinearLayout>
+    </RelativeLayout>
+<TextView
+    android:textSize="18sp"
+    android:textColor="#000000"
+    android:text="提醒详情"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorGrays"
+            android:text="药品名称"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="dsadsads"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorGrays"
+            android:text="服用剂量: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="剂量"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+</LinearLayout>

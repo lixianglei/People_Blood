@@ -25,8 +25,10 @@ import com.example.admin.people_blood.eventbus.ShuJuKuDetl;
 import com.example.admin.people_blood.modle.db.Manager;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
 import com.example.admin.people_blood.utils.DateUtils;
+import com.example.admin.people_blood.view.activity.WenYiShengActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShuJuKuListActivity;
+import com.example.admin.people_blood.view.xueyaguanli.TiXingListActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
 
 import org.greenrobot.eventbus.EventBus;
@@ -93,6 +95,26 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     private List<PointValue> listDiYa;
     private Manager manager;
     private List<CeLiangMesageBean> listshuju;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        ButterKnife.unbind(this);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
     @Override
     protected int ViewID() {
@@ -204,12 +226,6 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     }
 
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        ButterKnife.unbind(this);
-    }
-
     @OnClick({R.id.xueyaceliang, R.id.boold_shuju, R.id.boold_wendoctor, R.id.boold_tixing, R.id.boold_zixun})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -223,10 +239,12 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
                 break;
             //提醒
             case R.id.boold_tixing:
+                startActivity(new Intent(App.baseActivity, TiXingListActivity.class));
                 break;
             //问医生
             case R.id.boold_wendoctor:
-//                Intent intent = new Intent(App.baseActivity,)
+                Intent intent1 = new Intent(App.baseActivity, WenYiShengActivity.class);
+                startActivity(intent1);
                 break;
             //资讯
             case R.id.boold_zixun:
@@ -234,14 +252,6 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
                 startActivity(intent);
                 break;
         }
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // TODO: inflate a fragment view
-        View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        ButterKnife.bind(this, rootView);
-        return rootView;
     }
 
     private void radioGroupListener() {
@@ -496,12 +506,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     public void getEvent(CeLiangMesageBean ceLiangMesageBean) {
         tongjiDay.setChecked(true);
         dayShuaXin();
-        booldShuju.setText(ceLiangMesageBean.getGaoya()+"/"+ceLiangMesageBean.getDiya()+"  今天");
+        booldShuju.setText(ceLiangMesageBean.getGaoya() + "/" + ceLiangMesageBean.getDiya() + "  今天");
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        EventBus.getDefault().unregister(this);
-    }
 }

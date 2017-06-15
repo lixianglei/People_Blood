@@ -8,6 +8,7 @@ import com.example.admin.people_blood.utils.GsonUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -65,10 +66,20 @@ public class RetrofitClient implements IHttp {
 
     @Override
     public void get(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack) {
+        map = getStringStringMap(map);
         get(classBean, url, map, httpCallBack, false);
     }
 
+    @android.support.annotation.NonNull
+    private Map<String, String> getStringStringMap(Map<String, String> map) {
+        if(map==null){
+            map = new HashMap<>();
+        }
+        return map;
+    }
+
     public void get(final Class classBean, String url, Map<String, String> map, final HttpCallBack httpCallBack, final boolean boo) {
+        map = getStringStringMap(map);
         iaPiService.get(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -78,10 +89,12 @@ public class RetrofitClient implements IHttp {
 
     @Override
     public void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack) {
+        map = getStringStringMap(map);
         post(classBean, url, map, httpCallBack, false);
     }
 
     public void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack, boolean boo) {
+        map = getStringStringMap(map);
         iaPiService.post(url, map)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
@@ -215,6 +228,5 @@ public class RetrofitClient implements IHttp {
             };
         }
     }
-
 
 }
