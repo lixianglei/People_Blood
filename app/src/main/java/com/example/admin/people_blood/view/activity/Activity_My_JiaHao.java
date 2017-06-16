@@ -43,7 +43,7 @@ public class Activity_My_JiaHao extends BaseActivity {
 
     @Override
     protected void loadData() {
-        showWaitingDialog();
+//        showWaitingDialog();
 
     }
 

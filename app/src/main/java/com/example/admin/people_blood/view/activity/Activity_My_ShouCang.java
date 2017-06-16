@@ -55,7 +55,7 @@ public class Activity_My_ShouCang extends BaseActivity {
 
     @Override
     protected void loadData() {
-        showWaitingDialog();
+//        showWaitingDialog();
 
         Map<String, String> map = new HashMap();
         map.put("xywy_userid", id);

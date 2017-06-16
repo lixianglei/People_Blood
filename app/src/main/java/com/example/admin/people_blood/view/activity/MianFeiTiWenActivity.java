@@ -122,7 +122,7 @@ public class MianFeiTiWenActivity extends BaseActivity  {
         dialogWindow.setGravity( Gravity.BOTTOM);
         //获得窗体的属性
         WindowManager.LayoutParams lp = dialogWindow.getAttributes();
-        lp.y = 20;//设置Dialog距离底部的距离
+        lp.y = 10;//设置Dialog距离底部的距离
 //       将属性设置给窗体
         dialogWindow.setAttributes(lp);
         dialog.show();//显示对话框
@@ -239,16 +239,4 @@ public class MianFeiTiWenActivity extends BaseActivity  {
                 break;
         }
     }
-//    @Override
-//    public void onClick(View v) {
-//        switch (view.getId()){
-//            case R.id.takePhoto:
-//                Toast.makeText(this,"点击了拍照",Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.choosePhoto:
-//                Toast.makeText(this,"点击了从相册选择",Toast.LENGTH_SHORT).show();
-//                break;
-//        }
-//        dialog.dismiss();
-//    }
 }
