@@ -25,11 +25,11 @@ import com.example.admin.people_blood.eventbus.ShuJuKuDetl;
 import com.example.admin.people_blood.modle.db.Manager;
 import com.example.admin.people_blood.presenter.BloodManagerPressenter;
 import com.example.admin.people_blood.utils.DateUtils;
+import com.example.admin.people_blood.view.activity.BullthCeLiangActivity;
 import com.example.admin.people_blood.view.activity.WenYiShengActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShouDongCeLiangActivity;
 import com.example.admin.people_blood.view.xueyaguanli.ShuJuKuListActivity;
 import com.example.admin.people_blood.view.xueyaguanli.XueYaZiXunActivity;
-import com.example.admin.people_blood.xueyua.ClientActivity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -207,7 +207,7 @@ public class BloodManagerFragment extends BaseFragment implements BloodManagerFr
     @Override
     public void kangBaoBeiShangChuan() {
         Toast.makeText(App.baseActivity, "康宝贝测量", Toast.LENGTH_SHORT).show();
-        Intent  intent=new Intent(getActivity(), ClientActivity.class);
+        Intent  intent=new Intent(App.baseActivity, BullthCeLiangActivity.class);
         startActivity(intent);
         popupWindow.dismiss();
     }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<ImageView
+    android:id="@+id/lanya_cl_zhuangtai"
+    android:src="@drawable/img_close_nor_down"
+    android:layout_centerHorizontal="true"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginLeft="20dp"
+        android:text="未连接"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/lanya_cl_zhuangtai"
+        android:id="@+id/lanya_islianjie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginRight="10dp"
+        android:text="康宝贝血压计"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_below="@id/lanya_cl_zhuangtai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <com.example.admin.people_blood.view.view1.ChangZhuView
+        android:layout_marginTop="10dp"
+        android:id="@+id/lanya_tu"
+        android:layout_below="@id/lanya_islianjie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/lanya_tu"
+        android:id="@+id/lanya_btn"
+        android:text="开始连接"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>
