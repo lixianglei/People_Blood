@@ -81,21 +81,15 @@ public class JiaHaoItemAdapter extends BaseAdapter {
         Long aLong = Long.parseLong(bean.getDate());
         String data = AppUtils.longToString(aLong * 1000, "M月dd日");
         hodle.mTime.setText(data);
-
         hodle.mMsg.setText(bean.getMsg());
         hodle.mCount.setText("(" + "剩余" + bean.getAmount() + "个" + ")");
-
         int i = Integer.parseInt(bean.getWeek());
-
-
         hodle.mXingqi.setText("星期"+str[i]);
-
         return convertView;
     }
 
     public class mViewHodle {
         private TextView mTime, mXingqi, mMsg, mCount;
-
     }
 
 }

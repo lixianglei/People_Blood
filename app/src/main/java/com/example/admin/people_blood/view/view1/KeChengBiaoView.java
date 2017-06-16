@@ -80,56 +80,26 @@ public class KeChengBiaoView extends LinearLayout {
         marginleft = viewWidth;
         //默认上边距为0
         marginTop = 0;
+        //画笔设置颜色
         linePaint = new Paint();
         linePaint.setColor(Color.parseColor("#000000"));
         linePaint.setAntiAlias(true);
-
 //        params = new LayoutParams(viewWidth, viewHeight);
         //其实最后发现这里设置这个已经没啥用了
         params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT, (float) 0.5);
-
         //初始化默认的view
         initView();
-
     }
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-//        super.onLayout(changed, l, t, r, b);
-//        int childCount = getChildCount();
-//        View view1 = getChildAt(0);
-//        View view2 = getChildAt(1);
-//        view1.layout(100, 300, 100 + view1.getWidth(), 300 + view1.getHeight());
-//        Log.e("TAG", getChildCount() + "1----->" + System.currentTimeMillis());
-//防止调用2次 出错
-//        if (!aBoolean) {
-//            aBoolean = true;
-//            //遍历所有已经添加的子view
-//            for (int i = 0; i < getChildCount(); i++) {
-//                //i<=6 的时候是星期的view
-////                if (i <= 6) {
-////                    Log.d("KeChengBiaoView", "getChildCount():" + getChildCount());
-////                    TextView view = (TextView) getChildAt(i);
-////
-////                    Log.d("TAG", "--所有数据---->" + marginleft + "--" + marginTop + "--" + viewWidth + "---" + viewHeight);
-////                    view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
-////                    marginleft += viewWidth;
-////                } else {
-//                //重置左边距
-//                marginleft = 0;
-//                //同时上边距为当前的上边距 加 一个字view的高度
-//                marginTop += viewHeight;
-//                View view = getChildAt(i);
-//                view.layout(marginleft, marginTop, marginleft + viewWidth, marginTop + viewHeight);
-////                }
-//            }
-//            marginleft = viewWidth;
-//        }
+
     }
     @Override
     protected void onDraw(Canvas canvas) {
 //        super.onDraw(canvas);
         marginleft = viewWidth;
         marginTop = viewHeight;
+        //这是划线
         float[] lines = {
                 0,0,windowWidth,0,
                 0, viewHeight, windowWidth, viewHeight,
@@ -169,67 +139,57 @@ public class KeChengBiaoView extends LinearLayout {
 
     private void initView() {
 
-//        Log.e("TAG", "0----->" + System.currentTimeMillis());
-//遍历包含星期的数组
-//        for (int i = 0; i < sunday.length; i++) {
-//            TextView textView = new TextView(context);
-//            textView.setLayoutParams(params);
-//            textView.setText(sunday[i]);
-//            textView.setTextSize(15);
-//            textView.setTextColor(Color.parseColor("#000000"));
-////            textView.setBackgroundColor(Color.parseColor("#000000"));
-////            textView.setGravity(Gravity.CENTER);
-//
-//            addView(textView);
-//        }
-        //遍历为时间的数组
-//        for (int i = 0; i < day.length; i++) {
-//            TextView textView = new TextView(context);
-//            textView.setLayoutParams(params);
-//            textView.setText(day[i]);
-//            textView.setTextSize(15);
-//            textView.setTextColor(Color.parseColor("#000000"));
-//            addView(textView);
-//        }
     }
 
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-
 //         计算出所有的childView的宽和高
         measureChildren(widthMeasureSpec, heightMeasureSpec);
         //设置总view的宽度 这里简单 宽度为屏幕宽度 高度为4个字view的宽度 后面优化布局的话会改变
         setMeasuredDimension(windowWidth, viewHeight * 4);
-
-//        int width;
-//        int height;
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-//        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-//        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-//        int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
-//        int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
-//        int count = getChildCount();
-//        View childAt = getChildAt(0);
-//        View childAt1 = getChildAt(1);
-//        childAt.setMinimumWidth(300);
-//        childAt.setMinimumHeight(300);
-//        childAt1.setMinimumWidth(300);
-//        childAt1.setMinimumHeight(300);
-//        width = childAt.getWidth() + childAt1.getWidth();
-//        height = childAt.getHeight() + childAt1.getHeight();
-//        setMeasuredDimension((widthMode == MeasureSpec.EXACTLY) ? sizeWidth
-//                : width, (heightMode == MeasureSpec.EXACTLY) ? sizeHeight
-//                : height);
     }
 
-
-
     /**
-     * @param sunday 星期 1 到 7
-     * @param type   上午1 中午 2 下午 3
+     * @param sun 星期 1 到 7
+     * @param sunType   上午1 中午 2 下午 3
      */
-    public void setSunDay(int sunday, int type) {
+    public void setSunDay(String  sun,String sunType) {
+        int  sunday=0;
+        int   type=0;
+        switch (sun){
+            case  "星期一":
+               sunday=1;
+                break;
+            case  "星期二":
+               sunday=2;
+                break;
+            case  "星期三":
+                sunday=3;
+                break;
+            case  "星期四":
+                sunday=4;
+                break;
+            case  "星期五":
+                sunday=5;
+                break;
+            case  "星期六":
+                sunday=6;
+                break;
+            case  "星期七":
+                sunday=7;
+                break;
+
+        }
+        if (sunType.contains("上午")){
+            type=1;
+        }
+        else  if (sunType.contains("下午")){
+            type=2;
+        }
+        else  if (sunType.contains("晚上")){
+            type=3;
+        }
         //这里判断用户输入的sunday值和type是否正确 不正确 直接Toast 同时return
         if (sunday == 0 || sunday > 7 || type == 0 || type > 3) {
             Toast.makeText(context, "请输入正确的星期或者时间", Toast.LENGTH_SHORT).show();

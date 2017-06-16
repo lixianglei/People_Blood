@@ -50,7 +50,9 @@ public class TimeFragment extends BaseFragment implements TimeView{
     @Override
     protected void initView() {
         intent=getActivity().getIntent();
+
         document_id=intent.getStringExtra("document_id");
+        Log.i("sd",document_id);
   timePresenter=new TimePresenter(this);
 
     }
@@ -64,9 +66,6 @@ public class TimeFragment extends BaseFragment implements TimeView{
     protected void listener() {
     }
 
-    private void addList() {
-
-    }
 
     @Override
     public void onDestroyView() {
@@ -76,6 +75,15 @@ public class TimeFragment extends BaseFragment implements TimeView{
 
     @Override
     public void time(List<TimeBean.DataBean.ScheduleBean.RdtimeBean> been) {
-        Log.i("sd",been.get(0).getAddress());
+              Log.i("sd", been.get(0).getTitle());
+//        String  str=been.get(0).getTitle();
+        for (TimeBean.DataBean.ScheduleBean.RdtimeBean rdtimeBean : been) {
+            String title = rdtimeBean.getTitle();
+            String substring = title.substring(11, 14);
+            String substring1 = title.substring(15, 17);
+            Log.i("sd",substring);
+            Log.i("sd",substring1);
+            mainTimetableLy.setSunDay(substring,substring1);
+        }
     }
 }
