@@ -76,7 +76,7 @@ public class KeChengBiaoView extends LinearLayout {
         viewWidth = windowWidth / 8;
         viewHeight=windowHeight/15;
         setWillNotDraw(false);
-        //左边距默认为屏幕的宽度
+        //左边距默认为view的宽度
         marginleft = viewWidth;
         //默认上边距为0
         marginTop = 0;
@@ -192,6 +192,7 @@ public class KeChengBiaoView extends LinearLayout {
         }
         //这里判断用户输入的sunday值和type是否正确 不正确 直接Toast 同时return
         if (sunday == 0 || sunday > 7 || type == 0 || type > 3) {
+
             Toast.makeText(context, "请输入正确的星期或者时间", Toast.LENGTH_SHORT).show();
             return;
         }

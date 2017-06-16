@@ -72,7 +72,6 @@ public class TimeFragment extends BaseFragment implements TimeView{
         super.onDestroyView();
         ButterKnife.unbind(this);
     }
-
     @Override
     public void time(List<TimeBean.DataBean.ScheduleBean.RdtimeBean> been) {
               Log.i("sd", been.get(0).getTitle());
