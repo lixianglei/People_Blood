@@ -11,7 +11,6 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +22,6 @@ import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.view1.ChangZhuView;
-import com.example.admin.people_blood.view.view1.YuYueView;
 import com.example.admin.people_blood.xueyua.BluetoothMsg;
 import com.example.admin.people_blood.xueyua.ChatMessage;
 import com.example.admin.people_blood.xueyua.CommonAttr;
@@ -32,7 +30,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
@@ -73,35 +70,79 @@ public class BullthCeLiangActivity extends BaseActivity {
     int[] addssy = {150, 130, 180, 120, 180};
     int[] addszy = {90, 110, 80, 50, 150};
     int count;
-    private Handler  handler=new Handler(){
+    int zhang;
+    private boolean isfalse;
+    public static byte[] bytes1 = {(byte) 0xEB, 0x21, (byte) 0xf4, (byte) 0xEB};
+
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            if (count<5){
-                yuanView.setXueYa(addssy[count],addszy[count]);
-                count++;
-                handler.sendEmptyMessageDelayed(1,2000);
-            }else {
+            switch (msg.what) {
+                case 11:
+                    if (count < 5) {
+                        yuanView.setXueYa(addssy[count], addszy[count]);
+                        count++;
+                        handler.sendEmptyMessageDelayed(11, 2000);
+                    } else {
 //                count=0;
 //                yuanView;
+                    }
+                    break;
+                case 22:
+                    sendMessageHandler(bytes1);
+                    handler.sendEmptyMessageDelayed(22, 250);
+                    break;
+                case 33:
+                    int[] ss = (int[]) msg.obj;
+                    int aa = ss[0];
+
+                    lanyaTu.setXueYa(Math.abs(aa), ss[1]);
+                    break;
+                case 44:
+                    if (!isfalse) {
+                        if (zhang < 150) {
+                            lanyaTu.setXueYa(zhang, zhang);
+                            zhang++;
+                            handler.sendEmptyMessageDelayed(44, 200);
+
+                        } else {
+                            isfalse=true;
+                        }
+
+                    } else {
+
+                        zhang--;
+                        lanyaTu.setXueYa(zhang, zhang);
+                        handler.sendEmptyMessageDelayed(44, 200);
+
+                    }
+
+
+                    break;
             }
+
         }
 
     };
+    private IntentFilter filter;
+
     @Override
     protected int layoutId() {
         return R.layout.activity_butllth_celiang;
     }
+
     @Override
     protected void initView() {
+        zhang = 1;
         mContext = this;
         progressDialog = new ProgressDialog(this);
-         //通过蓝牙获得适配器
+        //通过蓝牙获得适配器
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         list = new ArrayList<ChatMessage>();
-        IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
+        filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver, filter);
-        handler.sendEmptyMessageDelayed(1,2000);
+        handler.sendEmptyMessageDelayed(1, 2000);
     }
 
     @Override
@@ -133,9 +174,9 @@ public class BullthCeLiangActivity extends BaseActivity {
                 } else {
                     mReadThread = new ReadThread();
                     mReadThread.start();
+                    handler.sendEmptyMessageDelayed(44, 200);
                     sendMessageHandler(CommonAttr.Sphygmomanometer.START_MEASURE);
-                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_BATTERY);
-                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_REUSLT);
+                    handler.sendEmptyMessageDelayed(22, 250);
                 }
                 break;
         }
@@ -158,7 +199,7 @@ public class BullthCeLiangActivity extends BaseActivity {
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
                 Log.e("TAGNAME", "蓝牙名字---" + device.getName());
                 //通过配对蓝牙的名来进行连接
-                if (device.getName().equals("KBB3")) {
+                if (device.getName().equals("KBB3-1")) {
                     BullthCeLiangActivity.device = mBluetoothAdapter.getRemoteDevice(device.getAddress());
                     mClientThread = new ClientThread();
                     mClientThread.start();
@@ -224,6 +265,7 @@ public class BullthCeLiangActivity extends BaseActivity {
             // TODO Auto-generated method stub
             if (device != null) {
                 try {
+                    mBluetoothAdapter.cancelDiscovery();
                     //用UUID获取一个socket连接；
                     //00001101-0000-1000-8000-00805F9B34FB
                     socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
@@ -253,7 +295,6 @@ public class BullthCeLiangActivity extends BaseActivity {
             }
         }
 
-        HashMap map = new HashMap();
     }
 
     // 连接以后通过socket来获取InputStream流
@@ -272,6 +313,7 @@ public class BullthCeLiangActivity extends BaseActivity {
             }
             while (true) {
                 try {
+                    //设备-----21,33,-128,0,-113,0,0,0,0,0,0,-27,-21,
                     if ((bytes = is.read(buffer)) > 0) {
                         byte[] data = new byte[bytes];
                         for (int i = 0; i < data.length; i++) {
@@ -279,16 +321,42 @@ public class BullthCeLiangActivity extends BaseActivity {
                             byte b = data[i];
                             //把byte转化为bit（二进制）;
                             Log.e("ReadThread", byteToBit(b));
+                            String b2 = byteToBit(b);
+                            Log.e("ReadThread", "第一位--" + b2.substring(1, b2.length() - 1));
+//                            if(b2.substring(0))
                         }
+                        int[] xin = new int[3];
                         StringBuffer fs = new StringBuffer();
                         for (int i = 0; i < data.length; i++) {
-                            fs.append(data[i] + ",");
+                            fs.append(data[i] + " ");
+                            if (i == 6) {
+                                if (data[i] != 0) {
+
+                                    Log.e("TAGNAME", "哈哈哈");
+                                    xin[0] = data[i];
+                                }
+                            }
+                            if (i == 8 && data[i] != 0) {
+                                xin[1] = data[i];
+                            }
+                            if (i == 10 && data[i] != 0) {
+                                xin[2] = data[i];
+                            }
+
                         }
 
+
                         Log.e("TAGNAME", "设备----" + fs.toString() + "");
+                        if (xin[0] != 0) {
+                            handler.removeMessages(44);
+                            isfalse = false;
+                            Message message = new Message();
+                            message.obj = xin;
+                            message.what = 33;
+                            handler.sendMessage(message);
+                        }
+
                         String s = new String(data);
-                        Log.i("TAGNAME", "abc------" + s);
-                        Log.e("TAGNAME", "s---" + s);
                         Message msg = new Message();
                         msg.obj = s;
                         msg.what = 1;
@@ -326,6 +394,7 @@ public class BullthCeLiangActivity extends BaseActivity {
 //        list.add(new ChatMessage(msg.toString(), false));
 
     }
+
     // 此方法是停止服务哦；
     private void closeClient() {
         new Thread() {
@@ -368,7 +437,7 @@ public class BullthCeLiangActivity extends BaseActivity {
                 list.add(new ChatMessage("No devices have been paired", true));
             }
             /**
-            开始搜索 */
+             开始搜索 */
             mBluetoothAdapter.startDiscovery();
         }
     }
