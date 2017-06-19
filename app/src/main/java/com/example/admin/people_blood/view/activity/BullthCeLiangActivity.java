@@ -100,25 +100,24 @@ public class BullthCeLiangActivity extends BaseActivity {
                     lanyaTu.setXueYa(Math.abs(aa), ss[1]);
                     break;
                 case 44:
-                    if (!isfalse) {
+
                         if (zhang < 150) {
                             lanyaTu.setXueYa(zhang, zhang);
                             zhang++;
                             handler.sendEmptyMessageDelayed(44, 200);
 
-                        } else {
-                            isfalse=true;
+                        }else {
+                            handler.sendEmptyMessageDelayed(55,200);
+
                         }
 
-                    } else {
-
-                        zhang--;
-                        lanyaTu.setXueYa(zhang, zhang);
-                        handler.sendEmptyMessageDelayed(44, 200);
-
-                    }
 
 
+                    break;
+                case 55:
+                      zhang--;
+                    lanyaTu.setXueYa(zhang,zhang);
+                    handler.sendEmptyMessageDelayed(55,200);
                     break;
             }
 
@@ -236,8 +235,6 @@ public class BullthCeLiangActivity extends BaseActivity {
     // 当连接上服务器的时候才可以选择发送数据和断开连接
     private Handler refreshUI = new Handler() {
         public void handleMessage(Message msg) {
-
-
             if (msg.what == 0) {
                 progressDialog.dismiss();
                 isbtn = true;
@@ -344,11 +341,10 @@ public class BullthCeLiangActivity extends BaseActivity {
                             }
 
                         }
-
-
                         Log.e("TAGNAME", "设备----" + fs.toString() + "");
                         if (xin[0] != 0) {
                             handler.removeMessages(44);
+                            handler.removeMessages(55);
                             isfalse = false;
                             Message message = new Message();
                             message.obj = xin;
