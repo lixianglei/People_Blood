@@ -27,7 +27,7 @@ public class Activity_Password extends BaseActivity {
     ImageView leftImage;
     @Bind(R.id.left_layout)
     RelativeLayout leftLayout;
-//    @Bind(R.id.Yijian_FanKui)
+    //    @Bind(R.id.Yijian_FanKui)
 //    TextView YijianFanKui;
     @Bind(R.id.Edit_pass)
     EditText EditPhone;
@@ -63,16 +63,16 @@ public class Activity_Password extends BaseActivity {
 
     private void showListDialog() {
         final EditText et = new EditText(this);
-        new AlertDialog.Builder(this).setTitle("验证密码")
+        AlertDialog show = new AlertDialog.Builder(this).setTitle("验证密码")
                 .setMessage("验证原密码，更新密码前，请输入旧密码来保证您的账户安全")
                 .setView(et)
+                .setCancelable(false)
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         String input = et.getText().toString();
                         if (et.getText().toString().isEmpty()) {
                             Toast.makeText(getApplicationContext(), "验证失败" + input, Toast.LENGTH_LONG).show();
-                        }
-                        else {
+                        } else {
 
                             Intent intent = new Intent();
                             intent.putExtra("content", input);
@@ -84,15 +84,14 @@ public class Activity_Password extends BaseActivity {
                 .setNegativeButton("取消", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        String string=et.getText().toString();
-                        if(string.equals("")){
-                            Intent intent=new Intent();
-                            intent.setClass(Activity_Password.this,Activity_ZhangHu.class);
-                            startActivity(intent);
+                        String string = et.getText().toString();
+                        if (string.equals("")) {
+                            finish();
                         }
                     }
                 })
                 .show();
+
     }
 
     @Override

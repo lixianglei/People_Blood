@@ -65,6 +65,29 @@ public class BullthCeLiangActivity extends BaseActivity {
     private BluetoothSocket socket;     // 客户端socket
     private ClientThread mClientThread; // 客户端运行线程
     private ReadThread mReadThread;   // 读取流线程
+    public static byte[] bytes1 = {(byte) 0xEB, 0x21, (byte) 0xf4, (byte) 0xEB};
+
+    private Handler sendHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            sendMessageHandler(bytes1);
+            sendHandler.sendEmptyMessageDelayed(1, 250);
+        }
+    };
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        if (mBluetoothAdapter != null) {
+            mBluetoothAdapter.cancelDiscovery();
+            // 关闭蓝牙
+            mBluetoothAdapter.disable();
+        }
+        unregisterReceiver(mReceiver);
+        closeClient();
+    }
 
     @Override
     protected int layoutId() {
@@ -96,7 +119,7 @@ public class BullthCeLiangActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.lanya_cl_zhuangtai:
-                lanyaTu.stopCeliang();
+                finish();
                 break;
             case R.id.lanya_btn:
                 if (!isbtn) {
@@ -120,18 +143,14 @@ public class BullthCeLiangActivity extends BaseActivity {
 //                            }
 //                        }
 //                        if(!ispeizdui){
-                            mBluetoothAdapter.startDiscovery();
+                        mBluetoothAdapter.startDiscovery();
 //                        }
                     }
-                }else{
+                } else {
                     mReadThread = new ReadThread();
                     mReadThread.start();
                     sendMessageHandler(CommonAttr.Sphygmomanometer.START_MEASURE);
-                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_BATTERY);
-
-
-                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_REUSLT);
-
+                    sendHandler.sendEmptyMessageDelayed(1, 250);
 
                 }
 
@@ -161,7 +180,7 @@ public class BullthCeLiangActivity extends BaseActivity {
                 // 如果这个设备是不曾配对过的，添加到list列表
 //                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
 //                    list.add(new ChatMessage(device.getName() + "\n" + device.getAddress(), false));
-                Log.e("TAGNAME","蓝牙名字---"+device.getName());
+                Log.e("TAGNAME", "蓝牙名字---" + device.getName());
                 if (device.getName().equals("KBB3-1")) {
                     BullthCeLiangActivity.device = mBluetoothAdapter.getRemoteDevice(device.getAddress());
                     mClientThread = new ClientThread();
@@ -255,7 +274,7 @@ public class BullthCeLiangActivity extends BaseActivity {
                 } catch (IOException e) {
                     // TODO Auto-generated catch block
                     // socket.connect()连接失效
-                    Log.e("TAGNAME","连接异常---"+e.getMessage());
+                    Log.e("TAGNAME", "连接异常---" + e.getMessage());
                     Message msg = new Message();
                     msg.obj = "连接服务端异常！断开连接重新试一试。";
                     msg.what = 112;
@@ -291,21 +310,23 @@ public class BullthCeLiangActivity extends BaseActivity {
                             byte b = data[i];
 
                         }
+                        //-21,33,64,0,0,0,-116,0,89,0,71,-120,-21,
                         StringBuffer fs = new StringBuffer();
 
                         for (int i = 0; i < data.length; i++) {
 
-                            fs.append(data[i]+",");
+                            fs.append(data[i] + ",");
                         }
-                        Log.e("TAGNAME","设备----"+ fs.toString() + "");
+                        Log.e("TAGNAME", "设备----" + fs.toString() + "");
+
                         String s = new String(data);
-                        Log.i("TAGNAME","abc------"+ s);
-                        Log.e("TAGNAME","s---"+s);
+                        Log.i("TAGNAME", "abc------" + s);
+                        Log.e("TAGNAME", "s---" + s);
                         Message msg = new Message();
                         msg.obj = s;
                         msg.what = 1;
                         LinkDetectedHandler.sendMessage(msg);
-                    }else{
+                    } else {
 
                     }
                 } catch (IOException e) {
@@ -386,16 +407,4 @@ public class BullthCeLiangActivity extends BaseActivity {
     }
 
 
-    @Override
-    protected void onDestroy() {
-        // TODO Auto-generated method stub
-        super.onDestroy();
-        if (mBluetoothAdapter != null) {
-            mBluetoothAdapter.cancelDiscovery();
-            // 关闭蓝牙
-            mBluetoothAdapter.disable();
-        }
-        unregisterReceiver(mReceiver);
-        closeClient();
-    }
 }

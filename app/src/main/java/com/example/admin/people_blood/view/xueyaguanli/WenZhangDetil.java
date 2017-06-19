@@ -2,7 +2,10 @@ package com.example.admin.people_blood.view.xueyaguanli;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
+import android.text.Spanned;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -64,14 +67,21 @@ public class WenZhangDetil extends BaseActivity implements WenZhangDetilImpl {
 
     @Override
     protected void listener() {
-
+        imageBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override
     public void getHttp(GaoXueYaDetil gaoXueYaDetil) {
         GaoXueYaDetil.DataBean data = gaoXueYaDetil.getData();
         Log.e("Body",data.getBody());
-        DetalContent.setText(data.getBody());
+        Spanned spanned = Html.fromHtml(data.getBody());
+        Log.d("WenZhangDetil", spanned.toString());
+        DetalContent.setText( spanned.toString());
         DetalTitle.setText(data.getTitle());
         Long date = Long.parseLong(data.getPubdate()) * 1000;
         DetalDate.setText(DateUtils.format(date, "yyyy-MM-dd"));

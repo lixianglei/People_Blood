@@ -78,6 +78,7 @@
         <activity android:name=".view.xueyaguanli.ShuJuKuListActivity"/>
         <activity android:name=".view.xueyaguanli.ShuJuKuXiangQingActivity"/>
         <activity android:name=".view.activity.BullthCeLiangActivity"/>
+
     </application>
 
 </manifest>

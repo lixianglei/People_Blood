@@ -69,11 +69,17 @@ public class ShuJuKuListActivity extends BaseActivity {
         shujuDetl.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ShuJuKuListActivity.this,ShuJuKuXiangQingActivity.class);
-                intent.putExtra("xiangqing_xueya",list.get(position).getGaoya()+".0");
-                intent.putExtra("xiangqing_name",list.get(position).getName());
-                intent.putExtra("xiangqing_date",list.get(position).getDate());
-                intent.putExtra("xiangqing_isshoudong",list.get(position).getIsshoudong());
+                Intent intent = new Intent(ShuJuKuListActivity.this, ShuJuKuXiangQingActivity.class);
+                intent.putExtra("xiangqing_xueya", list.get(position).getGaoya() + ".0");
+
+                intent.putExtra("xiangqing_name", list.get(position).getName());
+                intent.putExtra("xiangqing_date", list.get(position).getDate());
+
+                if (list.get(position).getIsshoudong() == null) {
+                    intent.putExtra("xiangqing_isshoudong", "true");
+                } else {
+                    intent.putExtra("xiangqing_isshoudong", list.get(position).getIsshoudong());
+                }
                 startActivity(intent);
             }
         });
@@ -88,6 +94,7 @@ public class ShuJuKuListActivity extends BaseActivity {
 
     @OnClick(R.id.image_Back)
     public void onViewClicked() {
+        finish();
     }
 
     @Override

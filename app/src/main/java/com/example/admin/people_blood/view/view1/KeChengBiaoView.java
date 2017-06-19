@@ -230,7 +230,9 @@ public class KeChengBiaoView extends LinearLayout {
         //这里每个view的上边距为 你输入的时间 乘以每个子view的高度
         int top = viewHeight * type;
         TextView textView = new TextView(context);
+        LayoutParams params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         textView.setLayoutParams(params);
+        textView.setPadding(20, 20, 0, 0);
         textView.setTextSize(15);
         textView.setText("专家");
 //        textView.setGravity(Gravity.CENTER);

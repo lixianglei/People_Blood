@@ -39,7 +39,7 @@ public class CommonAttr {
 		// */
 		// public static final byte[] GET_REUSLT = { (byte) 0xFA, 0x21, (byte)
 		// 0xE5, (byte) 0xFA };
-
+// 让这个机器动起来
 		public static final byte[] START_MEASURE = { (byte) 0xEB, 0x20, 0x00,
 				(byte) 0xf5, (byte) 0xEB };
 		/**
