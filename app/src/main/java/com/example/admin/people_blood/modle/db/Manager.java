@@ -116,7 +116,7 @@ public class Manager {
         return list;
 
     }
-
+   //这是我数据库查询的方法
     public List<CeLiangMesageBean> query() {
 
         List<CeLiangMesageBean> list = new ArrayList<>();

@@ -13,18 +13,15 @@ import java.util.List;
  * 修改内容:
  * 修改时间:
  */
-
 public class ShuJuKuDetl {
-    private List<CeLiangMesageBean> list;
 
+    private List<CeLiangMesageBean> list;
     public List<CeLiangMesageBean> getList() {
         return list;
     }
-
     public void setList(List<CeLiangMesageBean> list) {
         this.list = list;
     }
-
     public ShuJuKuDetl(List<CeLiangMesageBean> list) {
         this.list = list;
     }

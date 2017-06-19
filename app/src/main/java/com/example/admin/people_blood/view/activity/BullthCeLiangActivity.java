@@ -20,16 +20,23 @@ import android.widget.Toast;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
+import com.example.admin.people_blood.bean.CeLiangMesageBean;
+import com.example.admin.people_blood.modle.db.Manager;
 import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.view1.ChangZhuView;
 import com.example.admin.people_blood.xueyua.BluetoothMsg;
 import com.example.admin.people_blood.xueyua.ChatMessage;
 import com.example.admin.people_blood.xueyua.CommonAttr;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
@@ -72,6 +79,7 @@ public class BullthCeLiangActivity extends BaseActivity {
     int count;
     int zhang;
     private boolean isfalse;
+    private Manager manager;
     public static byte[] bytes1 = {(byte) 0xEB, 0x21, (byte) 0xf4, (byte) 0xEB};
 
     private Handler handler = new Handler() {
@@ -101,23 +109,22 @@ public class BullthCeLiangActivity extends BaseActivity {
                     break;
                 case 44:
 
-                        if (zhang < 150) {
-                            lanyaTu.setXueYa(zhang, zhang);
-                            zhang++;
-                            handler.sendEmptyMessageDelayed(44, 200);
+                    if (zhang < 150) {
+                        lanyaTu.setXueYa(zhang, zhang);
+                        zhang++;
+                        handler.sendEmptyMessageDelayed(44, 200);
 
-                        }else {
-                            handler.sendEmptyMessageDelayed(55,200);
+                    } else {
+                        handler.sendEmptyMessageDelayed(55, 200);
 
-                        }
-
+                    }
 
 
                     break;
                 case 55:
-                      zhang--;
-                    lanyaTu.setXueYa(zhang,zhang);
-                    handler.sendEmptyMessageDelayed(55,200);
+                    zhang--;
+                    lanyaTu.setXueYa(zhang, zhang);
+                    handler.sendEmptyMessageDelayed(55, 200);
                     break;
             }
 
@@ -125,6 +132,8 @@ public class BullthCeLiangActivity extends BaseActivity {
 
     };
     private IntentFilter filter;
+    private String date;
+    private String time;
 
     @Override
     protected int layoutId() {
@@ -133,6 +142,9 @@ public class BullthCeLiangActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        manager = new Manager(this);
+        date = new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis()));
+        time = new SimpleDateFormat("hh:mm").format(new Date(System.currentTimeMillis()));
         zhang = 1;
         mContext = this;
         progressDialog = new ProgressDialog(this);
@@ -277,7 +289,6 @@ public class BullthCeLiangActivity extends BaseActivity {
                     Message uiMessage = new Message();
                     uiMessage.what = 0;
                     refreshUI.sendMessage(uiMessage);
-
                     // 可以开启读数据线程
 
                 } catch (IOException e) {
@@ -328,7 +339,6 @@ public class BullthCeLiangActivity extends BaseActivity {
                             fs.append(data[i] + " ");
                             if (i == 6) {
                                 if (data[i] != 0) {
-
                                     Log.e("TAGNAME", "哈哈哈");
                                     xin[0] = data[i];
                                 }
@@ -339,19 +349,23 @@ public class BullthCeLiangActivity extends BaseActivity {
                             if (i == 10 && data[i] != 0) {
                                 xin[2] = data[i];
                             }
-
                         }
                         Log.e("TAGNAME", "设备----" + fs.toString() + "");
                         if (xin[0] != 0) {
+
                             handler.removeMessages(44);
                             handler.removeMessages(55);
-                            isfalse = false;
+                            if (!isfalse) {
+                                CeLiangMesageBean ceLiangMesageBean = new CeLiangMesageBean(date, time, "kangbaobei", String.valueOf(xin[1]), String.valueOf(xin[0]), "false");
+                                manager.insert(ceLiangMesageBean);
+                                EventBus.getDefault().post(ceLiangMesageBean);
+                                isfalse = true;
+                            }
                             Message message = new Message();
                             message.obj = xin;
                             message.what = 33;
                             handler.sendMessage(message);
                         }
-
                         String s = new String(data);
                         Message msg = new Message();
                         msg.obj = s;

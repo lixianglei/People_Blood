@@ -218,7 +218,6 @@ public class KeChengBiaoView extends LinearLayout {
      * @param type
      */
     private void addView(int sunday, int type) {
-
         /**
          * 这里由于你添加view 所以当前添加的view索引一定是没添加之前的总子view数
          * key值我想了很久 最后不让重复只能是把当前的2个int值转成 String 值 然后2个拼接起来 才不会重复
@@ -235,9 +234,8 @@ public class KeChengBiaoView extends LinearLayout {
         textView.setPadding(20, 20, 0, 0);
         textView.setTextSize(15);
         textView.setText("专家");
-//        textView.setGravity(Gravity.CENTER);
-//        textView.setHint("专家");
-
+//      textView.setGravity(Gravity.CENTER);
+//      textView.setHint("专家");
         textView.setBackgroundColor(Color.parseColor("#16DCC7"));
         addView(textView);
         textView.layout(left, top, left + viewWidth, top + viewHeight);
