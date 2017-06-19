@@ -1,18 +1,12 @@
 package com.example.admin.people_blood.view.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseFragment;
 import com.example.admin.people_blood.bean.TimeBean;
-import com.example.admin.people_blood.kechengbiao.TimeTableModel;
 import com.example.admin.people_blood.presenter.cyy.TimePresenter;
-import com.example.admin.people_blood.view.activity.DoctorDetailActivity;
 import com.example.admin.people_blood.view.view1.KeChengBiaoView;
 import com.example.admin.people_blood.view.view1.TimeView;
 
@@ -22,7 +16,6 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-import static com.baidu.location.d.b.d;
 
 /**
  * 项目名称: 血压测量

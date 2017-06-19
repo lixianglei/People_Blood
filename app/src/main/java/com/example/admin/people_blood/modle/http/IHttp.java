@@ -17,6 +17,7 @@ import java.util.Map;
  */
 
 public interface IHttp {
+
     void get(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack);
 
     void post(Class classBean, String url, Map<String, String> map, HttpCallBack httpCallBack);

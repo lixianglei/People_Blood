@@ -1,10 +1,9 @@
 package com.example.admin.people_blood.modle.http;
 
 
-import android.util.Log;
-
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.utils.GsonUtils;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
@@ -43,6 +42,7 @@ public class RetrofitClient implements IHttp {
     private static RetrofitClient retrofitClient;
     private IAPiService iaPiService;
     private String baseul = IAPiService.HOST;
+private Gson gson;
 
     private RetrofitClient() {
         Retrofit retrofit = new Retrofit.Builder()
@@ -51,6 +51,7 @@ public class RetrofitClient implements IHttp {
                 .baseUrl(baseul)
                 .build();
         iaPiService = retrofit.create(IAPiService.class);
+        gson = new Gson();
     }
 
     public static RetrofitClient getInstance() {
@@ -127,13 +128,13 @@ public class RetrofitClient implements IHttp {
             @Override
             public void accept(@NonNull ResponseBody responseBody) throws Exception {
                 String res = responseBody.string();
-                Log.e("集合", res);
                 if (boo) {
+
                     httpCallBack.onSuccess(GsonUtils.gsonList(res, classBean));
                 } else {
                     httpCallBack.onSuccess(GsonUtils.gsonBean(res, classBean));
+
                 }
-//                dialogManager.dimssDialog();
             }
         };
         return consumer;
@@ -144,7 +145,6 @@ public class RetrofitClient implements IHttp {
             @Override
             public void accept(@NonNull Throwable throwable) throws Exception {
                 httpCallBack.onFailure(throwable.getMessage());
-//                dialogManager.dimssDialog();
             }
         };
         return throwable;

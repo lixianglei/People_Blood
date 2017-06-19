@@ -2,7 +2,6 @@ package com.example.admin.people_blood.modle.biz.cyy;
 
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 
-import static com.baidu.location.d.j.v;
 
 /**
  * 项目名称: 血压测量

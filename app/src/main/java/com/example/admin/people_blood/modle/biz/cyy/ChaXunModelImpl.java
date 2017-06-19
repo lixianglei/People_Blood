@@ -9,7 +9,6 @@ import com.example.admin.people_blood.modle.http.RetrofitClient;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.baidu.location.d.j.C;
 
 /**
  * 项目名称: 血压测量

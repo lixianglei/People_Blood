@@ -1,5 +1,8 @@
 package com.example.admin.people_blood.biz;
 
+import android.widget.Toast;
+
+import com.example.admin.people_blood.App;
 import com.example.admin.people_blood.bean.GaoXueYaZiXun;
 import com.example.admin.people_blood.modle.callback.HttpCallBack;
 import com.example.admin.people_blood.modle.http.RetrofitClient;
@@ -28,7 +31,13 @@ public class GaoXueYaBizImpl implements GaoXueYaBiz{
         map.put("sign","2e0d0887581be1c35794ee4c13b00cae");
         map.put("typeid",typeid);
         map.put("dir",dir);
-        RetrofitClient.getInstance().get(GaoXueYaZiXun.class,"", map,httpCallBack);
+        RetrofitClient.getInstance().get(GaoXueYaZiXun.class, "", map, new HttpCallBack() {
+            @Override
+            public void onSuccess(Object object) {
+                GaoXueYaZiXun bean = (GaoXueYaZiXun) object;
+                Toast.makeText(App.baseActivity, "成功", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 

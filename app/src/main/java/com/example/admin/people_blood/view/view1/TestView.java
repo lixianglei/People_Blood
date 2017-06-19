@@ -1,17 +1,14 @@
 package com.example.admin.people_blood.view.view1;
 
 import android.content.Context;
-import android.content.pm.ProviderInfo;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.os.IInterface;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 
 import com.example.admin.people_blood.utils.DimenUtils;
 
-import static com.baidu.location.d.j.o;
 
 
 /**
