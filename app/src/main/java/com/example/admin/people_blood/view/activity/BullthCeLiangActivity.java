@@ -8,8 +8,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.Process;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +23,7 @@ import com.example.admin.people_blood.R;
 import com.example.admin.people_blood.base.BaseActivity;
 import com.example.admin.people_blood.utils.ToastUtils;
 import com.example.admin.people_blood.view.view1.ChangZhuView;
+import com.example.admin.people_blood.view.view1.YuYueView;
 import com.example.admin.people_blood.xueyua.BluetoothMsg;
 import com.example.admin.people_blood.xueyua.ChatMessage;
 import com.example.admin.people_blood.xueyua.CommonAttr;
@@ -34,6 +37,7 @@ import java.util.Set;
 import java.util.UUID;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -42,7 +46,7 @@ import butterknife.OnClick;
  * 创建人: 田晓龙
  * 创建时间: 2017/6/15 23:10
  * 修改人:
- * 修改内容:
+ * 修改内容:蓝牙测量的类
  * 修改时间:
  */
 
@@ -65,53 +69,47 @@ public class BullthCeLiangActivity extends BaseActivity {
     private BluetoothSocket socket;     // 客户端socket
     private ClientThread mClientThread; // 客户端运行线程
     private ReadThread mReadThread;   // 读取流线程
-    public static byte[] bytes1 = {(byte) 0xEB, 0x21, (byte) 0xf4, (byte) 0xEB};
-
-    private Handler sendHandler = new Handler() {
+    private ChangZhuView yuanView;
+    int[] addssy = {150, 130, 180, 120, 180};
+    int[] addszy = {90, 110, 80, 50, 150};
+    int count;
+    private Handler  handler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
-            sendMessageHandler(bytes1);
-            sendHandler.sendEmptyMessageDelayed(1, 250);
+            if (count<5){
+                yuanView.setXueYa(addssy[count],addszy[count]);
+                count++;
+                handler.sendEmptyMessageDelayed(1,2000);
+            }else {
+//                count=0;
+//                yuanView;
+            }
         }
+
     };
-
-    @Override
-    protected void onDestroy() {
-        // TODO Auto-generated method stub
-        super.onDestroy();
-        if (mBluetoothAdapter != null) {
-            mBluetoothAdapter.cancelDiscovery();
-            // 关闭蓝牙
-            mBluetoothAdapter.disable();
-        }
-        unregisterReceiver(mReceiver);
-        closeClient();
-    }
-
     @Override
     protected int layoutId() {
         return R.layout.activity_butllth_celiang;
     }
-
     @Override
     protected void initView() {
         mContext = this;
         progressDialog = new ProgressDialog(this);
+         //通过蓝牙获得适配器
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         list = new ArrayList<ChatMessage>();
         IntentFilter filter = new IntentFilter(BluetoothDevice.ACTION_FOUND);
         registerReceiver(mReceiver, filter);
+        handler.sendEmptyMessageDelayed(1,2000);
     }
 
     @Override
     protected void loadData() {
-
     }
 
     @Override
     protected void listener() {
-
     }
 
 
@@ -119,7 +117,7 @@ public class BullthCeLiangActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.lanya_cl_zhuangtai:
-                finish();
+                lanyaTu.stopCeliang();
                 break;
             case R.id.lanya_btn:
                 if (!isbtn) {
@@ -128,33 +126,17 @@ public class BullthCeLiangActivity extends BaseActivity {
                         Intent enableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                         startActivityForResult(enableIntent, 1);
                     } else {
+                        progressDialog.setTitle("正在连接");
                         progressDialog.show();
-                        //获取已经配对过的设备
-//                        Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-//                        if (pairedDevices.size() > 0) {
-//                            for (BluetoothDevice pairedDevice : pairedDevices) {
-//                                if (pairedDevice.getName().equals("KBB3-1")) {
-//                                    device = mBluetoothAdapter.getRemoteDevice(pairedDevice.getAddress());
-//                                    mClientThread = new ClientThread();
-//                                    mClientThread.start();
-//                                    BluetoothMsg.isOpen = true;
-//                                    ispeizdui = true;
-//                                }
-//                            }
-//                        }
-//                        if(!ispeizdui){
                         mBluetoothAdapter.startDiscovery();
-//                        }
                     }
                 } else {
                     mReadThread = new ReadThread();
                     mReadThread.start();
                     sendMessageHandler(CommonAttr.Sphygmomanometer.START_MEASURE);
-                    sendHandler.sendEmptyMessageDelayed(1, 250);
-
+                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_BATTERY);
+                    sendMessageHandler(CommonAttr.Sphygmomanometer.GET_REUSLT);
                 }
-
-
                 break;
         }
     }
@@ -169,27 +151,20 @@ public class BullthCeLiangActivity extends BaseActivity {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-
             // When discovery finds a device
             if (BluetoothDevice.ACTION_FOUND.equals(action)) {
                 // Get the BluetoothDevice object from the Intent
                 // 通过EXTRA_DEVICE附加域来得到一个BluetoothDevice设备
                 BluetoothDevice device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-
-                // If it's already paired, skip it, because it's been listed already
-                // 如果这个设备是不曾配对过的，添加到list列表
-//                if (device.getBondState() != BluetoothDevice.BOND_BONDED) {
-//                    list.add(new ChatMessage(device.getName() + "\n" + device.getAddress(), false));
                 Log.e("TAGNAME", "蓝牙名字---" + device.getName());
-                if (device.getName().equals("KBB3-1")) {
+                //通过配对蓝牙的名来进行连接
+                if (device.getName().equals("KBB3")) {
                     BullthCeLiangActivity.device = mBluetoothAdapter.getRemoteDevice(device.getAddress());
                     mClientThread = new ClientThread();
                     mClientThread.start();
                     BluetoothMsg.isOpen = true;
                     ispeizdui = true;
                 }
-//                }
-                // When discovery is finished, change the Activity title
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 setProgressBarIndeterminateVisibility(false);
                 list.add(new ChatMessage("没有发现蓝牙设备", false));
@@ -197,18 +172,10 @@ public class BullthCeLiangActivity extends BaseActivity {
             }
         }
     };
-
-
     // Handler更新UI
     private Handler LinkDetectedHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            //Toast.makeText(mContext, (String)msg.obj, Toast.LENGTH_SHORT).show();
-//            if (msg.what == 1) {
-//                list.add(new ChatMessage((String) msg.obj, true));
-//            } else {
-//                list.add(new ChatMessage((String) msg.obj, false));
-//            }
             switch (msg.what) {
                 case 112:
                     progressDialog.dismiss();
@@ -228,17 +195,25 @@ public class BullthCeLiangActivity extends BaseActivity {
     // 当连接上服务器的时候才可以选择发送数据和断开连接
     private Handler refreshUI = new Handler() {
         public void handleMessage(Message msg) {
+
+
             if (msg.what == 0) {
-//                disconnect.setEnabled(true);
-//                sendButton.setEnabled(true);
-//                editText.setEnabled(true);
                 progressDialog.dismiss();
                 isbtn = true;
                 lanyaBtn.setText("点击测量");
+//                Intent   intent=new Intent(BullthCeLiangActivity.this,YuanZhuTwoActivity.class);
+//                startActivity(intent);
                 lanyaIslianjie.setText("已连接");
             }
         }
     };
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // TODO: add setContentView(...) invocation
+        ButterKnife.bind(this);
+    }
 
 
     // 开启客户端连接服务端
@@ -249,6 +224,7 @@ public class BullthCeLiangActivity extends BaseActivity {
             // TODO Auto-generated method stub
             if (device != null) {
                 try {
+                    //用UUID获取一个socket连接；
                     //00001101-0000-1000-8000-00805F9B34FB
                     socket = device.createRfcommSocketToServiceRecord(UUID.fromString("00001101-0000-1000-8000-00805F9B34FB"));
                     // 连接
@@ -258,12 +234,6 @@ public class BullthCeLiangActivity extends BaseActivity {
 //                    LinkDetectedHandler.sendMessage(msg);
 //                     通过socket连接服务器，这是一个阻塞过程，直到连接建立或者连接失效
                     socket.connect();
-
-//                    Message msg2 = new Message();
-//                    msg2.obj = "已经连接上服务端！可以发送信息";
-//                    msg2.what = 0;
-//                    LinkDetectedHandler.sendMessage(msg2);
-
                     // 更新UI界面
                     Message uiMessage = new Message();
                     uiMessage.what = 0;
@@ -286,7 +256,7 @@ public class BullthCeLiangActivity extends BaseActivity {
         HashMap map = new HashMap();
     }
 
-    // 通过socket获取InputStream流
+    // 连接以后通过socket来获取InputStream流
     private class ReadThread extends Thread {
         @Override
         public void run() {
@@ -301,24 +271,21 @@ public class BullthCeLiangActivity extends BaseActivity {
                 e.printStackTrace();
             }
             while (true) {
-
                 try {
                     if ((bytes = is.read(buffer)) > 0) {
                         byte[] data = new byte[bytes];
                         for (int i = 0; i < data.length; i++) {
                             data[i] = buffer[i];
                             byte b = data[i];
-
+                            //把byte转化为bit（二进制）;
+                            Log.e("ReadThread", byteToBit(b));
                         }
-                        //-21,33,64,0,0,0,-116,0,89,0,71,-120,-21,
                         StringBuffer fs = new StringBuffer();
-
                         for (int i = 0; i < data.length; i++) {
-
                             fs.append(data[i] + ",");
                         }
-                        Log.e("TAGNAME", "设备----" + fs.toString() + "");
 
+                        Log.e("TAGNAME", "设备----" + fs.toString() + "");
                         String s = new String(data);
                         Log.i("TAGNAME", "abc------" + s);
                         Log.e("TAGNAME", "s---" + s);
@@ -359,8 +326,7 @@ public class BullthCeLiangActivity extends BaseActivity {
 //        list.add(new ChatMessage(msg.toString(), false));
 
     }
-
-    // 停止服务
+    // 此方法是停止服务哦；
     private void closeClient() {
         new Thread() {
             public void run() {
@@ -401,10 +367,39 @@ public class BullthCeLiangActivity extends BaseActivity {
             } else {
                 list.add(new ChatMessage("No devices have been paired", true));
             }
-            /* 开始搜索 */
+            /**
+            开始搜索 */
             mBluetoothAdapter.startDiscovery();
         }
     }
 
+    /**
+     * 关闭蓝牙设备
+     */
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        super.onDestroy();
+        if (mBluetoothAdapter != null) {
+            mBluetoothAdapter.cancelDiscovery();
+            // 关闭蓝牙
+            mBluetoothAdapter.disable();
+        }
+        unregisterReceiver(mReceiver);
+        closeClient();
+    }
 
+    //    /**
+//     * 这个方法是将byte转bit对象时
+//     */
+    public static String byteToBit(byte b) {
+        return "" + (byte) ((b >> 7) & 0x1) +
+                (byte) ((b >> 6) & 0x1) +
+                (byte) ((b >> 5) & 0x1) +
+                (byte) ((b >> 4) & 0x1) +
+                (byte) ((b >> 3) & 0x1) +
+                (byte) ((b >> 2) & 0x1) +
+                (byte) ((b >> 1) & 0x1) +
+                (byte) ((b >> 0) & 0x1);
+    }
 }
